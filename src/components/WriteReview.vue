@@ -62,7 +62,7 @@ label {
 textarea {
     font-family: "M PLUS Rounded 1c";
     position: absolute;
-    left: 441px;
+    left: 600px;
     padding-left: 400ox;
 }
 .input2 {
