@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: "filterBar",
+  name: 'filterBar',
 
   methods: {
     myFunction() {
