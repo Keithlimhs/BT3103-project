@@ -12,11 +12,11 @@
 
     "vue": "^3.2.13",
     "vue-material-design-icons": "^5.0.0",
-    "vue-star-rating": "^2.1.0"
+    "vue-star-rating": "^2.1.0",
 
 
     "vue": "^3.2.13",
-    "vue-router": "^4.0.14"
+    "vue-router": "^4.0.14",
 
     "firebase": "^9.6.9",
     "vue": "^3.2.13"
@@ -49,6 +49,6 @@
     "> 1%",
     "last 2 versions",
     "not dead",
-    "not ie 11"
+    "not ie 11",
   ]
 }
