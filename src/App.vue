@@ -1,4 +1,5 @@
 <template>
+
   <TopHeader/>
 </template>
 
@@ -6,6 +7,7 @@
 import TopHeader from './components/TopHeader.vue'
 
 export default {
+
   name: 'App',
   components: {
     TopHeader
@@ -14,12 +16,25 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+
+
+.parent {
+  display: grid;
+  place-items: center;
+}
+
+#filterBar{
+  background-image: url('@/images/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 80%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  text-align:left;
+  font-family: 'M PLUS Rounded 1c';
+  box-shadow: 1px 1px #888888;
 }
 </style>
