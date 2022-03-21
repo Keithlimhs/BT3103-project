@@ -1,12 +1,14 @@
-
+<template>
+  <TopHeader/>
+</template>
 
 <script>
-
+import TopHeader from './components/TopHeader.vue'
 
 export default {
   name: 'App',
   components: {
-
+    TopHeader
   }
 }
 </script>
