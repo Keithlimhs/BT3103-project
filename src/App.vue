@@ -1,36 +1,16 @@
 <template>
-<link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
 
-<div class="parent">
-  <input type="text" id="filterBar" onkeyup="myFunction()" title="type to filter modules">
-</div>
-
-
-
-
+  <TopHeader/>
 </template>
 
 <script>
-export default {
-  name: "filterBar",
+import TopHeader from './components/TopHeader.vue'
 
-  methods: {
-    myFunction() {
-      var input, filter, ul, li, a, i, txtValue;
-      input = document.getElementById("myInput");
-      filter = input.value.toUpperCase();
-      ul = document.getElementById("myUL");
-      li = ul.getElementsByTagName("li");
-      for (i = 0; i < li.length; i++) {
-          a = li[i].getElementsByTagName("a")[0];
-          txtValue = a.textContent || a.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              li[i].style.display = "";
-          } else {
-              li[i].style.display = "none";
-          }
-      }
-    }
+export default {
+
+  name: 'App',
+  components: {
+    TopHeader
   }
 }
 </script>
