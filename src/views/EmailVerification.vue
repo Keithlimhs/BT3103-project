@@ -160,7 +160,11 @@ h3 {
 #backButton {
   position:absolute; 
   top: 65px; 
-  left: 10px
+  left: 10px;
+  color: grey;
+  padding: 1.5px;
+  width: 2%;
+  border-radius: 15px;
 }
 
 html {

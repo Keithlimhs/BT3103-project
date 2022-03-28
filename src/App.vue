@@ -1,13 +1,22 @@
 
 <template>
+  <EmailVerification/>
+  <PasswordReset/>
 
-<router-view/>
+<!-- <router-view/> -->
 </template>
 
 <script>
+import EmailVerification from "@/views/EmailVerification"
+import PasswordReset from "@/views/PasswordReset"
+
 console.log("in App")
 export default {
-  name: 'App'
+  components: {
+    EmailVerification,
+    PasswordReset
+  }
+  
 }
 </script>
 
