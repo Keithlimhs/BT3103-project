@@ -1,25 +1,27 @@
 <template>
-
-  <TutorsList/>
-  <TutorHome/>
-  <LoginPage/>
+  <!-- <LoginPage/> -->
+  <!-- <TutorsList/> -->
+  <!-- <TutorHome/> -->
+  <!-- <AddModulePopup/> -->
+  <TuteeHome/>
 </template>
 
 <script>
-import TutorsList from './views/TutorsList.vue'
-import TutorHome from './views/TutorHome.vue'
-import LoginPage from './views/LoginPage.vue'
-
+import "@fontsource/m-plus-rounded-1c";
+// import TutorsList from './views/TutorsList.vue'
+// import TutorHome from './views/TutorHome.vue'
+// import LoginPage from './views/LoginPage.vue'
+// import AddModulePopup from './views/AddModulePopup.vue'
+import TuteeHome from './views/TuteeHome.vue'
 
 export default {
-
   name: 'App',
   components: {
-
-    TutorsList,
-    TutorHome,
-    LoginPage,
-
+    TuteeHome,
+    // TutorsList,
+    // TutorHome,
+    // LoginPage,
+    // AddModulePopup
   }
 }
 </script>
@@ -27,7 +29,7 @@ export default {
 <style>
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "M PLUS Rounded 1c";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
