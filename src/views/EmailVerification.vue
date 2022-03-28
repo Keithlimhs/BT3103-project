@@ -3,6 +3,11 @@
 <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
    
   <div class= "topArt">
+    <button type="button"  id = "backButton" 
+  @click="hasHistory() 
+    ? $router.go(-1) 
+    : $router.push('/')">&laquo; 
+</button>
     <img src="src\images\TopLogo.png" alt="logo">
     <h3>PASSWORD RESET</h3>
   </div>
@@ -47,6 +52,8 @@ export default {
     },
 
     methods: {
+    hasHistory () { return window.history.length > 2 },
+
     async verifyEmail(){
       const auth = getAuth(firebaseApp)
       const email = document.getElementById("email").value
@@ -148,6 +155,12 @@ h3 {
 .button:hover {
     background-color: rgb(214, 154, 211);
     box-shadow: 3px 2px purple
+}
+
+#backButton {
+  position:absolute; 
+  top: 65px; 
+  left: 10px
 }
 
 html {
