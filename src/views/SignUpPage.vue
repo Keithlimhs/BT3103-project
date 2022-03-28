@@ -28,7 +28,7 @@
     <h4> <strong> Already have an account? &nbsp; &nbsp;</strong> </h4>
 
     <div id = "wrapper2">
-        <router-link to ="/LoginPage"> Log in! </router-link>
+        <router-link to ="/LoginPage"><a> Log in! </a></router-link>
     </div>
   </div>
 
@@ -66,7 +66,7 @@ export default {
           createUserWithEmailAndPassword(auth, email, password, password2).then(function()
           {
             console.log("Sign up successful");
-            window.alert("Sign up succesful, you will be directed to the home page");
+            alert("Sign up succesful, you will be directed to the home page");
             this.$router.push('@/views/TutorHome.vue');
           })
           .catch(function(error)
@@ -160,6 +160,14 @@ h4{
   color: red;
   font-size: 18px;
   font-family: 'M PLUS Rounded 1c';
+}
+
+a {
+  color: red;
+  text-decoration: none;
+  font-family: 'M PLUS Rounded 1c';
+  font-weight: bold;
+  font-size: 16px;
 }
 </style>
 

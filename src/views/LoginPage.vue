@@ -62,7 +62,7 @@ export default {
         signInWithEmailAndPassword(auth, email, password).then(function()
         {
           console.log("Log in successful");
-          window.alert("Login succesful, you will be directed to the home page");
+          alert("Login succesful, you will be directed to the home page");
           this.$router.push('/TutorHome.vue');
         })
         .catch(function(error)
