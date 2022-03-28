@@ -59,24 +59,22 @@ export default {
         const email = document.getElementById("email").value
         const password = document.getElementById("password").value
 
-        if (email != ""){
-          signInWithEmailAndPassword(auth, email, password).then(function()
-          {
-            console.log("login")
-            window.alert("Login succesful, you will be directed to the home page")
-            this.$router.push('@/views/TutorHome.vue')
-          })
-          .catch(function(error)
-          {
-            var errorCode = error.code;
-            var errorMessage = error.message;
+        signInWithEmailAndPassword(auth, email, password).then(function()
+        {
+          console.log("Log in successful");
+          window.alert("Login succesful, you will be directed to the home page");
+          this.$router.push('@/views/TutorHome.vue');
+        })
+        .catch(function(error)
+        {
+          var errorCode = error.code;
+          var errorMessage = error.message;
 
-            console.log(errorCode);
-            console.log(errorMessage);
+          console.log(errorCode);
+          console.log(errorMessage);
 
-            window.alert("Message : " + errorMessage);
-          })
-        }
+          window.alert("Message : " + errorMessage);
+        })
       }
     }
 

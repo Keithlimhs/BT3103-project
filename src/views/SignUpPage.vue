@@ -20,7 +20,7 @@
           <label for = "password2"> <strong> Confirm Password: </strong> </label>
           <input type = "text" id = "password2" required = "" placeholder = "Enter password again here" size = "30"><br><br>
         </div>
-        <button class = "createAccountButton" onclick = "CreateAccount()"> CREATE ACCOUNT </button>
+        <button class = "createAccountButton" v-on:click ="CreateAccount()"> CREATE ACCOUNT </button>
       </form>
   </div>
   
@@ -37,7 +37,11 @@
 </template>
 
 <script>
-
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import 'firebase/compat/auth';
+import 'firebaseui/dist/firebaseui.css'
+import 'firebase/firestore';
+import firebaseApp from '../firebase.js';
 export default {
     name: 'SignUpPage',
 
@@ -52,7 +56,31 @@ export default {
     },
 
     methods: {
-      
+      async CreateAccount() {
+        const auth = getAuth(firebaseApp)
+        const email = document.getElementById("email").value
+        const password = document.getElementById("password").value
+        const password2 = document.getElementById("password2").value
+
+        if (password == password2){
+          createUserWithEmailAndPassword(auth, email, password, password2).then(function()
+          {
+            console.log("Sign up successful");
+            window.alert("Sign up succesful, you will be directed to the home page");
+            this.$router.push('@/views/TutorHome.vue');
+          })
+          .catch(function(error)
+          {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+
+            console.log(errorCode);
+            console.log(errorMessage);
+
+            window.alert("Message : " + errorMessage);
+          })
+        }
+      }
     }
 
 
