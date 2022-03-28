@@ -4,7 +4,7 @@
 
         <div class="top">
             <div id="logo">
-            <img src="../assets/Logo.jpeg" alt="logo">
+            <img src="./assets/Logo.jpeg" alt="logo">
             </div>
             <h1>SET UP PROFILE</h1>
         </div>
@@ -32,18 +32,59 @@
                     <label for="about">About Myself:</label>
                     <input type= "text" style="height: 60px" id= "about" required = "" placeholder= "Enter description" size = "30"> <br><br>
                 </div>
+                <button class="saveBtn" v-on:click="handleSubmit()" >SAVE</button>
             </form>
         </div>
-        
+        <!--
         <div class = wrapper>
             <button class = "saveBtn">SAVE</button>
-        </div>        
+        </div>  -->      
     </div>
 </template>
 
 <script>
+import firebaseApp from '../firebase.js';
+import { getFirestore } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
+
+const db = getFirestore(firebaseApp)
+
 export default {
     name: "TuteeSetUpPage",
+
+    data() {
+        return {
+            name: '',
+            course: '',
+            year: '',
+            about: '',
+        }
+    },
+    methods: {
+        async handleSubmit() {
+            this.name = document.getElementById("name").value;
+            this.course = document.getElementById("course").value;
+            this.year = document.getElementById("year").value;
+            this.about = document.getElementById("about").value;
+            alert("Saving data for Tutee: " + this.name);
+            console.log("bye")
+            try{
+                console.log("hello")
+                const docRef = await setDoc(doc(db, "Name", this.name), {
+                    Name: this.name,
+                    Course: this.course,
+                    Year: this.year,
+                    About: this.about,
+                })
+                console.log(docRef)
+                document.getElementById("setupForm").reset();
+                this.$emit("added")
+            }
+            catch(error) {
+                console.error("Error adding document: ", error)
+            }
+        }
+    }
 }
 </script>
 
