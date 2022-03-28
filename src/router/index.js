@@ -1,16 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import LoginPage from '@/views/LoginPage.vue'
-import MainPage from '@/views/MainPage.vue'
+import EmailVerification from '@/views/EmailVerification.vue'
 const routes = [
     {
-        path: '/LoginPage',
-        name: 'LoginPage',
-        component: LoginPage
-    },
-    {
-        path: '/MainPage',
-        name: 'MainPage',
-        component: MainPage
+        path: "/",
+        name: "EmailVerification",
+        component: EmailVerification,
     }
 ]
 const router = createRouter({
