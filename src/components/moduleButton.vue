@@ -2,8 +2,9 @@
   <!-- component for rectangle box -->
   <button id="moduleButton" @click = "selectModule">
     <div id="buttonText">
-      <h2> BT3103 </h2>
-      <h4> Computing </h4>
+      <h2> {{code}} </h2>
+      <h3> {{title}} </h3>
+      <h4> {{faculty}} </h4>
     </div>
   </button>
 </template>
@@ -11,27 +12,37 @@
 <script>
 export default {
     name:'moduleButton',
+    props: {
+      code: String,
+      title: String,
+      faculty: String,
+    },
 }
 </script>
 
 <style>
 #moduleButton {
-border: solid grey;
-background: white;
-font-size: 16px;
-margin: 4px 2px;
-padding: 15px 32px;
-display: inline-block
+  border: solid grey;
+  background: white;
+  font-size: 16px;
+  margin-top: 40px;
+  margin-left: 30px;
+  margin-right: 30px;
+  padding: 15px 32px;
+  display: inline-block;
+  width: 400px;
+  height: 250px;
 }
+
 #moduleButton:hover{
   color: black;
   background-color: rgba(182, 177, 179, 0.76);
   box-shadow: 3px 3px grey;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 #buttonText{
   font-family: 'M PLUS Rounded 1c';
-  text-align: center;
+  text-align: left;
 }
 </style>
