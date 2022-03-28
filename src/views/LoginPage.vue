@@ -24,7 +24,7 @@
   <div class = "form2">
     <h4> <strong> Don't have an account? &nbsp; &nbsp;</strong> </h4>
     <div id=wrapper2>
-      <router-link to ="/SignUpPage"> Sign Up! </router-link>
+      <router-link to ="/SignUpPage"><a>Sign Up! </a></router-link>
     </div>
   </div>
 
@@ -63,7 +63,7 @@ export default {
         {
           console.log("Log in successful");
           window.alert("Login succesful, you will be directed to the home page");
-          this.$router.push('@/views/TutorHome.vue');
+          this.$router.push('/TutorHome.vue');
         })
         .catch(function(error)
         {
@@ -145,24 +145,23 @@ h4{
   font-weight: bold;
 }
 
-.signUpButton {
-  border: none;
-  background-color: inherit;
-  cursor: pointer;
-  display: inline-block;
-  color: red;
-  font-size: 18px;
-  font-family: 'M PLUS Rounded 1c';
-}
 
 #wrapper2{
   border: none;
   background-color: inherit;
   cursor: pointer;
   display: inline-block;
-  color: red;
   font-size: 18px;
   font-family: 'M PLUS Rounded 1c';
 }
+
+a {
+  color: red;
+  text-decoration: none;
+  font-family: 'M PLUS Rounded 1c';
+  font-weight: bold;
+  font-size: 16px;
+}
+
 </style>
 
