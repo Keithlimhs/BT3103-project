@@ -1,25 +1,13 @@
 <template>
-
-  <TutorsList/>
-  <TutorHome/>
-  <LoginPage/>
+  <router-view/>
 </template>
 
 <script>
-import TutorsList from './views/TutorsList.vue'
-import TutorHome from './views/TutorHome.vue'
-import LoginPage from './views/LoginPage.vue'
-
 
 export default {
 
   name: 'App',
   components: {
-
-    TutorsList,
-    TutorHome,
-    LoginPage,
-
   }
 }
 </script>
