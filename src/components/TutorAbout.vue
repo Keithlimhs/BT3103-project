@@ -1,6 +1,6 @@
 <template>
     <div class="firstcontainer">
-        <div id="subheading">About myself</div>
+        <div id="subheading1">About myself</div>
         <div id="about">
             {{description}}
         </div>
@@ -25,7 +25,7 @@ export default {
     height: 100px;
 }
 
-#subheading {
+#subheading1 {
 font-family: 'Rounded Mplus 1c Bold';
 font-weight: 700;
 font-size: 15px;

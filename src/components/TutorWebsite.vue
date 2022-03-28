@@ -3,8 +3,7 @@
         <div id="subheading3">
             Website
             <a v-bind:href="web">{{web}}</a>
-        </div>
-        
+        </div>  
     </div>
 </template>
 

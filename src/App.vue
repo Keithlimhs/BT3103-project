@@ -1,20 +1,17 @@
 <template>
-  <TutorAbout/><br>
-  <TutorModules/><br>
-  <TutorWebsite/><br>
+  <TuteeSetUpPage/>
+  <TutorSetUpPage/>
 </template>
 
 <script>
-import TutorAbout from './components/TutorAbout.vue';
-import TutorModules from './components/TutorModules.vue';
-import TutorWebsite from './components/TutorWebsite.vue';
+import TuteeSetUpPage from './views/TuteeSetUpPage.vue';
+import TutorSetUpPage from './views/TutorSetUpPage.vue';
 
 export default {
   name: 'App',
   components: {
-    TutorAbout,
-    TutorModules,
-    TutorWebsite,
+    TuteeSetUpPage,
+    TutorSetUpPage,
   }
 }
 </script>
