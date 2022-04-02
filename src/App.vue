@@ -1,4 +1,8 @@
 <template>
+
+  <router-view/>
+
+
   <!-- <LoginPage/> -->
   <!-- <TutorsList/> -->
   <!-- <TutorHome/> -->
@@ -14,14 +18,17 @@ import "@fontsource/m-plus-rounded-1c";
 // import AddModulePopup from './views/AddModulePopup.vue'
 import TuteeHome from './views/TuteeHome.vue'
 
+
 export default {
   name: 'App',
   components: {
+
     TuteeHome,
     // TutorsList,
     // TutorHome,
     // LoginPage,
     // AddModulePopup
+
   }
 }
 </script>
