@@ -17,7 +17,7 @@
           <label for = "password"> <strong> Password: </strong> </label>
           <input type = "text" id = "password" required = "" placeholder = "Enter password here" size = "30"><br><br>
         </div>
-        <button class = "loginButton" v-on:click ="Login()"> LOG IN </button>
+        <button class = "loginButton" type = "button" v-on:click ="Login()"> LOG IN </button>
       </form>
   </div>
   
@@ -36,9 +36,6 @@
 
 <script>
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import 'firebase/compat/auth';
-import 'firebaseui/dist/firebaseui.css'
-import 'firebase/firestore';
 import firebaseApp from '../firebase.js';
 
 export default {
@@ -59,14 +56,13 @@ export default {
         const email = document.getElementById("email").value
         const password = document.getElementById("password").value
 
-        signInWithEmailAndPassword(auth, email, password).then(function()
-        {
+        signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
           console.log("Log in successful");
           alert("Login succesful, you will be directed to the home page");
-          this.$router.push('/TutorHome.vue');
+          this.$router.push('/TutorHome');
         })
-        .catch(function(error)
-        {
+        .catch(error => {
           var errorCode = error.code;
           var errorMessage = error.message;
 
