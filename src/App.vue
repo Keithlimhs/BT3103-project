@@ -1,14 +1,12 @@
 <template>
 
-  <router-view/>
 
-
-  <!-- <LoginPage/> -->
-  <TutorsList/>
-  <!-- <TutorHome/> -->
-  <!-- <AddModulePopup/> -->
-  <!-- <TuteeHome/> -->
 </template>
+
+
+
+
+
 
 <script>
 import "@fontsource/m-plus-rounded-1c";
@@ -19,9 +17,11 @@ import TutorsList from './views/TutorsList.vue'
 // import TuteeHome from './views/TuteeHome.vue'
 
 
+
 export default {
   name: 'App',
   components: {
+
 
     // TuteeHome,
     TutorsList,
@@ -34,6 +34,7 @@ export default {
     // LoginPage,
     // AddModulePopup
 
+
   }
 }
 </script>
@@ -45,8 +46,11 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  margin-top: 60px;
   background-color: #E5E5E5;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  width: 100%;
 }
 
 </style>
