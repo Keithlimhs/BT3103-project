@@ -1,7 +1,11 @@
 <template>
   <div class="tutor-profile">
       <div class="left-container">
+
         <img class="tutor-img" src="@/assets/profilepicture.jpeg" alt=""> <!-- retreive photo from firestore database by auth().user.PhotoURL -->
+
+
+
       </div>
       <div class="middle-container">
           <div class="tutor-info">
@@ -9,7 +13,9 @@
                   {{user}}
               </div>
               <div id="year-course">
+
                   {{year}}, {{course}}
+
               </div>
           </div>
       </div>
@@ -36,16 +42,27 @@
 <script>
 import Chat from "vue-material-design-icons/ChatProcessing.vue"
 import StarRating from 'vue-star-rating';
+
 export default {
     data(){
         return{
             user: "Shashank Shekhar Tripathi",
             year: "Year 4",
             course: "Business Analytics",
+
             count: 5,
             rating: 3,
         }
     },
+
+    props: {
+        user: String,
+        year: Number,
+        course: String,
+        // count: Number,
+        // rating: Number,
+    },
+
     components: {
         Chat,
         StarRating,
@@ -63,61 +80,76 @@ export default {
 	border: 2px solid black;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
+
+
 .left-container {
 	width: 25%;
 }
+
+
 .tutor-img {
 	border-radius:50%;
     height: 100px;
     width: 100px;
     float: left;
 }
+
 .middle-container {
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 #name {
     font-weight: bold;
 	font-size: 40px;
 }
+
 #year-course {
     font-weight: normal;
 	font-size: 20px;
 }
+
 .right-container {
     width: 25%;
 	display: flex;
 	flex-direction: column;
     font-size: 18px;
 }
+
 .top-right {
     display:flex;
     justify-content:right;
     height: 50%;
 }
+
 .chat {
     margin-right: 5px;
     display: inline-block;
     border-radius: 10px;
     height: 30px;
 }
+
 .view-profile {
     margin-left: 5px;
     border-radius: 10px;
     display: inline-block;
     height: 30px;
 }
+
 .bottom-right {
     height: 50%;
     display: flex;
     flex-direction: row;
     justify-content:right;
 }
+
 .reviews {
     margin-top: 25px;
 }
+
 .material-design-icon.icon {
     /* color: white; */
     vertical-align: middle;
