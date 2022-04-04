@@ -1,3 +1,4 @@
+/* eslint-disable vue/no-dupe-keys */
 <template>
   <div class="tutor-profile">
       <div class="left-container">
@@ -56,8 +57,11 @@ export default {
     },
 
     props: {
+        // eslint-disable-next-line vue/no-dupe-keys
         user: String,
+        // eslint-disable-next-line vue/no-dupe-keys
         year: Number,
+        // eslint-disable-next-line vue/no-dupe-keys
         course: String,
         // count: Number,
         // rating: Number,

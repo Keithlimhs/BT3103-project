@@ -35,7 +35,6 @@
 
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import 'firebase/compat/auth';
-import 'firebaseui/dist/firebaseui.css'
 import 'firebase/firestore';
 import firebaseApp from '../firebase.js';
 
