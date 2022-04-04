@@ -6,7 +6,7 @@ import PasswordReset from "@/components/PasswordRequest.vue"
 
 import TuteeSetUpPage from '@/views/TuteeSetUpPage.vue'
 import TutorSetUpPage from '@/views/TutorSetUpPage.vue'
-import LoginPage from '@/views/LoginPage.vue'
+//import LoginPage from '@/views/LoginPage.vue'
 import MainPage from '@/views/MainPage.vue'
 import SignUpPage from '@/views/SignUpPage.vue'
 import TutorHome from '@/views/TutorHome.vue'
@@ -19,10 +19,11 @@ const routes = [
     },
 
     {
-
         path: "/PasswordReset",
         name: "PasswordReset",
         component: PasswordReset,
+    },
+    {
 
         path: '/MainPage',
         name: 'MainPage',

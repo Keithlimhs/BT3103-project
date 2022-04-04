@@ -1,7 +1,7 @@
 
 
 <template>
-
+<router-view/>
 
 </template>
 
@@ -12,7 +12,7 @@
 
 <script>
 import "@fontsource/m-plus-rounded-1c";
-import TutorsList from './views/TutorsList.vue'
+//import TutorsList from './views/TutorsList.vue'
 // import TutorHome from './views/TutorHome.vue'
 // import LoginPage from './views/LoginPage.vue'
 // import AddModulePopup from './views/AddModulePopup.vue'
@@ -26,10 +26,10 @@ export default {
 
 
     // TuteeHome,
-    TutorsList,
+    //TutorsList,
 
 
-    TuteeHome,
+    //TuteeHome,
     // TutorsList,
 
     // TutorHome,
