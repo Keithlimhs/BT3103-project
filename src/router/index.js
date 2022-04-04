@@ -1,15 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
+import EmailVerification from '@/views/EmailVerification.vue'
+import PasswordReset from "@/components/PasswordRequest.vue"
+
+
 import LoginPage from '@/views/LoginPage.vue'
 import MainPage from '@/views/MainPage.vue'
 import SignUpPage from '@/views/SignUpPage.vue'
 import TutorHome from '@/views/TutorHome.vue'
+
 const routes = [
     {
-        path: '/LoginPage',
-        name: 'LoginPage',
-        component: LoginPage
+        path: "/",
+        name: "EmailVerification",
+        component: EmailVerification,
     },
+
     {
+
+        path: "/PasswordReset",
+        name: "PasswordReset",
+        component: PasswordReset,
+
         path: '/MainPage',
         name: 'MainPage',
         component: MainPage
@@ -23,7 +35,9 @@ const routes = [
         path: '/TutorHome',
         name: 'TutorHome',
         component: TutorHome
+
     }
+
 ]
 const router = createRouter({
     history: createWebHistory(),
