@@ -1,20 +1,29 @@
 <template>
   <div class="tutor-home">
+    <div class="header">
+      <TopHeader/>
+    </div>
     <div class="top-container">
       Hello {{user}}, here are your offers for today
     </div>
     <div class="bottom-container">
       <div class="ongoing">
-        <div class="header">
+        <div class="status-header">
           Ongoing
         </div>
-        <TuteeProfileDisplay/>
+        <div class="profiles" v-for="tutee in tutees" :key='tutee'>
+          <!-- <TuteeProfileDisplay/> -->
+          <TuteeProfileDisplay :user="tutee.Name"/>
+        </div>
       </div>
       <div class="accepted">
-        <div class="header">
+        <div class="status-header">
           Accepted
         </div>
-        <TuteeProfileDisplay/>
+        <div class="profiles" v-for="tutee in tutees" :key='tutee'>
+          <!-- <TuteeProfileDisplay/> -->
+          <TuteeProfileDisplay :user="tutee.Name"/>
+        </div>
       </div>
     </div>
   </div>
@@ -22,30 +31,48 @@
 </template>
 
 <script>
+import TopHeader from '../components/TopHeader.vue'
 import TuteeProfileDisplay from '../components/TuteeProfileDisplay.vue'
+import firebaseApp from "@/firebase.js"
+import { getFirestore } from "firebase/firestore"
+import { collection, getDocs, } from "firebase/firestore"
+// import { getAuth, onAuthStateChanged } from "firebase/auth"
+
+const db = getFirestore(firebaseApp)
 
 export default {
   name: 'TutorHome',
   components: {
-      TuteeProfileDisplay,
+    TopHeader,
+    TuteeProfileDisplay,
   },
   data(){
     return{
       user: "Shashank Shekhar Tripathi",
+      tutees: [],
     }
   },
+  mounted() {
+    async function getdata() {
+            let t = await getDocs(collection(db, "Tutee"))
+            let tuteesArray = []
+            t.forEach((docs) => {
+                let tuteeinfo = docs.data();
+                tuteesArray.push(tuteeinfo)
+            })
+            return tuteesArray
+    }
+    getdata().then(data => this.tutees = data);
+  }
 }
 </script>
 
 <style scoped>
-.tutor-home {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
 .top-container {
   text-align: left;
-  font-size: 2vw;
+  font-size: 30px;
   font-weight: bolder;
-  padding: 0px 0px 10px 10px;
+  padding: 10px 0px 10px 10px;
 }
 
 .bottom-container {
@@ -60,10 +87,10 @@ export default {
   height: 100vh;
 }
 
-.header {
+.status-header {
   font-weight: 600;
-  font-size: 2vw;
+  font-size: 30px;
   border-bottom: 2px solid black;
-  padding: 15px;
+  padding: 30px;
 }
 </style>

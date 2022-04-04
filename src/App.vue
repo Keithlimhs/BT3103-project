@@ -1,24 +1,24 @@
 <template>
   <!-- <LoginPage/> -->
-  <!-- <TutorsList/> -->
+  <TutorsList/>
   <!-- <TutorHome/> -->
   <!-- <AddModulePopup/> -->
-  <TuteeHome/>
+  <!-- <TuteeHome/> -->
 </template>
 
 <script>
 import "@fontsource/m-plus-rounded-1c";
-// import TutorsList from './views/TutorsList.vue'
+import TutorsList from './views/TutorsList.vue'
 // import TutorHome from './views/TutorHome.vue'
 // import LoginPage from './views/LoginPage.vue'
 // import AddModulePopup from './views/AddModulePopup.vue'
-import TuteeHome from './views/TuteeHome.vue'
+// import TuteeHome from './views/TuteeHome.vue'
 
 export default {
   name: 'App',
   components: {
-    TuteeHome,
-    // TutorsList,
+    // TuteeHome,
+    TutorsList,
     // TutorHome,
     // LoginPage,
     // AddModulePopup
