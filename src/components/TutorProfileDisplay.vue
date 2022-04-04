@@ -1,7 +1,11 @@
 <template>
   <div class="tutor-profile">
       <div class="left-container">
-        <img class="tutor-img" src="@/assets/Shashank300.jpg" alt=""> <!-- retreive photo from firestore database by auth().user.PhotoURL -->
+
+        <img class="tutor-img" src="@/assets/profilepicture.jpeg" alt=""> <!-- retreive photo from firestore database by auth().user.PhotoURL -->
+
+
+
       </div>
       <div class="middle-container">
           <div class="tutor-info">
@@ -9,7 +13,9 @@
                   {{user}}
               </div>
               <div id="year-course">
-                  Year {{year}}, {{course}}
+
+                  {{year}}, {{course}}
+
               </div>
           </div>
       </div>
@@ -40,10 +46,15 @@ import StarRating from 'vue-star-rating';
 export default {
     data(){
         return{
+            user: "Shashank Shekhar Tripathi",
+            year: "Year 4",
+            course: "Business Analytics",
+
             count: 5,
             rating: 3,
         }
     },
+
     props: {
         user: String,
         year: Number,
@@ -51,6 +62,7 @@ export default {
         // count: Number,
         // rating: Number,
     },
+
     components: {
         Chat,
         StarRating,
@@ -69,9 +81,12 @@ export default {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+
+
 .left-container {
 	width: 25%;
 }
+
 
 .tutor-img {
 	border-radius:50%;

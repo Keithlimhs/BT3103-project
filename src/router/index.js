@@ -1,9 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+
 import EmailVerification from '@/views/EmailVerification.vue'
 import PasswordReset from "@/components/PasswordRequest.vue"
 
-
+import TuteeSetUpPage from '@/views/TuteeSetUpPage.vue'
+import TutorSetUpPage from '@/views/TutorSetUpPage.vue'
 import LoginPage from '@/views/LoginPage.vue'
 import MainPage from '@/views/MainPage.vue'
 import SignUpPage from '@/views/SignUpPage.vue'
@@ -32,11 +34,22 @@ const routes = [
         component: SignUpPage
     },
     {
+        path: '/TuteeSetUpPage',
+        name: 'TuteeSetUpPage',
+        component: TuteeSetUpPage
+    },
+    {
+        path: '/TutorSetUpPage',
+        name: 'TutorSetUpPage',
+        component: TutorSetUpPage
+    },
+    {
         path: '/TutorHome',
         name: 'TutorHome',
         component: TutorHome
 
     }
+
 
 ]
 const router = createRouter({
