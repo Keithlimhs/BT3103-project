@@ -10,7 +10,7 @@
         </div>
 
         <div class="profilePicture">
-            <img src="./assets/Noprofilepicture.jpeg">
+            <img src="../assets/Noprofilepicture.jpeg">
         </div>
 
         <div class = wrapper>
@@ -21,18 +21,18 @@
             <form id="setupForm">
                 <div class = "formli">
                     <span class="asterisk_input">  </span>
-                    <label for="name">Name:</label>
-                    <input type= "text" id= "name" required = "" placeholder= "Enter your name here" size = "30"> <br><br>
+                    <label for="tutorname">Name:</label>
+                    <input type= "text" id= "tutorname" required = "" placeholder= "Enter your name here" size = "30"> <br><br>
                     <span class="asterisk_input">  </span>
-                    <label for="course">Course:</label>
-                    <input type= "text" id= "course" required = "" placeholder= "Enter your course here" size = "30"> <br><br>
+                    <label for="tutorcourse">Course:</label>
+                    <input type= "text" id= "tutorcourse" required = "" placeholder= "Enter your course here" size = "30"> <br><br>
                     <span class="asterisk_input">  </span>
-                    <label for="year">Year of Study:</label>
-                    <input type= "text" id= "year" required = "" placeholder= "Enter your year of study here" size = "30"> <br><br>
-                    <label for="website">Website:</label>
-                    <input type= "text" id= "website" required = "" placeholder= "Enter your website here" size = "30"> <br><br>
-                    <label for="about">About Myself:</label>
-                    <input type= "text" style="height: 60px" id= "about" required = "" placeholder= "You may inlude a brief description of yourself and your expected rate here" size = "30"> <br><br>
+                    <label for="tutoryear">Year of Study:</label>
+                    <input type= "text" id= "tutoryear" required = "" placeholder= "Enter your year of study here" size = "30"> <br><br>
+                    <label for="tutorwebsite">Website:</label>
+                    <input type= "text" id= "tutorwebsite" required = "" placeholder= "Enter your website here" size = "30"> <br><br>
+                    <label for="tutorabout">About Myself:</label>
+                    <input type= "text" style="height: 60px" id= "tutorabout" required = "" placeholder= "You may inlude a brief description of yourself and your expected rate here" size = "40"> <br><br>
                 </div>
                 <div class="modules">
                     <label for="modules">Modules Available:</label> 
@@ -41,18 +41,56 @@
                 </div>
             </form>
         </div>
-
-        
-        
         <div class = wrapper>
-            <button class = "saveBtn">SAVE</button>
+            <button class="saveBtn" v-on:click="handleSubmit()" >SAVE</button>
         </div>        
     </div>
 </template>
 
 <script>
+import firebaseApp from '../firebase.js';
+import { getFirestore } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
+
+const db = getFirestore(firebaseApp)
+
 export default {
     name: "TutorSetUpPage",
+
+    data() {
+        return {
+            name: "",
+            course: "",
+            year: "",
+            website:"",
+            about: "",
+        }
+    },
+    methods: {
+        async handleSubmit() {
+            this.name = document.getElementById("tutorname").value;
+            this.course = document.getElementById("tutorcourse").value;
+            this.year = document.getElementById("tutoryear").value;
+            this.website = document.getElementById("tutorwebsite").value;
+            this.about = document.getElementById("tutorabout").value;
+            alert("Saving data for Tutor: " + this.name);
+            try{
+                const docRef = await setDoc(doc(db, "TutorDetails", this.name), {
+                    Name: this.name,
+                    Course: this.course,
+                    Year: this.year,
+                    Website: this.website,
+                    About: this.about,
+                })
+                console.log(docRef)
+                document.getElementById("setupForm").reset();
+                this.$emit("added")
+            }
+            catch(error) {
+                console.error("Error adding document: ", error)
+            }
+        }
+    }
 }
 </script>
 

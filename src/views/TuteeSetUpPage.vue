@@ -4,13 +4,13 @@
 
         <div class="top">
             <div id="logo">
-            <img src="./assets/Logo.jpeg" alt="logo">
+            <img src="../assets/Logo.jpeg" alt="logo">
             </div>
             <h1>SET UP PROFILE</h1>
         </div>
 
         <div class="profilePicture">
-            <img src="./assets/Noprofilepicture.jpeg">
+            <img src="../assets/Noprofilepicture.jpeg">
         </div>
 
         <div class = wrapper>
@@ -21,24 +21,22 @@
             <form id="setupForm">
                 <div class = "formli">
                     <span class="asterisk_input">  </span>
-                    <label for="name">Name:</label>
-                    <input type= "text" id= "name" required = "" placeholder= "Enter your name here" size = "30"> <br><br>
+                    <label for="tuteename">Name:</label>
+                    <input type= "text" id= "tuteename" required = "" placeholder= "Enter your name here" size = "30"> <br><br>
                     <span class="asterisk_input">  </span>
-                    <label for="course">Course:</label>
-                    <input type= "text" id= "course" required = "" placeholder= "Enter your course here" size = "30"> <br><br>
+                    <label for="tuteecourse">Course:</label>
+                    <input type= "text" id= "tuteecourse" required = "" placeholder= "Enter your course here" size = "30"> <br><br>
                     <span class="asterisk_input">  </span>
-                    <label for="year">Year of Study:</label>
-                    <input type= "text" id= "year" required = "" placeholder= "Enter your year of study here" size = "30"> <br><br>
-                    <label for="about">About Myself:</label>
-                    <input type= "text" style="height: 60px" id= "about" required = "" placeholder= "Enter description" size = "30"> <br><br>
+                    <label for="tuteeyear">Year of Study:</label>
+                    <input type= "text" id= "tuteeyear" required = "" placeholder= "Enter your year of study here" size = "30"> <br><br>
+                    <label for="tuteeabout">About Myself:</label>
+                    <input type= "text" style="height: 60px" id= "tuteeabout" required = "" placeholder= "Enter description" size = "30"> <br><br> 
                 </div>
-                <button class="saveBtn" v-on:click="handleSubmit()" >SAVE</button>
             </form>
         </div>
-        <!--
         <div class = wrapper>
-            <button class = "saveBtn">SAVE</button>
-        </div>  -->      
+            <button class="saveBtn" v-on:click="handleSubmit()" >SAVE</button>
+        </div>    
     </div>
 </template>
 
@@ -50,31 +48,29 @@ import { doc, setDoc } from "firebase/firestore";
 const db = getFirestore(firebaseApp)
 
 export default {
-    name: "TuteeSetUpPage",
+    name: "TutorSetUpPage",
 
     data() {
         return {
-            name: '',
-            course: '',
-            year: '',
-            about: '',
+            name: "",
+            course: "",
+            year: "",
+            about: "",
         }
     },
     methods: {
         async handleSubmit() {
-            this.name = document.getElementById("name").value;
-            this.course = document.getElementById("course").value;
-            this.year = document.getElementById("year").value;
-            this.about = document.getElementById("about").value;
+            this.name = document.getElementById("tuteename").value;
+            this.course = document.getElementById("tuteecourse").value;
+            this.year = document.getElementById("tuteeyear").value;
+            this.about = document.getElementById("tuteeabout").value;
             alert("Saving data for Tutee: " + this.name);
-            console.log("bye")
             try{
-                console.log("hello")
-                const docRef = await setDoc(doc(db, "Name", this.name), {
+                const docRef = await setDoc(doc(db, "TuteeDetails", this.name), {
                     Name: this.name,
                     Course: this.course,
                     Year: this.year,
-                    About: this.about,
+                    AboutMe: this.about,
                 })
                 console.log(docRef)
                 document.getElementById("setupForm").reset();
