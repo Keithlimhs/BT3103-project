@@ -1,20 +1,16 @@
 
 <template>
-  <EmailVerification/>
-  <PasswordReset/>
-
+  <TuteeProfileInfo/>
 <!-- <router-view/> -->
 </template>
 
 <script>
-import EmailVerification from "@/views/EmailVerification"
-import PasswordReset from "@/views/PasswordReset"
+import TuteeProfileInfo from "@/components/TuteeProfileInfo"
 
 console.log("in App")
 export default {
   components: {
-    EmailVerification,
-    PasswordReset
+    TuteeProfileInfo
   }
   
 }

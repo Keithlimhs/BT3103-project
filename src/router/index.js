@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import EmailVerification from '@/views/EmailVerification.vue'
-import PasswordReset from "@/views/PasswordReset"
+import PasswordReset from "@/components/PasswordRequest.vue"
+
 const routes = [
     {
         path: "/",
@@ -9,10 +10,11 @@ const routes = [
     },
 
     {
-        path: "/",
+        path: "/PasswordReset",
         name: "PasswordReset",
         component: PasswordReset,
     }
+
 ]
 const router = createRouter({
     history: createWebHistory(),
