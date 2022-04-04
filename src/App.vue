@@ -1,15 +1,39 @@
 <template>
-<EmailVerificationPage/>
+
+
 </template>
 
+
+
+
+
+
 <script>
-import EmailVerificationPage from './components/EmailVerificationPage.vue'
+import "@fontsource/m-plus-rounded-1c";
+import TutorsList from './views/TutorsList.vue'
+// import TutorHome from './views/TutorHome.vue'
+// import LoginPage from './views/LoginPage.vue'
+// import AddModulePopup from './views/AddModulePopup.vue'
+// import TuteeHome from './views/TuteeHome.vue'
+
+
 
 export default {
-
   name: 'App',
   components: {
-    EmailVerificationPage
+
+
+    // TuteeHome,
+    TutorsList,
+
+
+    TuteeHome,
+    // TutorsList,
+
+    // TutorHome,
+    // LoginPage,
+    // AddModulePopup
+
 
   }
 }
@@ -18,7 +42,7 @@ export default {
 <style>
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "M PLUS Rounded 1c";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

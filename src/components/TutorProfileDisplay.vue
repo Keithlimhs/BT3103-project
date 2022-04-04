@@ -9,7 +9,7 @@
                   {{user}}
               </div>
               <div id="year-course">
-                  {{year}}, {{course}}
+                  Year {{year}}, {{course}}
               </div>
           </div>
       </div>
@@ -40,12 +40,16 @@ import StarRating from 'vue-star-rating';
 export default {
     data(){
         return{
-            user: "Shashank Shekhar Tripathi",
-            year: "Year 4",
-            course: "Business Analytics",
             count: 5,
             rating: 3,
         }
+    },
+    props: {
+        user: String,
+        year: Number,
+        course: String,
+        // count: Number,
+        // rating: Number,
     },
     components: {
         Chat,
