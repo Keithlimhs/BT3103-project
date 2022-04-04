@@ -4,38 +4,87 @@
           <h1><U>Add Module</U></h1>
 
           <div class = "form">
-              <input class = "input1" type = "text" id = "modulecode" required placeholder = "Module Code">
-              <span class="asterisk_input">  </span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                   
-              <input class = "input1" type = "text" id = "gradeattained" required placeholder = "Grade Attained">
-              <span class="asterisk_input">  </span> <br><br><br>
-              <input class = "input1" type = "text" id = "enteray" required placeholder = "Enter AY here">
-              <span class="asterisk_input">  </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
-              <input class = "input1" type = "text" id = "profname" placeholder = "Prof Name"> <br><br><br>
-              <input class = "input1" type = "text" id = "semtaken" required placeholder = "Sem Taken">
-              <span class="asterisk_input">  </span> <br><br><br>   
+            <input class = "input1" type = "text" id = "modulecode" required placeholder = "Module Code">
+            <span class="asterisk_input">  </span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                   
+            <input class = "input1" type = "text" id = "gradeattained" required placeholder = "Grade Attained">
+            <span class="asterisk_input">  </span> <br><br><br>
+            <input class = "input1" type = "text" id = "enteray" required placeholder = "AY (e.g. 21/22)">
+            <span class="asterisk_input">  </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+            <input class = "input1" type = "text" id = "profname" placeholder = "Prof Name"> <br><br><br>
+            <input class = "input1" type = "text" id = "semtaken" required placeholder = "Sem Taken">
+            <span class="asterisk_input">  </span> <br><br><br>   
             
-              <div class = "save">
-                  <button class = "button" id = "savebutton" type = "button">Add</button><br><br>
-              </div>
+            <div class = "options">
+                <div class = "add">
+                    <button class = "button" id = "addbutton" type = "button" v-on:click="addmodule()">Add</button><br><br>
+                </div>
+                <div class = "exit">
+                    <button class = "button" id = "exitbutton" type = "button" v-on:click="TogglePopup()">Exit</button><br><br> 
+                </div>
+            </div>  
           </div>
-
       </form>
-  </div>
-      
+  </div> 
 </template>
 
 <script>
 import "@fontsource/m-plus-rounded-1c";
-export default {
+import firebaseApp from "@/firebase.js"
+import { getFirestore } from "firebase/firestore"
+import { doc, setDoc } from "firebase/firestore"
+// import { getAuth, onAuthStateChanged } from "firebase/auth"
 
+const db = getFirestore(firebaseApp)
+
+export default {
+    data(){
+        return{
+            code:"", grade:"", ay:"", prof:"", sem:""
+        }
+    },
+    props: ['TogglePopup'],
+    methods: {
+        async addmodule() {
+            this.code = document.getElementById("modulecode").value;
+            this.grade = document.getElementById("gradeattained").value;
+            this.ay = document.getElementById("enteray").value;
+            this.prof = document.getElementById("profname").value;
+            this.sem = document.getElementById("semtaken").value;
+            alert("Saving data for module: " + this.code);
+
+            try{
+                const docRef = await setDoc(doc(db, "Modules", this.code), {
+                    ModuleCode: this.code,
+                    GradeAttained: this.grade,
+                    AY: this.ay,
+                    ProfName: this.prof,
+                    SemTaken: this.sem
+                })
+                console.log(docRef)
+                document.getElementById("myform").reset();
+                this.$emit("added")
+            }
+            catch(error) {
+                console.error("Error adding document: ", error)
+            }
+        }
+    }
 }
 </script>
 
 
 
 <style>
+.container1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
 form {
-   background-color: #ACB3BF ;
+    width: 40%;
+    background-color: #ACB3BF ;
 }
 
 h1 {
@@ -62,14 +111,31 @@ font-size: x-large;
 
 } 
 
+.options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
 .button {
-    background-color: #d45b5b;
+    
     padding: 7px;
     border-radius: 10px;
     width: 100px;
     font-weight: 750;
     font-size:75%;
     font-family: "M PLUS Rounded 1c";
+}
+
+#addbutton {
+    background-color: greenyellow;
+    margin-right: 40px;
+}
+
+#exitbutton {
+    background-color: #d45b5b;
+    margin-left: 40px;
 }
 
 .button:hover {

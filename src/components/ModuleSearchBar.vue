@@ -4,13 +4,17 @@
         <Search/>
       </div>
       <div class="search-input">
-          <input type="text" placeholder="Search for tutor..." :value="searchInput" @input="$emit('update:searchInput', $event.target.value)"/>
+          <input type="text" placeholder="Search for module..." :value="searchInput" @input="$emit('update:searchInput', $event.target.value)"/>
       </div>
+      <button class="dropDownMenuButton">
+        <Menu/>
+      </button>
   </div>
 </template>
 
 <script>
 import Search from "vue-material-design-icons/Magnify.vue"
+import Menu from "vue-material-design-icons/Menu.vue"
 import "@fontsource/m-plus-rounded-1c";
 
 export default {
@@ -21,6 +25,7 @@ export default {
     },
     components:{
         Search,
+        Menu,
     },
     props: ['searchInput'],
     emits: ['update:searchInput'],
@@ -32,7 +37,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: center; 
-    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .search-bar input {
@@ -58,4 +63,16 @@ export default {
     border-right-style: hidden;
     box-shadow: 5px 2px 2px grey;
 }
+
+.dropDownMenuButton {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 2px solid black;
+    border-left-style: hidden;
+    box-shadow: 5px 2px 2px grey;
+}
+
+
+
 </style>
