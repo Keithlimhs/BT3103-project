@@ -4,21 +4,26 @@
         <Search/>
       </div>
       <div class="search-input">
-          <input type="search" placeholder="Search for tutor..."/>
+          <input type="text" placeholder="Search for tutor..." :value="searchInput" @input="$emit('update:searchInput', $event.target.value)"/>
       </div>
   </div>
 </template>
 
 <script>
 import Search from "vue-material-design-icons/Magnify.vue"
+import "@fontsource/m-plus-rounded-1c";
 
 export default {
     data(){
-        return
+        return {
+            
+        }
     },
     components:{
         Search,
-    }
+    },
+    props: ['searchInput'],
+    emits: ['update:searchInput'],
 }
 </script>
 
@@ -27,7 +32,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: center; 
-    
+    padding-top: 50px;
 }
 
 .search-bar input {
@@ -37,6 +42,8 @@ export default {
     width: 1500px;
     border: 2px solid black;
     border-left-style: hidden;
+    border-right-style: hidden;
+    font-family: "M PLUS Rounded 1c";
 }
 
 .search-bar input:focus {
@@ -51,8 +58,4 @@ export default {
     border-right-style: hidden;
     box-shadow: 5px 2px 2px grey;
 }
-
-
-
-
 </style>

@@ -31,12 +31,16 @@ import Chat from "vue-material-design-icons/ChatProcessing.vue"
 export default {
     data(){
         return{
-            user: "Tan Shi Min",
+            // user: "Tan Shi Min",
             mod: "BT3103",
         }
     },
     components: {
         Chat,
+    },
+    props: {
+        user: String,
+        // mod: String,
     }
 }
 </script>
