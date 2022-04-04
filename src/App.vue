@@ -1,4 +1,8 @@
 <template>
+
+  <router-view/>
+
+
   <!-- <LoginPage/> -->
   <TutorsList/>
   <!-- <TutorHome/> -->
@@ -14,14 +18,22 @@ import TutorsList from './views/TutorsList.vue'
 // import AddModulePopup from './views/AddModulePopup.vue'
 // import TuteeHome from './views/TuteeHome.vue'
 
+
 export default {
   name: 'App',
   components: {
+
     // TuteeHome,
     TutorsList,
+
+
+    TuteeHome,
+    // TutorsList,
+
     // TutorHome,
     // LoginPage,
     // AddModulePopup
+
   }
 }
 </script>
