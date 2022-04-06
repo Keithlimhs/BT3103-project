@@ -14,7 +14,7 @@
 import "@fontsource/m-plus-rounded-1c";
 //import TutorsList from './views/TutorsList.vue'
 // import TutorHome from './views/TutorHome.vue'
-// import LoginPage from './views/LoginPage.vue'
+// import TuteeLoginPage from './views/TuteeLoginPage.vue'
 // import AddModulePopup from './views/AddModulePopup.vue'
 // import TuteeHome from './views/TuteeHome.vue'
 
