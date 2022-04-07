@@ -1,7 +1,8 @@
-
-
 <template>
-<router-view/>
+<ChangePassword/>
+<!-- <TutorProfilePage/> -->
+ <TuteeProfileDisplayPage/>
+ <!-- <EmailVerification/> -->
 
 </template>
 
@@ -12,6 +13,10 @@
 
 <script>
 import "@fontsource/m-plus-rounded-1c";
+// import EmailVerification from './views/EmailVerification.vue'
+// import TutorProfilePage from './views/TutorSetUpPage.vue'
+import TuteeProfileDisplayPage from './components/TuteeProfileDisplayPage.vue'
+import ChangePassword from './components/ChangePassword.vue'
 //import TutorsList from './views/TutorsList.vue'
 // import TutorHome from './views/TutorHome.vue'
 // import LoginPage from './views/LoginPage.vue'
@@ -23,7 +28,10 @@ import "@fontsource/m-plus-rounded-1c";
 export default {
   name: 'App',
   components: {
-
+    ChangePassword,
+    TuteeProfileDisplayPage,
+    // TutorProfilePage,
+    // EmailVerification,
 
     // TuteeHome,
     //TutorsList,
