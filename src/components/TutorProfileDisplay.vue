@@ -23,7 +23,7 @@
       <div class="right-container">
           <div class="top-right">
             <button class="chat">
-                <Chat class="icon"/>
+                <Chat class="icon" fillColor = 'white'/>
                 <span class="text">Chat</span> <!-- link to chat interface -->
             </button>
             <button class="view-profile">
@@ -134,6 +134,7 @@ export default {
     display: inline-block;
     border-radius: 10px;
     height: 30px;
+
 }
 
 .view-profile {
@@ -158,5 +159,6 @@ export default {
     /* color: white; */
     vertical-align: middle;
     line-height: 15px;
+
 }
 </style>

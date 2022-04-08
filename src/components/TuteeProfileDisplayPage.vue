@@ -1,13 +1,7 @@
 <template>
     <div id="backgroundColor">
         <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
-
-        <div class="top">
-            <div id="logo">
-            <img src="../assets/Logo.jpeg" alt="logo">
-            </div>
-            <h1>PROFILE</h1>
-        </div>
+        <TopHeader/>
 
         <div class="profilePicture">
             <img src="../assets/Noprofilepicture.jpeg">
@@ -67,12 +61,16 @@
 import firebaseApp from '../firebase.js';
 import { doc, getFirestore } from "firebase/firestore";
 import { getDoc } from "firebase/firestore";
-
+import TopHeader from '@/components/TopHeader.vue'
 const db = getFirestore(firebaseApp);
 
 export default {
 
     name: "TuteeProfileInfo",
+    components: {
+      TopHeader
+    },
+    
     data() {
         return {
             fbuser: "hslim03@hotmail.com",

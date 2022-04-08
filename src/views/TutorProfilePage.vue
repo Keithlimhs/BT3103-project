@@ -1,7 +1,7 @@
 <template>
     <div id="backgroundColor">
         <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
-        <TopHeader/> <br>
+        <TopHeader pageName = "Profile Page"/> <br>
         <TutorProfileDisplay/> <br>
         <TutorAbout/> <br>
         <TutorModules/> <br>
