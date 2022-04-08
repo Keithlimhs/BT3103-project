@@ -3,7 +3,7 @@
 <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
 
   <div class= "topArt">
-    <img src="src\images\TopLogo.png" alt="logo">
+    <img src="@\images\TopLogo.png" alt="logo" width = 60>
   </div>
   
   <h1>Log in to modsmatch@nus</h1>
@@ -11,30 +11,73 @@
   <div class ="form">
       <form id="loginForm">
         <div class = "formli">
-          <label for="email"> <strong> Email: </strong> </label>
+          <label for="email"> <strong> Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> </label>
           <input type= "text" id= "email" required = "" placeholder= "Enter your email here" size = "30"> <br><br>
 
           <label for = "password"> <strong> Password: </strong> </label>
           <input type = "text" id = "password" required = "" placeholder = "Enter password here" size = "30"><br><br>
         </div>
-        <button class = "loginButton"> LOG IN </button>
+        <button class = "loginButton" type = "button" v-on:click ="Login()"> LOG IN </button>
       </form>
   </div>
   
   <div class = "form2">
-    <h4> <strong> Don't have an account? </strong> </h4>
-    <button class = "signUpButton"> <strong> Sign up! </strong> </button>
+    <h4> <strong> Don't have an account? &nbsp; &nbsp;</strong> </h4>
+    <div id=wrapper2>
+      <router-link to ="/TutorSignUpPage"><a>Sign Up! </a></router-link>
+    </div>
   </div>
 
   <div class = wrapper>
-    <button class = "forgotPasswordButton"> <strong> Forgot password? </strong> </button>
+    <button class = "forgotPasswordButton" v-on:click ="ForgotPassword()"> <strong> Forgot password? </strong> </button>
   </div>
 </div>
 </template>
 
 <script>
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import firebaseApp from '../firebase.js';
+
 export default {
-    name: 'LoginPage',
+    name: 'TutorLoginPage',
+
+    data() {
+      return {
+        FormData: {
+          email: '',
+          password: '',
+        }
+      }
+    },
+
+    methods: {
+      Login() {
+        const auth = getAuth(firebaseApp)
+        const email = document.getElementById("email").value
+        const password = document.getElementById("password").value
+
+        signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          console.log("Log in successful");
+          alert("Login succesful, you will be directed to the home page");
+          this.$router.push('/TutorHome');
+        })
+        .catch(error => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+
+          console.log(errorCode);
+          console.log(errorMessage);
+
+          window.alert("Message : " + errorMessage);
+        })
+      },
+
+      ForgotPassword(){
+        this.$router.push('/EmailVerification');
+      }
+    }
+
 }
 </script>
 
@@ -59,7 +102,7 @@ export default {
   font-family: 'M PLUS Rounded 1c';
 }
 .formli {
-  text-align: right;
+  text-align: center;
 }
 .form {
   text-align: center;
@@ -89,6 +132,7 @@ h4{
 .topArt{
   background-color: #316879;
   min-height: 10vh;
+  text-align: left;
 }
 .loginButton {
   color:white;
@@ -101,14 +145,23 @@ h4{
   font-weight: bold;
 }
 
-.signUpButton {
+
+#wrapper2{
   border: none;
   background-color: inherit;
   cursor: pointer;
   display: inline-block;
-  color: red;
   font-size: 18px;
   font-family: 'M PLUS Rounded 1c';
 }
+
+a {
+  color: red;
+  text-decoration: none;
+  font-family: 'M PLUS Rounded 1c';
+  font-weight: bold;
+  font-size: 16px;
+}
+
 </style>
 

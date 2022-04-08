@@ -16,8 +16,8 @@
   </div>
 
   <div id ="parent">
-    <button id="left" @click = "selectTutor()"> <h3> <strong> TUTOR? </strong> </h3> <img src="@\images\Tutor_icon.png" alt="tutor_icon" width = "200"> </button>
-    <button id="right" @click = "selectTutee()"> <h3> <strong> TUTEE? </strong> </h3>  <img src="@\images\Tutee_icon.png" alt="tutee_icon" width = "200"> </button>
+    <button id="left" v-on:click="selectTutor()"> <h3> <strong> TUTOR? </strong> </h3> <img src="@\images\Tutor_icon.png" alt="tutor_icon" width = "200"> </button>
+    <button id="right" v-on:click="selectTutee()"> <h3> <strong> TUTEE? </strong> </h3>  <img src="@\images\Tutee_icon.png" alt="tutee_icon" width = "200"> </button>
   </div>
 </div>
 </template>
@@ -27,7 +27,12 @@ export default {
   name: 'MainPage',
 
   methods: {
-    
+    selectTutor() {
+      this.$router.push('/TutorLoginPage')
+    },
+    selectTutee() {
+      this.$router.push('/TuteeLoginPage')
+    }
   }
 }
 </script>
@@ -37,12 +42,7 @@ export default {
 #backgroundColor {
   background-color: #E5E5E5 ;
 }
-#parent {
-  display:block;
-  justify-content: space-around;
-  font-family: 'M PLUS Rounded 1c';
-  text-align: center;
-}
+
 #left:hover{
   color: rgb(243,236,236);
   background-color: rgba(199, 63, 131, 0.76);
@@ -60,7 +60,6 @@ export default {
   background-color: pink;
   border-radius: 10px;
   font-family: 'M PLUS Rounded 1c';
-  margin-left: 40vw;
 }
 
 #right{
@@ -68,13 +67,14 @@ export default {
   background-color: rgb(53, 212, 165);
   border-radius: 10px;
   font-family: 'M PLUS Rounded 1c';
-  margin-left: 40vw;
+  margin-left: 10vw;
 }
 
 .topArt1{
   background-color: #316879;
   min-height: 25vh;
   margin-bottom: -21px; /*Removes space between margin*/
+  text-align: left;
 }
 .wrapper{
   color: white;

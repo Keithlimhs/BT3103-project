@@ -2,19 +2,16 @@
     <div id = "header">
         <a href = "history.back()" class = "previous"><img id = "back" src="@/assets/backbutton.png" alt="error"></a>
         <img id = "profilePic" src = "@/assets/logo.png" alt = "error">
-        <h2 id = "title">{{pageName}}</h2>
+        <h2 id = "title">{{ pageName }}</h2>
     </div>
 </template>
 
 <script>
 export default {
-    data(){
-        return{
-            // pageName: ""
-        }
-    },
+
     props: {
-        pageName: String,
+            pageName: String
+
     }
     
 }

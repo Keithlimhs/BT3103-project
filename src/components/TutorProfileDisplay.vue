@@ -1,7 +1,12 @@
+/* eslint-disable vue/no-dupe-keys */
 <template>
   <div class="tutor-profile">
       <div class="left-container">
-        <img class="tutor-img" src="@/assets/Shashank300.jpg" alt=""> <!-- retreive photo from firestore database by auth().user.PhotoURL -->
+
+        <img class="tutor-img" src="@/assets/profilepicture.jpeg" alt=""> <!-- retreive photo from firestore database by auth().user.PhotoURL -->
+
+
+
       </div>
       <div class="middle-container">
           <div class="tutor-info">
@@ -9,14 +14,16 @@
                   {{user}}
               </div>
               <div id="year-course">
-                  Year {{year}}, {{course}}
+
+                  {{year}}, {{course}}
+
               </div>
           </div>
       </div>
       <div class="right-container">
           <div class="top-right">
             <button class="chat">
-                <Chat class="icon"/>
+                <Chat class="icon" fillColor = 'white'/>
                 <span class="text">Chat</span> <!-- link to chat interface -->
             </button>
             <!-- <router-link v-bind:to="'/tutors/' + this.user"> -->
@@ -42,17 +49,26 @@ import StarRating from 'vue-star-rating';
 export default {
     data(){
         return{
+            user: "Shashank Shekhar Tripathi",
+            year: "Year 4",
+            course: "Business Analytics",
+
             count: 5,
             rating: 3,
         }
     },
+
     props: {
+        // eslint-disable-next-line vue/no-dupe-keys
         user: String,
+        // eslint-disable-next-line vue/no-dupe-keys
         year: Number,
+        // eslint-disable-next-line vue/no-dupe-keys
         course: String,
         // count: Number,
         // rating: Number,
     },
+
     components: {
         Chat,
         StarRating,
@@ -73,9 +89,12 @@ export default {
     border-radius: 10px;
 }
 
+
+
 .left-container {
 	width: 25%;
 }
+
 
 .tutor-img {
 	border-radius:50%;
@@ -119,6 +138,7 @@ export default {
     display: inline-block;
     border-radius: 10px;
     height: 30px;
+
 }
 
 .view-profile {
@@ -143,5 +163,6 @@ export default {
     /* color: white; */
     vertical-align: middle;
     line-height: 15px;
+
 }
 </style>

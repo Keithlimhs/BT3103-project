@@ -47,10 +47,11 @@ export default {
 
 <style scoped>
 .tutee-profile {
-	background-color: #8D8D8D;
+	background-color: #D4D4D4;
 	padding: 25px;
 	display: flex;
 	flex-direction: row;
+    border: 1px solid black;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
