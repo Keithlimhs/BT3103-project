@@ -48,6 +48,7 @@ const routes = [
         name: 'TutorsList',
         component: TutorsList
     },
+    {
 
         path: '/TuteeSignUpPage',
         name: 'TuteeSignUpPage',
