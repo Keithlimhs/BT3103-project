@@ -1,13 +1,7 @@
 <template>
     <div id="backgroundColor">
+      <NavBarTutee/>
         <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
-
-        <div class="top">
-            <div id="logo">
-            <img src="../assets/Logo.jpeg" alt="logo">
-            </div>
-            <h1>PROFILE</h1>
-        </div>
 
         <div class="profilePicture">
             <img src="../assets/Noprofilepicture.jpeg">
@@ -46,7 +40,7 @@
 
       </div>  -->
         <div class = wrapper>
-            <button class="edit" v-on:click="editProfile()" >SAVE</button>
+            <button class="edit" v-on:click="editProfile()" >Edit Profile</button>
         </div>    
     </div>
 </template>
@@ -67,12 +61,16 @@
 import firebaseApp from '../firebase.js';
 import { doc, getFirestore } from "firebase/firestore";
 import { getDoc } from "firebase/firestore";
+import NavBarTutee from '@/components/NavBarTutee.vue';
 
 const db = getFirestore(firebaseApp);
 
 export default {
 
     name: "TuteeProfileInfo",
+    components: {
+        NavBarTutee,
+    },
     data() {
         return {
             fbuser: "hslim03@hotmail.com",

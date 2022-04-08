@@ -1,10 +1,6 @@
 <template>
 <div id="backgroundColor">
-<link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
-   
-  <div class= "topArt">
-    <img src="src\images\TopLogo.png" alt="logo">
-    <h3>PASSWORD RESET</h3>
+        <TopHeader/>
   </div>
   
   <h2>Reset Password</h2>
@@ -24,43 +20,49 @@
 
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-</div>
   
 </template>
 
 <script>
-import { getAuth } from "firebase/auth";
-import 'firebase/compat/auth';
-import 'firebaseui/dist/firebaseui.css'
-import 'firebase/firestore';
-import firebaseApp from '../firebase.js';
+// import { getAuth } from "firebase/auth";
+// import 'firebase/compat/auth';
+// import 'firebaseui/dist/firebaseui.css'
+// import 'firebase/firestore';
+// import firebaseApp from '../firebase.js';
+import TopHeader from '@/components/TopHeader.vue'
+
 export default {
+
+  components: {
+    TopHeader
+  },
+
     data: function() {
         return {
             newPassword: '',
             passwordConfirm: '',
         }
     },
-    methods: {
-        resetPassword() {
-            var newPassword = this.newPassword
-            const user = getAuth(firebaseApp)
-            // var user = firebase.auth().currentUser;
-            console.log ("  User:  "+ user );
-            user.updatePassword(newPassword).then(function() {
-              // Update successful.
-              alert("Reset Password successful")
-            }).catch(function(error) {
-              var errorCode = error.code;
-             var errorMessage = error.message;
-             console.log(errorCode);
-             console.log(errorMessage);
-             window.alert("Message : " + errorMessage);
-            });
-        },
-        checkPasswords: function () {
-        }
-    }
+    // methods: {
+    //     resetPassword() {
+    //         var newPassword = this.newPassword
+    //         const user = getAuth(firebaseApp)
+    //         // var user = firebase.auth().currentUser;
+    //         console.log ("  User:  "+ user );
+    //         user.updatePassword(newPassword).then(function() {
+    //           // Update successful.
+    //           alert("Reset Password successful")
+    //         }).catch(function(error) {
+    //           var errorCode = error.code;
+    //          var errorMessage = error.message;
+    //          console.log(errorCode);
+    //          console.log(errorMessage);
+    //          window.alert("Message : " + errorMessage);
+    //         });
+    //     },
+    //     checkPasswords: function () {
+    //     }
+    // }
 }
 </script>
 

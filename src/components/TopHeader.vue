@@ -1,7 +1,8 @@
 <template>
     <div id = "header">
-        <a href = "history.back()" class = "previous"><img id = "back" src="@/assets/backbutton.png" alt="error"></a>
-        <img id = "profilePic" src = "@/assets/logo.png" alt = "error">
+        <!-- <a href = "history.back()" class = "previous"><img id = "back" v-bind:src="require('../assets/backbutton.png')" alt="error"></a> -->
+        <!-- <a href = "history.back()" class = "previous"><img id = "back" src="../assets/backbutton.png" alt="error"></a> -->
+        <!-- <img id = "profilePic" src = "../assets/logo.png" alt = "error"> -->
         <h2 id = "title">{{pageName}}</h2>
     </div>
 </template>
@@ -10,7 +11,7 @@
 export default {
     data(){
         return{
-            pageName: "HOME"
+            pageName: "PASSWORD RESET"
         }
     },
     
@@ -18,6 +19,9 @@ export default {
 </script>
 
 <style scoped>
+#logo {
+    width: 60px
+}
 div {
     background-color: #316879;
     height: 50px;
