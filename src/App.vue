@@ -4,9 +4,10 @@
 <!-- <TutorHome/> -->
 <!-- <TuteeProfileInfo/> -->
 <!-- <TutorModules/> -->
-<!-- <TutorProfileDisplay/> -->
+<TutorProfileDisplay/>
 <!-- <TuteeProfileDisplayPage/> -->
-<TutorProfilePage/>
+<!-- <TutorProfilePage/> -->
+<!-- <DropDownMenu/> -->
 </template>
 
 
@@ -17,7 +18,7 @@
 <script>
 import "@fontsource/m-plus-rounded-1c";
 // import EmailVerification from './views/EmailVerification.vue'
-import TutorProfilePage from './views/TutorProfilePage.vue'
+// import TutorProfilePage from './views/TutorProfilePage.vue'
 // import TuteeProfileDisplayPage from './components/TuteeProfileDisplayPage.vue'
 // import ChangePassword from './components/ChangePassword.vue'
 //import TutorsList from './views/TutorsList.vue'
@@ -28,18 +29,19 @@ import TutorProfilePage from './views/TutorProfilePage.vue'
 // import TopHeaderForSignIn from './components/TopHeaderForSignIn.vue'
 // import TuteeProfileInfo from './components/TuteeProfileInfo.vue'
 // import TutorModules from './components/TutorModules.vue'
-// import TutorProfileDisplay from './components/TutorProfileDisplay'
-
+import TutorProfileDisplay from './components/TutorProfileDisplay'
+// import DropDownMenu from './components/DropDownMenu.vue'
 
 export default {
   name: 'App',
   components: {
-    // TutorProfileDisplay
+    TutorProfileDisplay
     // TuteeProfileInfo
     // TutorModules
     // TopHeaderForSignIn
     // TuteeProfileDisplayPage
-    TutorProfilePage
+    // TutorProfilePage
+    // DropDownMenu
 
     //TutorsList,
 
