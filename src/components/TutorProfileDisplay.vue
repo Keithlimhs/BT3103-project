@@ -26,9 +26,11 @@
                 <Chat class="icon" fillColor = 'white'/>
                 <span class="text">Chat</span> <!-- link to chat interface -->
             </button>
-            <button class="view-profile">
-                View Profile <!-- link to full profile -->               
-            </button>
+            <!-- <router-link v-bind:to="'/tutors/' + this.user"> -->
+                <button class="view-profile">
+                    View Profile <!-- link to full profile -->               
+                </button>
+            <!-- </router-link> -->
           </div>
           <div class="bottom-right">
             <div class="reviews" style="display:inline-block;">
@@ -79,10 +81,12 @@ export default {
 	background-color: #8D8D8D;
 	padding: 30px;
     margin: 100px;
+    margin-left: 170px;
+    margin-right: 170px; 
 	display: flex;
 	flex-direction: row;
 	border: 2px solid black;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-radius: 10px;
 }
 
 

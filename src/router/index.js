@@ -9,9 +9,14 @@ import TutorSetUpPage from '@/views/TutorSetUpPage.vue'
 import TuteeLoginPage from '@/views/TuteeLoginPage.vue'
 import TutorLoginPage from '@/views/TutorLoginPage.vue'
 import MainPage from '@/views/MainPage.vue'
+
+import TuteeHome from '@/views/TuteeHome.vue'
+import TutorsList from '@/views/TutorsList.vue'
+
 import TuteeSignUpPage from '@/views/TuteeSignUpPage.vue'
 import TutorSignUpPage from '@/views/TutorSignUpPage.vue'
 import TutorHome from '@/views/TutorHome.vue'
+
 
 
 const routes = [
@@ -33,6 +38,17 @@ const routes = [
         component: MainPage
     },
     {
+
+        path: '/',
+        name: 'TuteeHome',
+        component: TuteeHome
+    },
+    {
+        path: '/tutors/:moduleCode',
+        name: 'TutorsList',
+        component: TutorsList
+    },
+
         path: '/TuteeSignUpPage',
         name: 'TuteeSignUpPage',
         component: TuteeSignUpPage
@@ -70,6 +86,7 @@ const routes = [
         component: TutorSignUpPage
 
     },
+
 
 ]
 const router = createRouter({
