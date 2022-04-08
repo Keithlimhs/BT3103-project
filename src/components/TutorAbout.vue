@@ -8,12 +8,35 @@
 </template>
 
 <script>
+import firebaseApp from '../firebase.js';
+import { getFirestore } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
+
+const db = getFirestore(firebaseApp);
+
 export default {
+    name: "TutorAbout",
+
     data() {
         return {
-            description: "I am a seasoned tutor and was a TA for several mods in the past semesters. I know the ins and outs of the mods I’ll be teaching and will definitely coach you to the best of my abilities so you can trust me to help you attain your desired grades."
+            description: '',
         }
+    },
+
+    mounted() {
+        async function display() {
+            let z = await getDocs(collection(db,"TutorDetails"))
+            let description = ''
+            z.forEach((docs) =>{
+                let yy = docs.data()
+                description = (yy.About)
+            })
+            return description
+        }
+        display().then(data => this.description = data);
     }
+
+
 }
 </script>
 

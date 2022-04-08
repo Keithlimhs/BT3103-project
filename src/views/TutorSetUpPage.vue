@@ -3,43 +3,37 @@
         <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
 
         <div class="top">
-            <div id="logo">
-            <img src="../assets/Logo.jpeg" alt="logo">
-            </div>
+            <img id="logo" v-bind:src="require('../assets/Logo.jpeg')" alt="logo" />
             <h1>SET UP PROFILE</h1>
         </div>
 
-        <div class="profilePicture">
-            <img src="../assets/Noprofilepicture.jpeg">
-        </div>
-
         <div class = wrapper>
-            <button class = "updateProfilePictureBtn">Update profile picture (optional)</button>
+            <ProfilePicture/>
         </div>
         
         <div class ="form">
             <form id="setupForm">
                 <div class = "formli">
-                    <span class="asterisk_input">  </span>
                     <label for="tutorname">Name:</label>
-                    <input type= "text" id= "tutorname" required = "" placeholder= "Enter your name here" size = "30"> <br><br>
-                    <span class="asterisk_input">  </span>
+                    <input type= "text" id= "tutorname" required = "" placeholder= "Enter your name here" size = "30"> 
+                    <span class="asterisk_input">  </span> <br><br>
                     <label for="tutorcourse">Course:</label>
-                    <input type= "text" id= "tutorcourse" required = "" placeholder= "Enter your course here" size = "30"> <br><br>
-                    <span class="asterisk_input">  </span>
+                    <input type= "text" id= "tutorcourse" required = "" placeholder= "Enter your course here" size = "30">
+                    <span class="asterisk_input">  </span> <br><br>
                     <label for="tutoryear">Year of Study:</label>
-                    <input type= "text" id= "tutoryear" required = "" placeholder= "Enter your year of study here" size = "30"> <br><br>
+                    <input type= "text" id= "tutoryear" required = "" placeholder= "Enter your year of study here" size = "30">
+                    <span class="asterisk_input">  </span> <br><br>
                     <label for="tutorwebsite">Website:</label>
                     <input type= "text" id= "tutorwebsite" required = "" placeholder= "Enter your website here" size = "30"> <br><br>
                     <label for="tutorabout">About Myself:</label>
                     <input type= "text" style="height: 60px" id= "tutorabout" required = "" placeholder= "You may inlude a brief description of yourself and your expected rate here" size = "40"> <br><br>
                 </div>
-                <div class="modules">
+            </form>
+            <div class="modules">
                     <label for="modules">Modules Available:</label> 
                     &nbsp;
-                    <button class="addModuleBtn">Add Module</button>
+                    <AddModulePopup/>
                 </div>
-            </form>
         </div>
         <div class = wrapper>
             <button class="saveBtn" v-on:click="handleSubmit()" >SAVE</button>
@@ -51,11 +45,18 @@
 import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore";
+import AddModulePopup from "@/views/AddModulePopup.vue";
+import ProfilePicture from "../components/ProfilePicture.vue"
 
 const db = getFirestore(firebaseApp)
 
 export default {
     name: "TutorSetUpPage",
+
+    components: {
+        AddModulePopup,
+        ProfilePicture,
+    },
 
     data() {
         return {
@@ -102,8 +103,10 @@ export default {
   background-color: #316879;
   min-height: 10vh;
 }
-#logo{
-    float: left;
+#logo {
+height: 5%;
+width: 5%;
+float: left;
 }
 h1{
   color: white ;
@@ -121,11 +124,12 @@ h1{
   text-align: right;
   display: inline-block;
   padding: 1rem 1rem;
-  vertical-align: middle;
+  vertical-align: top;
 }
 .modules {
   display: inline-block;
   padding: 1rem 1rem;
+  margin: 1rem;
   vertical-align: top;
 }
 .addModuleBtn{
@@ -146,17 +150,11 @@ h1{
 }
 #setupForm{
   display: inline-block;
+  background-color: #E5E5E5;
   text-align: center;
+  padding: 1rem 1rem;
+  vertical-align: top;
   font-family: 'M PLUS Rounded 1c';
-}
-.updateProfilePictureBtn {
-  border: none;
-  background-color: inherit;
-  cursor: pointer;
-  color: red;
-  font-size: 10px;
-  font-family: 'M PLUS Rounded 1c';
-  text-decoration: underline;
 }
 .saveBtn {
   border: 1px solid #000000;
@@ -172,7 +170,7 @@ h1{
   height: 25px;
   font-size: 12px;
 }
-.asterisk_input:after {
+.asterisk_input::after {
 content:"*"; 
 color: red;
 font-size: large; 

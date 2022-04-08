@@ -3,32 +3,26 @@
         <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
 
         <div class="top">
-            <div id="logo">
-            <img src="../assets/Logo.jpeg" alt="logo">
-            </div>
+            <img id="logo" v-bind:src="require('../assets/Logo.jpeg')" alt="logo" />
             <h1>SET UP PROFILE</h1>
         </div>
 
-        <div class="profilePicture">
-            <img src="../assets/Noprofilepicture.jpeg">
-        </div>
-
         <div class = wrapper>
-            <button class = "updateProfilePictureBtn">Update profile picture (optional)</button>
+            <ProfilePic/>
         </div>
-        
+    
         <div class ="form">
             <form id="setupForm">
                 <div class = "formli">
-                    <span class="asterisk_input">  </span>
                     <label for="tuteename">Name:</label>
-                    <input type= "text" id= "tuteename" required = "" placeholder= "Enter your name here" size = "30"> <br><br>
-                    <span class="asterisk_input">  </span>
+                    <input type= "text" id= "tuteename" required = "" placeholder= "Enter your name here" size = "30"> 
+                    <span class="asterisk_input">  </span><br><br>
                     <label for="tuteecourse">Course:</label>
-                    <input type= "text" id= "tuteecourse" required = "" placeholder= "Enter your course here" size = "30"> <br><br>
-                    <span class="asterisk_input">  </span>
+                    <input type= "text" id= "tuteecourse" required = "" placeholder= "Enter your course here" size = "30"> 
+                    <span class="asterisk_input">  </span><br><br>
                     <label for="tuteeyear">Year of Study:</label>
-                    <input type= "text" id= "tuteeyear" required = "" placeholder= "Enter your year of study here" size = "30"> <br><br>
+                    <input type= "text" id= "tuteeyear" required = "" placeholder= "Enter your year of study here" size = "30"> 
+                    <span class="asterisk_input">  </span><br><br>
                     <label for="tuteeabout">About Myself:</label>
                     <input type= "text" style="height: 60px" id= "tuteeabout" required = "" placeholder= "Enter description" size = "30"> <br><br> 
                 </div>
@@ -44,11 +38,16 @@
 import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore";
+import ProfilePic from "../components/ProfilePicture.vue"
 
 const db = getFirestore(firebaseApp)
 
 export default {
-    name: "TutorSetUpPage",
+    name: "TuteeSetUpPage",
+
+    components: {
+        ProfilePic,
+    },
 
     data() {
         return {
@@ -92,8 +91,10 @@ export default {
   background-color: #316879;
   min-height: 10vh;
 }
-#logo{
-    float: left;
+#logo {
+height: 5%;
+width: 5%;
+float: left;
 }
 h1{
   color: white ;
@@ -109,23 +110,20 @@ h1{
 }
 .formli {
   text-align: right;
+  display: inline-block;
+  padding: 1rem 1rem;
+  vertical-align: top;
 }
 .form {
   text-align: center;
 }
 #setupForm{
   display: inline-block;
+  background-color: #E5E5E5;
   text-align: center;
+  padding: 1rem 1rem;
+  vertical-align: top;
   font-family: 'M PLUS Rounded 1c';
-}
-.updateProfilePictureBtn {
-  border: none;
-  background-color: inherit;
-  cursor: pointer;
-  color: red;
-  font-size: 10px;
-  font-family: 'M PLUS Rounded 1c';
-  text-decoration: underline;
 }
 .saveBtn {
   border: 1px solid #000000;
@@ -145,5 +143,6 @@ h1{
 content:"*"; 
 color: red;
 font-size: large; 
+position: absolute;
 }
 </style>

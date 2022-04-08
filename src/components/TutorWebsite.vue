@@ -8,11 +8,32 @@
 </template>
 
 <script>
+import firebaseApp from '../firebase.js';
+import { getFirestore } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
+
+const db = getFirestore(firebaseApp);
+
 export default {
+    name: "TutorWebsite",
+
     data() {
         return {
-            web: "https://www.linkedin.com"
+            web: ""
         }
+    },
+    
+    mounted() {
+        async function display() {
+            let z = await getDocs(collection(db,"TutorDetails"))
+            let web = ''
+            z.forEach((docs) =>{
+                let yy = docs.data()
+                web = (yy.Website)
+            })
+            return web
+        }
+        display().then(data => this.web = data);
     }
     
     
