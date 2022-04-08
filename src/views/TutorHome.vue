@@ -1,7 +1,7 @@
 <template>
   <div class="tutor-home">
     <div class="header">
-      <TopHeader/>
+      <HomeHeader/>
     </div>
     <div class="top-container">
       Hello {{user}}, here are your offers for today
@@ -13,7 +13,7 @@
         </div>
         <div class="profiles" v-for="tutee in tutees" :key='tutee'>
           <!-- <TuteeProfileDisplay/> -->
-          <TuteeProfileDisplay :user="tutee.Name"/>
+          <!-- <TuteeProfileDisplay :user="tutee.Name"/> -->
         </div>
       </div>
       <div class="accepted">
@@ -22,7 +22,7 @@
         </div>
         <div class="profiles" v-for="tutee in tutees" :key='tutee'>
           <!-- <TuteeProfileDisplay/> -->
-          <TuteeProfileDisplay :user="tutee.Name"/>
+          <!-- <TuteeProfileDisplay :user="tutee.Name"/> -->
         </div>
       </div>
     </div>
@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import TopHeader from '../components/TopHeader.vue'
-import TuteeProfileDisplay from '../components/TuteeProfileDisplay.vue'
+import HomeHeader from '../components/HomeHeader.vue'
+// import TuteeProfileDisplay from '../components/TuteeProfileDisplay.vue'
 import firebaseApp from "@/firebase.js"
 import { getFirestore } from "firebase/firestore"
 import { collection, getDocs, } from "firebase/firestore"
@@ -43,8 +43,8 @@ const db = getFirestore(firebaseApp)
 export default {
   name: 'TutorHome',
   components: {
-    TopHeader,
-    TuteeProfileDisplay,
+    HomeHeader,
+    // TuteeProfileDisplay,
   },
   data(){
     return{
@@ -73,6 +73,7 @@ export default {
   font-size: 30px;
   font-weight: bolder;
   padding: 10px 0px 10px 10px;
+  margin: 15px 0px 15px 0px;
 }
 
 .bottom-container {
