@@ -3,7 +3,7 @@
 <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
 
   <div class= "topArt">
-    <img src="@\images\TopLogo.png" alt="logo" width = 60>
+    <img src="@/images/TopLogo.png" alt="logo" width = 60>
   </div>
   
   <h1>Sign up for modsmatch@nus</h1>
@@ -11,7 +11,7 @@
   <div class ="form">
       <form id="signUpForm">
         <div class = "formli">
-          <label for="email"> <strong> Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> </label>
+          <label for="email"> <strong> Email: </strong> </label>
           <input type= "text" id= "email" required = "" placeholder= "Enter your email here" size = "30"> <br><br>
 
           <label for = "password"> <strong> Password: </strong> </label>
@@ -28,7 +28,7 @@
     <h4> <strong> Already have an account? &nbsp; &nbsp;</strong> </h4>
 
     <div id = "wrapper2">
-        <router-link to ="/LoginPage"><a> Log in! </a></router-link>
+        <router-link to ="/TuteeLoginPage"><a> Log in! </a></router-link>
     </div>
   </div>
 
@@ -41,7 +41,7 @@ import { getAuth, createUserWithEmailAndPassword} from "firebase/auth";
 
 import firebaseApp from '../firebase.js';
 export default {
-    name: 'SignUpPage',
+    name: 'TuteeSignUpPage',
 
     data() {
       return {
@@ -67,7 +67,7 @@ export default {
           .then(() => {
             console.log("Sign up successful");
             alert("Sign up succesful, you will be directed to the login page");
-            this.$router.push('/LoginPage');
+            this.$router.push('/TuteeLoginPage');
           })
           .catch(error => {
             var errorCode = error.code;
@@ -108,7 +108,8 @@ export default {
   font-family: 'M PLUS Rounded 1c';
 }
 .formli {
-  text-align: center;
+  text-align: right;
+  margin-right: 15vw;
 }
 .form {
   text-align: center;

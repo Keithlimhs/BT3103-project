@@ -24,12 +24,12 @@
   <div class = "form2">
     <h4> <strong> Don't have an account? &nbsp; &nbsp;</strong> </h4>
     <div id=wrapper2>
-      <router-link to ="/SignUpPage"><a>Sign Up! </a></router-link>
+      <router-link to ="/TutorSignUpPage"><a>Sign Up! </a></router-link>
     </div>
   </div>
 
   <div class = wrapper>
-    <button class = "forgotPasswordButton"> <strong> Forgot password? </strong> </button>
+    <button class = "forgotPasswordButton" v-on:click ="ForgotPassword()"> <strong> Forgot password? </strong> </button>
   </div>
 </div>
 </template>
@@ -39,7 +39,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebaseApp from '../firebase.js';
 
 export default {
-    name: 'LoginPage',
+    name: 'TutorLoginPage',
 
     data() {
       return {
@@ -71,6 +71,10 @@ export default {
 
           window.alert("Message : " + errorMessage);
         })
+      },
+
+      ForgotPassword(){
+        this.$router.push('/EmailVerification');
       }
     }
 
