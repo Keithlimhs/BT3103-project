@@ -1,7 +1,7 @@
 <template>
     <div class="tutee-home">
         <div class="header">
-            <TopHeader/>
+            <HomeHeader/>
         </div>
         <div class="welcome-msg">
             <p>Hello {{user}}, choose a module below to find a tutor</p> <br>
@@ -10,51 +10,76 @@
             <ModuleSearchBar :searchInput="this.search" @update:searchInput="newValue => this.search = newValue"/>
         </div>
         <div class="modules" >
-            <div id="mod-not-found" v-if="!filteredList.length">Sorry, the module cannot be found</div>
             <div id="mod" v-for="module in filteredList" :key="module">
                 <div class="mod-btn">
-                    <ModuleButton :code="module.moduleCode" :title="module.title" :faculty="module.faculty"/>   
+                    <router-link v-bind:to="'/tutors/' + module.moduleCode">
+                        <moduleButton :code="module.moduleCode" :title="module.title" :faculty="module.faculty"/>   
+                    </router-link>
                 </div> 
             </div>
+            <div id="mod-not-found" v-if="!filteredList.length">Sorry, the module cannot be found</div>
         </div>
+
+
+        
     </div>
     
 </template>
 
 <script>
 import "@fontsource/m-plus-rounded-1c";
-import TopHeader from '../components/TopHeader.vue'
+import HomeHeader from '../components/HomeHeader.vue'
 import ModuleSearchBar from '../components/ModuleSearchBar.vue'
-import ModuleButton from '../components/ModuleButton.vue'
+import moduleButton from '../components/moduleButton.vue'
+import firebaseApp from "@/firebase.js"
+import { getFirestore } from "firebase/firestore"
+import { collection, getDocs, } from "firebase/firestore"
+// import { getAuth, onAuthStateChanged } from "firebase/auth"
+
+const db = getFirestore(firebaseApp)
 
 const axios = require("axios")
 
 export default {
+    name: "TuteeHome",
     data() {
         return {
             user: "User",
             modules: [],
+            avail: [],
             search: "",
         }
     },
     components: {
-        TopHeader,
+        HomeHeader,
         ModuleSearchBar,
-        ModuleButton,
+        moduleButton,
     },
     computed: {
         filteredList() {
-            return this.modules.filter(module => {
-                return module.moduleCode.toLowerCase().includes(this.search.toLowerCase())
+            return this.modules.filter(x => {
+                return this.avail.includes(x.moduleCode) && x.moduleCode.toLowerCase().includes(this.search.toLowerCase())
             })
         }
+        
     },
-    mounted () {
-    axios
-      .get('https://api.nusmods.com/v2/2021-2022/moduleInfo.json', {headers:{"accept": "application/json"}})
-      .then(response => this.modules = response.data)
-  }
-    
+    mounted() {
+        axios
+        .get('https://api.nusmods.com/v2/2021-2022/moduleInfo.json', {headers:{"accept": "application/json"}})
+        .then(response => this.modules = response.data)
+
+        async function getdata() {
+            let t = await getDocs(collection(db, "Modules"))
+            let modulesArray = []
+            t.forEach((docs) => {
+                let module = docs.id;
+                modulesArray.push(module)
+            })
+            return modulesArray
+        }
+        getdata().then(data => this.avail = data);
+        this.loading = true;
+    },
 }
 </script>
 

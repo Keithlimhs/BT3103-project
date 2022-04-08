@@ -1,6 +1,6 @@
 <template>
   <!-- component for rectangle box -->
-  <button id="moduleButton" @click = "selectModule">
+  <button id="moduleButton">
     <div id="buttonText">
       <h2> {{code}} </h2>
       <h3> {{title}} </h3>

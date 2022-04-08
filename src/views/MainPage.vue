@@ -28,7 +28,10 @@ export default {
 
   methods: {
     selectTutor() {
-      this.$router.push('/LoginPage')
+      this.$router.push('/TutorLoginPage')
+    },
+    selectTutee() {
+      this.$router.push('/TuteeLoginPage')
     }
   }
 }

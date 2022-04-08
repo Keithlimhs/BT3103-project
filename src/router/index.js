@@ -7,14 +7,23 @@ import TuteeProfileDisplayPage from "@/components/TuteeProfileDisplayPage.vue"
 import UserGuidelines from '@/components/UserGuidelines.vue'
 import TuteeSetUpPage from '@/views/TuteeSetUpPage.vue'
 import TutorSetUpPage from '@/views/TutorSetUpPage.vue'
-//import LoginPage from '@/views/LoginPage.vue'
+import TuteeLoginPage from '@/views/TuteeLoginPage.vue'
+import TutorLoginPage from '@/views/TutorLoginPage.vue'
 import MainPage from '@/views/MainPage.vue'
-import SignUpPage from '@/views/SignUpPage.vue'
+
+import TuteeHome from '@/views/TuteeHome.vue'
+import TutorsList from '@/views/TutorsList.vue'
+
+import TuteeSignUpPage from '@/views/TuteeSignUpPage.vue'
+import TutorSignUpPage from '@/views/TutorSignUpPage.vue'
 import TutorHome from '@/views/TutorHome.vue'
+
+
 
 const routes = [
 
     {
+<<<<<<< HEAD
         path: "/",
         name: "TuteeProfileDisplayPage",
         component: TuteeProfileDisplayPage,
@@ -31,6 +40,8 @@ const routes = [
     },
 
     {
+=======
+>>>>>>> d7ce82e6a02340b56b409605311a5fc0cd7a18b1
         path: "/EmailVerification",
         name: "EmailVerification",
         component: EmailVerification,
@@ -48,9 +59,21 @@ const routes = [
         component: MainPage
     },
     {
-        path: '/SignUpPage',
-        name: 'SignUpPage',
-        component: SignUpPage
+
+        path: '/',
+        name: 'TuteeHome',
+        component: TuteeHome
+    },
+    {
+        path: '/tutors/:moduleCode',
+        name: 'TutorsList',
+        component: TutorsList
+    },
+    {
+
+        path: '/TuteeSignUpPage',
+        name: 'TuteeSignUpPage',
+        component: TuteeSignUpPage
     },
     {
         path: '/TuteeSetUpPage',
@@ -67,7 +90,24 @@ const routes = [
         name: 'TutorHome',
         component: TutorHome
 
-    }
+    },
+    {
+        path: '/TuteeLoginPage',
+        name: 'TuteeLoginPage',
+        component: TuteeLoginPage
+    },
+    {
+        path: '/TutorLoginPage',
+        name: 'TutorLoginPage',
+        component: TutorLoginPage
+
+    },
+    {
+        path: '/TutorSignUpPage',
+        name: 'TutorSignUpPage',
+        component: TutorSignUpPage
+
+    },
 
 
 ]

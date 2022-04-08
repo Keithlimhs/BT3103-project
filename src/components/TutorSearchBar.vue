@@ -42,7 +42,6 @@ export default {
     width: 1500px;
     border: 2px solid black;
     border-left-style: hidden;
-    border-right-style: hidden;
     font-family: "M PLUS Rounded 1c";
 }
 
