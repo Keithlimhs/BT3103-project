@@ -9,7 +9,7 @@
     : $router.push('/')">&laquo; 
     </button>
 
-    <img src="src\images\TopLogo.png" alt="logo">
+    <img id = 'topLogo' src="@/assets/Logo.jpeg" alt="error">
     <h3>PASSWORD RESET</h3>
   </div>
   

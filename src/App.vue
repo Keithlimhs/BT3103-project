@@ -1,8 +1,12 @@
 
 
 <template>
-<router-view/>
-
+<!-- <router-view/> -->
+<!-- <TopHeaderForSignIn/> -->
+<TutorHome/>
+<!-- <TuteeProfileInfo/> -->
+<!-- <TutorModules/> -->
+<!-- <TutorProfileDisplay/> -->
 </template>
 
 
@@ -13,26 +17,32 @@
 <script>
 import "@fontsource/m-plus-rounded-1c";
 //import TutorsList from './views/TutorsList.vue'
-// import TutorHome from './views/TutorHome.vue'
+import TutorHome from './views/TutorHome.vue'
 // import LoginPage from './views/LoginPage.vue'
 // import AddModulePopup from './views/AddModulePopup.vue'
 // import TuteeHome from './views/TuteeHome.vue'
-
+// import TopHeaderForSignIn from './components/TopHeaderForSignIn.vue'
+// import TuteeProfileInfo from './components/TuteeProfileInfo.vue'
+// import TutorModules from './components/TutorModules.vue'
+// import TutorProfileDisplay from './components/TutorProfileDisplay'
 
 
 export default {
   name: 'App',
   components: {
+    // TutorProfileDisplay
+    // TuteeProfileInfo
+    // TutorModules
+    // TopHeaderForSignIn
 
 
-    // TuteeHome,
     //TutorsList,
 
 
-    //TuteeHome,
+    // TuteeHome,
     // TutorsList,
 
-    // TutorHome,
+    TutorHome,
     // LoginPage,
     // AddModulePopup
 
