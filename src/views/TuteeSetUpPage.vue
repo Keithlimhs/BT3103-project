@@ -17,22 +17,23 @@
                 <div class = "formli">
 
                     <label for="tuteename">Name:</label>
-                    <input type= "text" id= "tuteename" required = "" placeholder= "Enter your name here" size = "30"> 
+                    <input type= "text" id= "tuteename" placeholder= "Enter your name here" size = "30"> 
                     <span class="asterisk_input">  </span><br><br>
                     <label for="tuteecourse">Course:</label>
-                    <input type= "text" id= "tuteecourse" required = "" placeholder= "Enter your course here" size = "30"> 
+                    <input type= "text" id= "tuteecourse" placeholder= "Enter your course here" size = "30"> 
                     <span class="asterisk_input">  </span><br><br>
                     <label for="tuteeyear">Year of Study:</label>
-                    <input type= "text" id= "tuteeyear" required = "" placeholder= "Enter your year of study here" size = "30"> 
+                    <input type= "text" id= "tuteeyear" placeholder= "Enter your year of study here" size = "30"> 
                     <span class="asterisk_input">  </span><br><br>
 
                     <label for="tuteeabout">About Myself:</label>
                     <input type= "text" style="height: 100px" id= "tuteeabout" required = "" placeholder= "Enter description" size = "30">&nbsp; &nbsp;<br><br> 
+
                 </div>
             </form>
         </div>
         <div class = wrapper>
-            <button class="saveBtn" v-on:click="handleSubmit()" >SAVE</button>
+            <button class="saveBtn" v-on:click="handleSubmit()" type = "button">Save</button>
         </div>    
     </div>
 </template>
@@ -69,8 +70,9 @@ export default {
         }
     },
     mounted() {
-        this.fbuser = "brian@gmail.com";
-        // this.fbuser = firebase.auth().currentUser.email;
+        //this.fbuser = "brian@gmail.com";
+        const auth = getAuth()
+        this.fbuser = auth.currentUser.email;
     },
     methods: {
         async handleSubmit() {
@@ -87,8 +89,14 @@ export default {
             this.course = document.getElementById("tuteecourse").value;
             this.year = document.getElementById("tuteeyear").value;
             this.about = document.getElementById("tuteeabout").value;
-            alert("Saving data for Tutee: " + this.name);
-            try{
+            if (this.name == '' || this.course == "" || this.year == "") {
+              alert("Please fill in the compulsory fields")
+
+            } else {
+
+              alert("Saving data for Tutee: " + this.name);
+
+              try{
 
                 const docRef = await setDoc(doc(db, "Tutee", this.fbuser), {
 
@@ -103,13 +111,15 @@ export default {
                 })
                 console.log(docRef)
                 document.getElementById("setupForm").reset();
+
                 this.$emit("added")
-            }
-            catch(error) {
+                this.$router.push('/TuteeHome')
+              }
+              catch(error) {
                 console.error("Error adding document: ", error)
-            }
+              }
+          }
         }
-    
   }
 }
 </script>

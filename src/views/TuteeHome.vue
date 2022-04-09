@@ -31,7 +31,7 @@ import ModuleSearchBar from '../components/ModuleSearchBar.vue'
 import moduleButton from '../components/moduleButton.vue'
 import firebaseApp from "@/firebase.js"
 import { getFirestore } from "firebase/firestore"
-import { collection, getDocs, } from "firebase/firestore"
+import { collection, getDocs, getDoc, doc} from "firebase/firestore"
 import { getAuth, onAuthStateChanged } from "firebase/auth"
 
 const db = getFirestore(firebaseApp)
@@ -66,12 +66,23 @@ export default {
         const auth = getAuth()
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                this.user = user.Name;
+                this.fbuser = user.email;
+                getuser(this.fbuser).then(data => this.user = data.Name)
+                console.log(this.user)
+                // console.log(this.fbuser)
                 console.log("Signed in")
             } else {
                 console.log("Sign out")
             }
         })
+        async function getuser(user) {
+            let t = await getDoc(doc(db, "Tutee", String(user)))
+
+            return t.data()
+        }
+        // getuser(this.fbuser).then(data => this.user = data);
+
+        
         axios
         .get('https://api.nusmods.com/v2/2021-2022/moduleInfo.json', {headers:{"accept": "application/json"}})
         .then(response => this.modules = response.data)

@@ -1,12 +1,9 @@
 <template>
     <div id="backgroundColor">
-        <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
-
-        <div class="top">
-            <img id="logo" v-bind:src="require('../assets/Logo.jpeg')" alt="logo" />
-            <h1>SET UP PROFILE</h1>
+      <TopHeaderForSignIn pageName = "SET UP PROFILE"/>
+        <div class="profilePicture">
+            <img v-bind:src="require('../assets/Noprofilepicture.jpeg')" >
         </div>
-
         <div class = wrapper>
             <ProfilePicture/>
         </div>
@@ -15,25 +12,29 @@
             <form id="setupForm">
                 <div class = "formli">
                     <label for="tutorname">Name:</label>
-                    <input type= "text" id= "tutorname" required = "" placeholder= "Enter your name here" size = "30"> 
+                    <input type= "text" id= "tutorname" placeholder= "Enter your name here" size = "30"> 
                     <span class="asterisk_input">  </span> <br><br>
                     <label for="tutorcourse">Course:</label>
-                    <input type= "text" id= "tutorcourse" required = "" placeholder= "Enter your course here" size = "30">
+                    <input type= "text" id= "tutorcourse" placeholder= "Enter your course here" size = "30">
                     <span class="asterisk_input">  </span> <br><br>
                     <label for="tutoryear">Year of Study:</label>
-                    <input type= "text" id= "tutoryear" required = "" placeholder= "Enter your year of study here" size = "30">
+                    <input type= "text" id= "tutoryear"  placeholder= "Enter your year of study here" size = "30">
                     <span class="asterisk_input">  </span> <br><br>
                     <label for="tutorwebsite">Website:</label>
-                    <input type= "text" id= "tutorwebsite" required = "" placeholder= "Enter your website here" size = "30"> <br><br>
+                    <input type= "text" id= "tutorwebsite" placeholder= "Enter your website here" size = "30"> <br><br>
                     <label for="tutorabout">About Myself:</label>
-                    <input type= "text" style="height: 60px" id= "tutorabout" required = "" placeholder= "You may inlude a brief description of yourself and your expected rate here" size = "40"> <br><br>
+                    <input type= "text" style="height: 100px" id= "tutorabout" placeholder= "You may inlude a brief description of yourself and your expected rate here" size = "40"> <br><br>
                 </div>
             </form>
             <div class="modules">
                     <label for="modules">Modules Available:</label> 
                     &nbsp;
                     <AddModulePopup/>
-                </div>
+            </div>
+            <div class="list" v-for="module in modules" :key="module">
+                        <button>{{module}}</button>
+            </div>
+
         </div>
         <div class = wrapper>
             <button class="saveBtn" v-on:click="handleSubmit()" >SAVE</button>
@@ -44,10 +45,11 @@
 <script>
 import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import AddModulePopup from "@/views/AddModulePopup.vue";
 import ProfilePicture from "../components/ProfilePicture.vue"
-//import { getAuth, onAuthStateChanged } from "firebase/auth";
+import TopHeaderForSignIn from "../components/TopHeaderForSignIn"
+import { getAuth, onAuthStateChanged} from "firebase/auth";
 
 const db = getFirestore(firebaseApp)
 
@@ -57,6 +59,7 @@ export default {
     components: {
         AddModulePopup,
         ProfilePicture,
+        TopHeaderForSignIn
     },
 
     data() {
@@ -66,11 +69,27 @@ export default {
             year: "",
             website:"",
             about: "",
+            modules: [],
         }
     },
     mounted() {
-        this.fbuser = "shashank@gmail.com";
-        // this.fbuser = firebase.auth().currentUser.email;
+        const auth = getAuth()
+        this.fbuser = auth.currentUser.email;
+        async function getmodules(user) {
+          let m = await getDoc(doc(db, "Tutor", String(user)))
+          return m.data().ModulesAvailable
+        }
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                this.fbuser = user.email;
+                getmodules(this.fbuser).then(data => this.modules = data)
+                console.log(this.user)
+                // console.log(this.fbuser)
+                console.log("Signed in")
+            } else {
+                console.log("Sign out")
+            }
+        })
     },
     methods: {
         async handleSubmit() {
@@ -79,8 +98,11 @@ export default {
             this.year = document.getElementById("tutoryear").value;
             this.website = document.getElementById("tutorwebsite").value;
             this.about = document.getElementById("tutorabout").value;
-            alert("Saving data for Tutor: " + this.name);
-            try{
+            if (this.name == '' || this.course == '' || this.year == '') {
+              alert('Please fill in all required fields')
+            } else {
+              alert("Saving data for Tutor: " + this.name);
+              try{
                 const docRef = await setDoc(doc(db, "Tutor", this.fbuser), {
                     Email: this.fbuser,
                     Name: this.name,
@@ -93,10 +115,12 @@ export default {
                 console.log(docRef)
                 document.getElementById("setupForm").reset();
                 this.$emit("added")
+                // this.$router.push('/TutorHome')
             }
             catch(error) {
                 console.error("Error adding document: ", error)
             }
+        }
         }
     }
 }
@@ -186,6 +210,11 @@ font-size: large;
   white-space:pre-line;  
   position: center;
   top:-7px;
+
+}
+img {
+  padding: 10px;
+  width: 10em;
 
 }
 </style>
