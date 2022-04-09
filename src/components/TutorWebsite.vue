@@ -2,7 +2,10 @@
     <div class="thirdcontainer">
         <div id="subheading3">
             Website
-            <a v-bind:href="web">{{web}}</a>
+        </div>
+        <div id="link-btn">
+            <!-- <a v-bind:href="web">{{web}}</a> -->
+            <button v-on:click='btnClick'>{{web}}</button>
         </div>  
     </div>
 </template>
@@ -13,8 +16,12 @@ export default {
         return {
             web: "https://www.linkedin.com"
         }
+    },
+    methods: {
+        btnClick() {
+            window.open(this.web);
+        }
     }
-    
     
 }
 </script>
@@ -24,13 +31,25 @@ export default {
     background-color: #D4D4D4;
     border: 1px solid #000000;
     box-sizing: border-box;
+    height: 50px;
+    align-items: center;
+    display: flex;
 }
 
 #subheading3 {
-font-family: 'Rounded Mplus 1c Bold';
+/* font-family: 'Rounded Mplus 1c Bold'; */
 font-weight: 700;
-font-size: 15px;
+font-size: 20px;
 text-align: left;
 color: #8D8D8D;
+}
+
+button {
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 5px;
+    padding-left: 45px;
+    padding-right: 45px;
+    margin-left: 20px;
 }
 </style>

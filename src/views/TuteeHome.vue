@@ -10,6 +10,7 @@
             <ModuleSearchBar :searchInput="this.search" @update:searchInput="newValue => this.search = newValue"/>
         </div>
         <div class="modules" >
+            <div id="loading" v-if="!loaded">Loading modules...</div>
             <div id="mod" v-for="module in filteredList" :key="module">
                 <div class="mod-btn">
                     <router-link v-bind:to="'/tutors/' + module.moduleCode">
@@ -17,11 +18,8 @@
                     </router-link>
                 </div> 
             </div>
-            <div id="mod-not-found" v-if="!filteredList.length">Sorry, the module cannot be found</div>
+            <div id="mod-not-found" v-if="!filteredList.length && loaded">Sorry, the module cannot be found</div>
         </div>
-
-
-        
     </div>
     
 </template>
@@ -48,6 +46,7 @@ export default {
             modules: [],
             avail: [],
             search: "",
+            loaded: false,
         }
     },
     components: {
@@ -77,9 +76,14 @@ export default {
             })
             return modulesArray
         }
-        getdata().then(data => this.avail = data);
-        this.loading = true;
+        getdata().then(data => 
+        {this.avail = data
+        this.loaded = true});
     },
+    unmounted() {
+        this.loaded = false;
+    }
+    
 }
 </script>
 
@@ -100,7 +104,7 @@ export default {
     grid-template-columns: auto auto auto;
 }
 
-#mod-not-found {
+#mod-not-found, #loading {
     text-justify: center;
     padding-top: 250px;
     font-size: 40px;

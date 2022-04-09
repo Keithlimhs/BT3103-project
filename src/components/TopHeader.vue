@@ -1,17 +1,21 @@
 <template>
     <div id = "header">
-        <a href = "history.back()" class = "previous"><img id = "back" src="@/assets/backbutton.png" alt="error"></a>
-        <img id = "profilePic" src = "@/assets/logo.png" alt = "error">
+        <a href = "history.back()" class = "previous"><img id = "back" :src="backbtn" alt="error"></a>
+        <img id = "profilePic" :src ="logo" alt = "error">
         <h2 id = "title">{{ pageName }}</h2>
     </div>
 </template>
 
 <script>
 export default {
-
+    data() {
+        return {
+            backbtn: require('@/assets/backbutton.png'),
+            logo: require('@/assets/logo.png'),
+        }
+    },
     props: {
             pageName: String
-
     }
     
 }

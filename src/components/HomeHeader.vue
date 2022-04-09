@@ -1,6 +1,6 @@
 <template>
     <div id = "header">
-        <img id = "profilePic" src = "@/assets/logo.png" alt = "error">
+        <img id = "profilePic" :src ="logo" alt = "error">
         <h2 id = "title">HOME</h2>
     </div>
 </template>
@@ -9,6 +9,7 @@
 export default {
     data(){
         return{
+            logo: require("@/assets/logo.png")
         }
     },
     
