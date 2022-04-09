@@ -30,9 +30,8 @@
 <script>
 import "@fontsource/m-plus-rounded-1c";
 import firebaseApp from "@/firebase.js"
-import { getFirestore } from "firebase/firestore"
-
-import { doc, getDoc, setDoc, arrayUnion } from "firebase/firestore"
+import {  getFirestore } from "firebase/firestore"
+import { doc, setDoc, arrayUnion } from "firebase/firestore"
 import { getAuth, } from "firebase/auth"
 const db = getFirestore(firebaseApp)
 
@@ -71,13 +70,10 @@ export default {
                         ProfName: this.prof,
                         SemTaken: this.sem })
                     })
-                    const documentRefString = await getDoc(doc(db, "Tutor", this.fbuser))
-                    console.log(documentRefString)
-                    let tutorRef = "/Tutor/" + documentRefString.data().Email
+                    const tutorRef = doc(db, 'Tutor', this.fbuser);
                     console.log(tutorRef)
                     const docRef2 = await setDoc(doc(db, "Modules", this.code), {
-                        TutorIds: arrayUnion({
-                        tutorRef})
+                        TutorIds: arrayUnion(tutorRef)
                     })
                     console.log(docRef)
                     console.log(docRef2)

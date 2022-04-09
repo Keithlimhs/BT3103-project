@@ -83,7 +83,7 @@ export default {
             if (user) {
                 this.fbuser = user.email;
                 getmodules(this.fbuser).then(data => this.modules = data)
-                console.log(this.user)
+                console.log(this.fbuser)
                 // console.log(this.fbuser)
                 console.log("Signed in")
             } else {
@@ -110,17 +110,11 @@ export default {
                     Year: this.year,
                     Website: this.website,
                     About: this.about,
-                    ModulesAvailable: []
-                })
-                let documentRefString = await getDoc(doc(db, "Tutor", this.fbuser))
-                console.log(documentRefString)
-                let tutorRef = documentRefString.path
-                console.log(tutorRef)
-                const docRef2 = await setDoc(doc(db, "Modules", this.course), {
-                  TutorIds: [tutorRef]
+                    ModulesAvailable: this.fbuser.ModulesAvailable
+                    
                 })
                 console.log(docRef)
-                console.log(docRef2)
+        
                 document.getElementById("setupForm").reset();
                 this.$emit("added")
                 // this.$router.push('/TutorHome')

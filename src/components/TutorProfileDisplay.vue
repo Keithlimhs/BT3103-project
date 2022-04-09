@@ -13,7 +13,7 @@
               </div>
               <div id="year-course">
 
-                  Year {{tutor.year}}, {{tutor.major}}
+                  Year {{tutor.Year}}, {{tutor.Course}}
 
               </div>
           </div>
@@ -60,14 +60,8 @@ export default {
 
     props: {
         // eslint-disable-next-line vue/no-dupe-keys
-        user: String,
         // eslint-disable-next-line vue/no-dupe-keys
-        year: Number,
         // eslint-disable-next-line vue/no-dupe-keys
-        course: String,
-        // count: Number,
-        // rating: Number,
-
         tutor: Object,
     },
 
