@@ -1,33 +1,21 @@
 <template>
     <div id = "header">
-<<<<<<< HEAD
-        <!-- <a href = "history.back()" class = "previous"><img id = "back" v-bind:src="require('../assets/backbutton.png')" alt="error"></a> -->
-        <!-- <a href = "history.back()" class = "previous"><img id = "back" src="../assets/backbutton.png" alt="error"></a> -->
-        <!-- <img id = "profilePic" src = "../assets/logo.png" alt = "error"> -->
-        <h2 id = "title">{{pageName}}</h2>
-=======
-        <a href = "history.back()" class = "previous"><img id = "back" src="@/assets/backbutton.png" alt="error"></a>
-        <img id = "profilePic" src = "@/assets/logo.png" alt = "error">
+
+        <a href = "history.back()" class = "previous"><img id = "back" v-bind:src="require('@/assets/backbutton.png')" alt="error"></a>
+        <img id = "profilePic" v-bind:src = "require('@/assets/logo.png')" alt = "error">
         <h2 id = "title">{{ pageName }}</h2>
->>>>>>> d7ce82e6a02340b56b409605311a5fc0cd7a18b1
     </div>
 </template>
 
 <script>
 export default {
-<<<<<<< HEAD
-    data(){
-        return{
-            pageName: "PASSWORD RESET"
-        }
-    },
-=======
+
 
     props: {
             pageName: String
 
     }
->>>>>>> d7ce82e6a02340b56b409605311a5fc0cd7a18b1
+
     
 }
 </script>

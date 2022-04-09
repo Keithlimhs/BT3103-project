@@ -3,7 +3,7 @@
 <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
 
   <div class= "topArt">
-    <img src="@\images\TopLogo.png" alt="logo" width = 60>
+    <img src="@\assets\TopLogo.png" alt="logo" width = 60>
   </div>
   
   <h1>Log in to modsmatch@nus</h1>
