@@ -2,6 +2,7 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <div class = "container3">
       <form id = "reviewform">
+          <br><br>
           <h1>Write A Review</h1>
 
           <div class = "form">
@@ -20,7 +21,7 @@
               
             
               <div class = "save">
-                  <button class = "button" id = "savebutton" type = "button">Submit review</button><br><br>
+                  <button class = "button" id = "savebutton" type = "button">Submit review</button><br><br><br><br>
               </div>
           </div>
 
@@ -62,7 +63,7 @@ label {
 textarea {
     font-family: "M PLUS Rounded 1c";
     position: absolute;
-    left: 600px;
+    left: 693px;
     padding-left: 400ox;
 }
 .input2 {

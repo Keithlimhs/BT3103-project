@@ -1,5 +1,6 @@
 <template>
     <div id = "header">
+
         <a href = "history.back()" class = "previous"><img id = "back" v-bind:src="require('@/assets/backbutton.png')" alt="error"></a>
         <img id = "profilePic" v-bind:src = "require('@/assets/logo.png')" alt = "error">
         <h2 id = "title">{{ pageName }}</h2>
@@ -9,15 +10,20 @@
 <script>
 export default {
 
+
     props: {
             pageName: String
 
     }
+
     
 }
 </script>
 
 <style scoped>
+#logo {
+    width: 60px
+}
 div {
     background-color: #316879;
     height: 50px;

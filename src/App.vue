@@ -1,14 +1,27 @@
 <template>
 
+<!-- <router-view/> -->
+<!-- <TopHeaderForSignIn/> -->
+<!-- <TutorHome/> -->
+<!-- <TuteeProfileDisplayPage/> -->
+<!-- <TuteeProfileInfo/> -->
+<!-- <TutorModules/> -->
+<!-- <TutorProfileDisplay/> -->
+<EmailVerification/>
+
+
   <!-- <LoginPage/> -->
   <!-- <TutorsList/> -->
   <!-- <TutorHome/> -->
   <!-- <AddModulePopup/> -->
   <!-- <TuteeHome/> -->
+
   <!-- <router-link to="/"></router-link>
   <router-view/> -->
   <TopHeaderForSignIn/>
 <!-- <TutorProfilePage/> -->
+
+
 </template>
 
 
@@ -18,6 +31,14 @@
 
 <script>
 import "@fontsource/m-plus-rounded-1c";
+
+import EmailVerification from './views/PasswordReset.vue'
+// import TutorProfilePage from './views/TutorSetUpPage.vue'
+// import TuteeProfileDisplayPage from './components/TuteeProfileDisplayPage.vue'
+// import ChangePassword from './components/ChangePassword.vue'
+//import TutorsList from './views/TutorsList.vue'
+// import TutorHome from './views/TutorHome.vue'
+
 
 // import TutorsList from './views/TutorsList.vue'
 // import TutorHome from './views/TutorHome.vue'
@@ -31,6 +52,7 @@ import "@fontsource/m-plus-rounded-1c";
 // import TutorHome from './views/TutorHome.vue'
 
 
+
 // import LoginPage from './views/LoginPage.vue'
 
 // import AddModulePopup from './views/AddModulePopup.vue'
@@ -41,11 +63,18 @@ import TopHeaderForSignIn from './components/TopHeaderForSignIn.vue'
 // import TutorModules from './components/TutorModules.vue'
 // import TutorProfileDisplay from './components/TutorProfileDisplay'
 
+// import AddModule from './components/WriteReview'
+
+
 
 export default {
   name: 'App',
   components: {
-    // TutorProfileDisplay
+
+    EmailVerification,
+
+    // TuteeProfileDisplayPage,
+
     // TuteeProfileInfo
     // TutorModules
     TopHeaderForSignIn
@@ -58,6 +87,7 @@ export default {
 
     // TuteeHome,
     // TutorsList,
+
 
     // TutorHome,
     // LoginPage,
