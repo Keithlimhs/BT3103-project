@@ -1,7 +1,7 @@
 <template>
 <div class = 'emailVerification'>
     <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
-    <TopHeaderForSignIn/>
+    <TopHeader/>
     <div>
         <h2>Recover Password</h2>
     </div>
@@ -31,7 +31,7 @@ import 'firebase/compat/auth';
 import 'firebase/firestore';
 import firebaseApp from '../firebase.js';
 
-import TopHeaderForSignIn from '@/components/TopHeaderForSignIn.vue'
+import TopHeader from '@/components/TopHeader.vue'
 //import { getAuth, sendSignInLinkToEmail } from "firebase/auth";
 
 
@@ -39,7 +39,7 @@ export default {
 
 
     components: {
-        TopHeaderForSignIn
+        TopHeader
     },
     name: "EmailVerification",
 

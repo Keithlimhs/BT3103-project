@@ -1,40 +1,46 @@
 <template>
     <div id = "header">
-        <a href = "history.back()" class = "previous"><img id = "back" :src="backbtn" alt="error"></a>
-        <img id = "profilePic" :src ="logo" alt = "error">
-        <h2 id = "title">{{ pageName }}</h2>
+
+
+        <img id = "back" v-bind:src="require('@/assets/backbutton.png')" alt="error" v-on:click = "back()">
+        <img id = "profilePic" v-bind:src = "require('@/assets/logo.png')" alt = "error">
+        <h1 id = "title">{{ pageName }}</h1>
+
     </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            backbtn: require('@/assets/backbutton.png'),
-            logo: require('@/assets/logo.png'),
-        }
-    },
+
+
+
     props: {
             pageName: String
+
+    },
+
+    methods: {
+        back() {
+            history.back()
+    },
+
     }
+
     
 }
 </script>
 
 <style scoped>
+#logo {
+    width: 60px
+}
 div {
+    margin-top: 0px;
     background-color: #316879;
-    height: 50px;
+    height: 70px;
 }
 
-a {
-    padding-top: 10px;
-    margin-left: 10px;
-    float: left;
-    height: 0px;
-}
-
-h2 {
+h1 {
     padding-top: 10px;
     color: white;
     text-align: center;
@@ -47,6 +53,9 @@ img {
 }
 
 #back {
-    width: 30px;
+    width: 40px;
+    padding-top: 10px;
+    margin-left: 10px;
+    float: left;
 }
 </style>

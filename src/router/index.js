@@ -2,8 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 
 import EmailVerification from '@/views/EmailVerification.vue'
-import PasswordReset from "@/components/PasswordRequest.vue"
-
+import ChangePassword from "@/components/ChangePassword.vue"
+import TuteeProfileDisplayPage from "@/components/TuteeProfileDisplayPage.vue"
+import UserGuidelines from '@/components/UserGuidelines.vue'
 import TuteeSetUpPage from '@/views/TuteeSetUpPage.vue'
 import TutorSetUpPage from '@/views/TutorSetUpPage.vue'
 import TuteeLoginPage from '@/views/TuteeLoginPage.vue'
@@ -21,23 +22,40 @@ import TutorHome from '@/views/TutorHome.vue'
 
 
 const routes = [
+
+    {
+        path: "/TuteeProfileDisplayPage",
+        name: "TuteeProfileDisplayPage",
+        component: TuteeProfileDisplayPage,
+    },
+    {
+        path: "/UserGuidelines",
+        name: "UserGuidelines",
+        component: UserGuidelines,
+    },
+    {
+        path: "/UserGuidelines",
+        name: "UserGuidelines",
+        component: UserGuidelines,
+    },
+
     {
         path: "/EmailVerification",
         name: "EmailVerification",
         component: EmailVerification,
     },
     {
-        path: "/PasswordReset",
-        name: "PasswordReset",
-        component: PasswordReset,
+        path: "/ChangePassword",
+        name: "ChangePassword",
+        component: ChangePassword,
     },
     {
-        path: '/MainPage',
+        path: '/',
         name: 'MainPage',
         component: MainPage
     },
     {
-        path: '/',
+        path: '/TuteeHome',
         name: 'TuteeHome',
         component: TuteeHome
     },

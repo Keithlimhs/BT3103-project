@@ -1,12 +1,13 @@
 <template>
   <div class = "container2">
       <form id = "makeoffer">
+          <br><br>
           <h1><strong>How much do you wish to offer?</strong></h1>
 
           <div class = "form">
               <input type = "number" id = "offer" required placeholder = "Insert offer here..."> <br><br>
               <div class = "save">
-                  <button class = "button" id = "savebutton" type = "button">Make offer</button><br><br>
+                  <button class = "button" id = "savebutton" type = "button">Make offer</button><br><br><br><br>
               </div>
           </div>
 
@@ -18,6 +19,7 @@
 <script>
 import "@fontsource/m-plus-rounded-1c";
 export default {
+
 
 }
 </script>
