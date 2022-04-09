@@ -49,7 +49,7 @@ export default {
   display: block;
   color: #f2f2f2;
   text-align: center;
-  padding: 13px 170px;
+  padding: 13px 250px;
   text-decoration: none;
   font-size: 16px;
   width: 100%,

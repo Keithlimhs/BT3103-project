@@ -1,8 +1,8 @@
 <template>
     <div id="backgroundColor">
+      <TopHeader/>
       <NavBarTutee/>
         <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
-
         <div class="profilePicture">
             <img src="../assets/Noprofilepicture.jpeg">
         </div>
@@ -61,19 +61,21 @@
 import firebaseApp from '../firebase.js';
 import { doc, getFirestore } from "firebase/firestore";
 import { getDoc } from "firebase/firestore";
-import NavBarTutee from '@/components/NavBarTutee.vue';
-
+import NavBarTutee from '@/components/NavBarTutee.vue'
+import TopHeader from '@/components/TopHeader.vue'
 const db = getFirestore(firebaseApp);
 
 export default {
 
     name: "TuteeProfileInfo",
     components: {
-        NavBarTutee,
+      TopHeader,
+      NavBarTutee,
     },
+    
     data() {
         return {
-            fbuser: "hslim03@hotmail.com",
+            fbuser: "e0564108@u.nus.edu",
             name: '',
             course: '',
             year: '',
@@ -83,7 +85,7 @@ export default {
 
   mounted(){
   // const auth = getAuth();   
-  this.fbuser = "hslim03@hotmail.com"; 
+  this.fbuser = "e0564108@u.nus.edu"; 
   // this.fbuser = firebase.auth().currentUser.email
   this.display(this.fbuser)},
   
@@ -93,7 +95,7 @@ export default {
     async display(user) {
       console.log(user)
       // const docRef = await getDocs(doc(db, "TuteeDetails", this.name))
-      const docRef = doc(db, String(user), "tuteeprofile")
+      const docRef = doc(db, "Tutee", String(user))
       const userProfileDoc = await getDoc(docRef)
       const userProfile = userProfileDoc.data()
       console.log(userProfile)
@@ -106,9 +108,9 @@ export default {
 //   // doc.data() will be undefined in this case
 //   console.log("No such document!");
 // }
-      var name = (userProfile.name)
-      var course = (userProfile.course)
-      var year = (userProfile.year)
+      var name = (userProfile.Name)
+      var course = (userProfile.Course)
+      var year = (userProfile.Year)
       var about = (userProfile.About)
       document.getElementById('tuteeName').value = name;
       document.getElementById('tuteeCourse').value = course;
