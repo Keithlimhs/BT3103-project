@@ -23,7 +23,6 @@ import TutorHome from '@/views/TutorHome.vue'
 const routes = [
 
     {
-<<<<<<< HEAD
         path: "/",
         name: "TuteeProfileDisplayPage",
         component: TuteeProfileDisplayPage,
@@ -40,8 +39,6 @@ const routes = [
     },
 
     {
-=======
->>>>>>> d7ce82e6a02340b56b409605311a5fc0cd7a18b1
         path: "/EmailVerification",
         name: "EmailVerification",
         component: EmailVerification,
