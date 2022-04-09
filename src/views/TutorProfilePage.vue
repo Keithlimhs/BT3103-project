@@ -2,22 +2,16 @@
     <div id="backgroundColor">
         <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
 
-        <!-- //<TopHeader/>
-        //<TutorProfileDisplay/>
-        //<TutorAbout/> 
-        //<TutorModules/> 
-        //<TutorWebsite/> -->
-
         <TopHeader pageName="PROFILE PAGE"/> <br>
         <TutorProfileMain :tutor="this.tutor"/>
         <div class="about">
-            <TutorAbout/> 
+            <TutorAbout :tutor="this.tutor"/> 
         </div>
         <div class="modules">
-            <TutorModules/> 
+            <TutorModules :tutor="this.tutor"/> 
         </div>
         <div class="website">
-            <TutorWebsite/>
+            <TutorWebsite :tutor="this.tutor"/>
         </div>
         
 
