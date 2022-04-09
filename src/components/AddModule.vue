@@ -32,7 +32,7 @@ import "@fontsource/m-plus-rounded-1c";
 import firebaseApp from "@/firebase.js"
 import { getFirestore } from "firebase/firestore"
 
-import { doc, updateDoc, arrayUnion } from "firebase/firestore"
+import { doc, getDoc, setDoc, arrayUnion } from "firebase/firestore"
 import { getAuth, } from "firebase/auth"
 const db = getFirestore(firebaseApp)
 
@@ -47,6 +47,7 @@ export default {
     mounted() {
         const auth = getAuth()
         this.fbuser = auth.currentUser.email;
+        console.log(this.fbuser)
     },
 
     methods: {
@@ -61,19 +62,27 @@ export default {
             } else {
                 alert("Saving data for module: " + this.code);
                 try{
-                    const docRef = await updateDoc(doc(db, "Tutor", this.fbuser), {
+                    const docRef = await setDoc(doc(db, "Tutor", this.fbuser), {
+                        Email: this.fbuser,
                         ModulesAvailable: arrayUnion({
                         ModuleCode: this.code, 
                         GradeAttained: this.grade,
                         AY: this.ay,
                         ProfName: this.prof,
                         SemTaken: this.sem })
-
+                    })
+                    const documentRefString = await getDoc(doc(db, "Tutor", this.fbuser))
+                    console.log(documentRefString)
+                    let tutorRef = "/Tutor/" + documentRefString.data().Email
+                    console.log(tutorRef)
+                    const docRef2 = await setDoc(doc(db, "Modules", this.code), {
+                        TutorIds: arrayUnion({
+                        tutorRef})
                     })
                     console.log(docRef)
+                    console.log(docRef2)
                     document.getElementById("myform").reset();
                     this.$emit("added")
-                
                 }
                 catch(error) {
                     console.error("Error adding document: ", error)
