@@ -3,20 +3,26 @@
 
             <img id = "logo" v-bind:src = "require('@/assets/logo_bg_removed.png')" alt = "error">
             <img id = "profilePic" v-bind:src = "require('@/assets/logo.png')" alt = "error">
+            <DropdownMenu/>
+        
+            
+            
             <h1 id = "title">{{ pageName }}</h1> 
 
     </div>
 </template>
 
 <script>
+import DropdownMenu from '../components/DropdownMenu.vue'
 export default {
 
     props: {
         pageName: String
+    },
+    components: {
+        DropdownMenu,
     }
 
-
-    
 }
 </script>
 
@@ -28,6 +34,7 @@ div {
 }
 
 h1 {
+    margin-left:9vw;
     margin-top: 0px;
     padding-top: 10px;
     color: white;
@@ -45,5 +52,10 @@ h1 {
     float: right;
     height: auto;
 }
+
+
+
+
+
 
 </style>
