@@ -27,7 +27,7 @@
 import { getAuth, signOut } from "firebase/auth";
 import firebaseApp from '../firebase.js';
 export default {
-    name: "DropdownMenu",
+    name: "DropdownMenuTutor",
     methods:{
         
         LogOut(){
@@ -46,7 +46,7 @@ export default {
         },
 
         GoToHomePage(){
-            this.$router.push('/TuteeHome');
+            this.$router.push('/TutorHome');
         }
     }
 }
