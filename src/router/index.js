@@ -24,15 +24,17 @@ import TutorHome from '@/views/TutorHome.vue'
 const routes = [
 
     {
+        path: "/",
+        name: "ChangePassword",
+        component: ChangePassword,
+    },
+
+    {
         path: "/TuteeProfileDisplayPage",
         name: "TuteeProfileDisplayPage",
         component: TuteeProfileDisplayPage,
     },
-    {
-        path: "/UserGuidelines",
-        name: "UserGuidelines",
-        component: UserGuidelines,
-    },
+
     {
         path: "/UserGuidelines",
         name: "UserGuidelines",
@@ -45,6 +47,7 @@ const routes = [
         component: EmailVerification,
     },
     {
+
         path: "/ChangePassword",
         name: "ChangePassword",
         component: ChangePassword,
