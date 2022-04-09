@@ -31,9 +31,9 @@
 import "@fontsource/m-plus-rounded-1c";
 import firebaseApp from "@/firebase.js"
 import { getFirestore } from "firebase/firestore"
-import { doc, setDoc } from "firebase/firestore"
-// import { getAuth, onAuthStateChanged } from "firebase/auth"
 
+import { doc, updateDoc, arrayUnion } from "firebase/firestore"
+// import { getAuth, onAuthStateChanged } from "firebase/auth"
 const db = getFirestore(firebaseApp)
 
 export default {
@@ -43,6 +43,12 @@ export default {
         }
     },
     props: ['TogglePopup'],
+
+    mounted() {
+        this.fbuser = "shashank@gmail.com";
+        // this.fbuser = firebase.auth().currentUser.email;
+    },
+
     methods: {
         async addmodule() {
             this.code = document.getElementById("modulecode").value;
@@ -53,12 +59,14 @@ export default {
             alert("Saving data for module: " + this.code);
 
             try{
-                const docRef = await setDoc(doc(db, "Modules", this.code), {
-                    ModuleCode: this.code,
+                const docRef = await updateDoc(doc(db, "Tutor", this.fbuser), {
+                    ModulesAvailable: arrayUnion({
+                    ModuleCode: this.code, 
                     GradeAttained: this.grade,
                     AY: this.ay,
                     ProfName: this.prof,
-                    SemTaken: this.sem
+                    SemTaken: this.sem })
+
                 })
                 console.log(docRef)
                 document.getElementById("myform").reset();
@@ -83,7 +91,6 @@ export default {
 }
 
 form {
-    width: 40%;
     background-color: #ACB3BF ;
 }
 
@@ -92,7 +99,6 @@ h1 {
     font-family: "M PLUS Rounded 1c";
     font-weight: 900;
 }
-
 
 .asterisk_input:after {
 content:"*"; 
@@ -118,6 +124,7 @@ font-size: x-large;
 
 }
 
+
 .button {
     
     padding: 7px;
@@ -129,14 +136,19 @@ font-size: x-large;
 }
 
 #addbutton {
-    background-color: green;
+    background-color: greenyellow;
     margin-right: 40px;
 }
+
+
 
 #exitbutton {
     background-color: #d45b5b;
     margin-left: 40px;
 }
+
+
+
 
 .button:hover {
     background-color: rgb(214, 154, 211);

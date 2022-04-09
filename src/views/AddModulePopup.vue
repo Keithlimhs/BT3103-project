@@ -32,4 +32,18 @@ export default {
 
 <style scoped>
 
+button{
+  border-radius: 5px;
+  background: #308C05;
+  border: 0.5px solid #000000;
+  cursor: pointer;
+  color: white;
+  box-sizing: border-box;
+  width: 100px;
+  height: 25px;
+  font-size: 12px;
+  font-family: 'M PLUS Rounded 1c';
+  font-weight: 500;
+}
+
 </style>

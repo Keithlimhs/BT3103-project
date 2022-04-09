@@ -2,7 +2,9 @@
 <template>
   <div class="tutor-profile">
       <div class="left-container">
+
         <img class="tutor-img" :src="image" alt=""> <!-- retreive photo from firestore database by auth().user.PhotoURL -->
+
       </div>
       <div class="middle-container">
           <div class="tutor-info">
@@ -10,21 +12,25 @@
                   {{tutor.Name}}
               </div>
               <div id="year-course">
+
                   Year {{tutor.year}}, {{tutor.major}}
+
               </div>
           </div>
       </div>
       <div class="right-container">
           <div class="top-right">
             <button class="chat">
-                <Chat class="icon"/>
+                <Chat class="icon" fillColor = 'white'/>
                 <span class="text">Chat</span> <!-- link to chat interface -->
             </button>
+
             <router-link v-bind:to="this.$route.path + '/' + tutor.id">
                 <button class="view-profile">
                     View Profile <!-- link to full profile -->               
                 </button>
             </router-link>
+
           </div>
           <div class="bottom-right">
             <div class="reviews" style="display:inline-block;">
@@ -61,8 +67,10 @@ export default {
         course: String,
         // count: Number,
         // rating: Number,
+
         tutor: Object,
     },
+
 
     components: {
         Chat,
@@ -74,9 +82,11 @@ export default {
 
 <style scoped>
 .tutor-profile {
-	background-color: #8D8D8D;
+	background-color: #D4D4D4;
 	padding: 30px;
+
     margin: 100px;
+
     margin-left: 170px;
     margin-right: 170px; 
 	display: flex;
