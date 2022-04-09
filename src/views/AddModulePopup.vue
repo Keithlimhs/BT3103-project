@@ -6,6 +6,7 @@
 <script>
 import { ref } from 'vue';
 import AddModule from '../components/AddModule.vue'
+
 export default {
     data(){
         return
@@ -30,6 +31,7 @@ export default {
 </script>
 
 <style scoped>
+
 button{
   border-radius: 5px;
   background: #308C05;
@@ -43,4 +45,5 @@ button{
   font-family: 'M PLUS Rounded 1c';
   font-weight: 500;
 }
+
 </style>

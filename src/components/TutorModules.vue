@@ -1,6 +1,6 @@
 <template>
     <div class="secondcontainer">
-        <div id="subheading2">Module Available</div>
+        <div id="subheading2">Modules Available</div>
         <div class="modules">
             <button @click="popup=true" color="primary" type="border">{{module}}</button>
             <popup v-show="popup">
@@ -26,6 +26,7 @@ const db = getFirestore(firebaseApp);
 export default {
     data() {
         return {
+
             module: "",
             grade: "",
             yearTaken: "",
@@ -62,6 +63,7 @@ export default {
         display().then(data => this.semTaken = data); 
         display().then(data => this.prof = data); 
     }
+
 }
 </script>
 
@@ -70,16 +72,18 @@ export default {
     background-color: #D4D4D4;
     border: 1px solid #000000;
     box-sizing: border-box;
+
     padding: 30px;
     margin: 10px;
     margin-left: 170px;
     margin-right: 170px; 
 	flex-direction: row;
+
 }
 #subheading2 {
-font-family: 'Rounded Mplus 1c Bold';
+/* font-family: 'Rounded Mplus 1c Bold'; */
 font-weight: 700;
-font-size: 15px;
+font-size: 20px;
 text-align: left;
 color: #8D8D8D;
 }
@@ -91,6 +95,8 @@ button {
     border: 1px solid #000000;
     box-sizing: border-box;
     border-radius: 30px;
+    margin-left: 20px;
+    font-size: 18px;
 }
 p {
     text-align: left;

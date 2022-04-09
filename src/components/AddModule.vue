@@ -31,9 +31,11 @@
 import "@fontsource/m-plus-rounded-1c";
 import firebaseApp from "@/firebase.js"
 import { getFirestore } from "firebase/firestore"
+
 import { doc, updateDoc, arrayUnion } from "firebase/firestore"
 // import { getAuth, onAuthStateChanged } from "firebase/auth"
 const db = getFirestore(firebaseApp)
+
 export default {
     data(){
         return{
@@ -41,10 +43,12 @@ export default {
         }
     },
     props: ['TogglePopup'],
+
     mounted() {
         this.fbuser = "shashank@gmail.com";
         // this.fbuser = firebase.auth().currentUser.email;
     },
+
     methods: {
         async addmodule() {
             this.code = document.getElementById("modulecode").value;
@@ -53,6 +57,7 @@ export default {
             this.prof = document.getElementById("profname").value;
             this.sem = document.getElementById("semtaken").value;
             alert("Saving data for module: " + this.code);
+
             try{
                 const docRef = await updateDoc(doc(db, "Tutor", this.fbuser), {
                     ModulesAvailable: arrayUnion({
@@ -61,6 +66,7 @@ export default {
                     AY: this.ay,
                     ProfName: this.prof,
                     SemTaken: this.sem })
+
                 })
                 console.log(docRef)
                 document.getElementById("myform").reset();
@@ -83,20 +89,24 @@ export default {
     justify-content: center;
     
 }
+
 form {
     background-color: #ACB3BF ;
 }
+
 h1 {
     text-align: center;
     font-family: "M PLUS Rounded 1c";
     font-weight: 900;
 }
+
 .asterisk_input:after {
 content:"*"; 
 color: #e32;
 position: absolute; 
 font-size: x-large; 
 }
+
 .input1{
     font-family: "M PLUS Rounded 1c";
     text-align: center;
@@ -104,12 +114,17 @@ font-size: x-large;
     padding: 5px;
     border: grey;
     border-radius: 5px;
+
 } 
+
 .options {
     display: flex;
     flex-direction: row;
     justify-content: center;
+
 }
+
+
 .button {
     
     padding: 7px;
@@ -119,16 +134,25 @@ font-size: x-large;
     font-size:75%;
     font-family: "M PLUS Rounded 1c";
 }
+
 #addbutton {
     background-color: greenyellow;
     margin-right: 40px;
 }
+
+
+
 #exitbutton {
     background-color: #d45b5b;
     margin-left: 40px;
 }
+
+
+
+
 .button:hover {
     background-color: rgb(214, 154, 211);
     box-shadow: 3px 2px purple
 }
+
 </style>

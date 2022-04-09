@@ -1,11 +1,12 @@
 <template>
     <div id="backgroundColor">
-        <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
 
-        <div class="top">
-            <img id="logo" v-bind:src="require('../assets/Logo.jpeg')" alt="logo" />
-            <h1>SET UP PROFILE</h1>
+        <TopHeaderForSignIn pageName = "SET UP PROFILE"/>
+
+        <div class="profilePicture">
+            <img v-bind:src="require('../assets/Noprofilepicture.jpeg')" >
         </div>
+
 
         <div class = wrapper>
             <ProfilePic/>
@@ -14,6 +15,7 @@
         <div class ="form">
             <form id="setupForm">
                 <div class = "formli">
+
                     <label for="tuteename">Name:</label>
                     <input type= "text" id= "tuteename" required = "" placeholder= "Enter your name here" size = "30"> 
                     <span class="asterisk_input">  </span><br><br>
@@ -23,8 +25,9 @@
                     <label for="tuteeyear">Year of Study:</label>
                     <input type= "text" id= "tuteeyear" required = "" placeholder= "Enter your year of study here" size = "30"> 
                     <span class="asterisk_input">  </span><br><br>
+
                     <label for="tuteeabout">About Myself:</label>
-                    <input type= "text" style="height: 60px" id= "tuteeabout" required = "" placeholder= "Enter description" size = "30"> <br><br> 
+                    <input type= "text" style="height: 100px" id= "tuteeabout" required = "" placeholder= "Enter description" size = "30">&nbsp; &nbsp;<br><br> 
                 </div>
             </form>
         </div>
@@ -38,16 +41,23 @@
 import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore";
+
 import ProfilePic from "../components/ProfilePicture.vue"
-//import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+import TopHeaderForSignIn from '../components/TopHeaderForSignIn.vue'
+import {getAuth, onAuthStateChanged} from 'firebase/auth';
+
 
 const db = getFirestore(firebaseApp)
 
 export default {
+
     name: "TuteeSetUpPage",
 
     components: {
         ProfilePic,
+        TopHeaderForSignIn
+
     },
 
     data() {
@@ -64,19 +74,32 @@ export default {
     },
     methods: {
         async handleSubmit() {
+            const auth = getAuth(firebaseApp);
+            onAuthStateChanged(auth, (user) => {
+              if (user) {
+              this.fbuser = user.email;
+              console.log("Signed in")
+              } else {
+                console.log("Sign out")
+              }
+            })
             this.name = document.getElementById("tuteename").value;
             this.course = document.getElementById("tuteecourse").value;
             this.year = document.getElementById("tuteeyear").value;
             this.about = document.getElementById("tuteeabout").value;
             alert("Saving data for Tutee: " + this.name);
             try{
+
                 const docRef = await setDoc(doc(db, "Tutee", this.fbuser), {
+
                     Email: this.fbuser,
                     Name: this.name,
                     Course: this.course,
                     Year: this.year,
+
                     Description: this.about,
                     TutorIds: []
+
                 })
                 console.log(docRef)
                 document.getElementById("setupForm").reset();
@@ -86,7 +109,8 @@ export default {
                 console.error("Error adding document: ", error)
             }
         }
-    }
+    
+  }
 }
 </script>
 
@@ -132,6 +156,7 @@ h1{
   vertical-align: top;
   font-family: 'M PLUS Rounded 1c';
 }
+
 .saveBtn {
   border: 1px solid #000000;
   background-color: #FFA500;
@@ -151,5 +176,15 @@ content:"*";
 color: red;
 font-size: large; 
 position: absolute;
+}
+
+img {
+  padding: 10px;
+  width: 10em;
+
+}
+
+label {
+  padding-right: 10px;
 }
 </style>
