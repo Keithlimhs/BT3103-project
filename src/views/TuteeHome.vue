@@ -10,6 +10,7 @@
             <ModuleSearchBar :searchInput="this.search" @update:searchInput="newValue => this.search = newValue"/>
         </div>
         <div class="modules" >
+            <div id="loading" v-if="!loaded">Loading modules...</div>
             <div id="mod" v-for="module in filteredList" :key="module">
                 <div class="mod-btn">
                     <router-link v-bind:to="'/tutors/' + module.moduleCode">
@@ -17,11 +18,8 @@
                     </router-link>
                 </div> 
             </div>
-            <div id="mod-not-found" v-if="!filteredList.length">Sorry, the module cannot be found</div>
+            <div id="mod-not-found" v-if="!filteredList.length && loaded">Sorry, the module cannot be found</div>
         </div>
-
-
-        
     </div>
     
 </template>
@@ -33,8 +31,8 @@ import ModuleSearchBar from '../components/ModuleSearchBar.vue'
 import moduleButton from '../components/moduleButton.vue'
 import firebaseApp from "@/firebase.js"
 import { getFirestore } from "firebase/firestore"
-import { collection, getDocs, } from "firebase/firestore"
-// import { getAuth, onAuthStateChanged } from "firebase/auth"
+import { collection, getDocs, getDoc, doc} from "firebase/firestore"
+import { getAuth, onAuthStateChanged } from "firebase/auth"
 
 const db = getFirestore(firebaseApp)
 
@@ -44,10 +42,11 @@ export default {
     name: "TuteeHome",
     data() {
         return {
-            user: "User",
+            user: "",
             modules: [],
             avail: [],
             search: "",
+            loaded: false,
         }
     },
     components: {
@@ -64,6 +63,26 @@ export default {
         
     },
     mounted() {
+        const auth = getAuth()
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                this.fbuser = user.email;
+                getuser(this.fbuser).then(data => this.user = data.Name)
+                console.log(this.user)
+                // console.log(this.fbuser)
+                console.log("Signed in")
+            } else {
+                console.log("Sign out")
+            }
+        })
+        async function getuser(user) {
+            let t = await getDoc(doc(db, "Tutee", String(user)))
+
+            return t.data()
+        }
+        // getuser(this.fbuser).then(data => this.user = data);
+
+        
         axios
         .get('https://api.nusmods.com/v2/2021-2022/moduleInfo.json', {headers:{"accept": "application/json"}})
         .then(response => this.modules = response.data)
@@ -77,9 +96,14 @@ export default {
             })
             return modulesArray
         }
-        getdata().then(data => this.avail = data);
-        this.loading = true;
+        getdata().then(data => 
+        {this.avail = data
+        this.loaded = true});
     },
+    unmounted() {
+        this.loaded = false;
+    }
+    
 }
 </script>
 
@@ -100,7 +124,7 @@ export default {
     grid-template-columns: auto auto auto;
 }
 
-#mod-not-found {
+#mod-not-found, #loading {
     text-justify: center;
     padding-top: 250px;
     font-size: 40px;

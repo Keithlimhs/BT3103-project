@@ -4,14 +4,14 @@
           <h1><U>Add Module</U></h1>
 
           <div class = "form">
-            <input class = "input1" type = "text" id = "modulecode" required placeholder = "Module Code">
+            <input class = "input1" type = "text" id = "modulecode" placeholder = "Module Code">
             <span class="asterisk_input">  </span>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                   
-            <input class = "input1" type = "text" id = "gradeattained" required placeholder = "Grade Attained">
+            <input class = "input1" type = "text" id = "gradeattained" placeholder = "Grade Attained">
             <span class="asterisk_input">  </span> <br><br><br>
-            <input class = "input1" type = "text" id = "enteray" required placeholder = "AY (e.g. 21/22)">
+            <input class = "input1" type = "text" id = "enteray" placeholder = "AY (e.g. 21/22)">
             <span class="asterisk_input">  </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
             <input class = "input1" type = "text" id = "profname" placeholder = "Prof Name"> <br><br><br>
-            <input class = "input1" type = "text" id = "semtaken" required placeholder = "Sem Taken">
+            <input class = "input1" type = "text" id = "semtaken" placeholder = "Sem Taken">
             <span class="asterisk_input">  </span> <br><br><br>   
             
             <div class = "options">
@@ -31,9 +31,9 @@
 import "@fontsource/m-plus-rounded-1c";
 import firebaseApp from "@/firebase.js"
 import { getFirestore } from "firebase/firestore"
-import { doc, setDoc } from "firebase/firestore"
-// import { getAuth, onAuthStateChanged } from "firebase/auth"
 
+import { doc, updateDoc, arrayUnion } from "firebase/firestore"
+import { getAuth, } from "firebase/auth"
 const db = getFirestore(firebaseApp)
 
 export default {
@@ -43,6 +43,12 @@ export default {
         }
     },
     props: ['TogglePopup'],
+
+    mounted() {
+        const auth = getAuth()
+        this.fbuser = auth.currentUser.email;
+    },
+
     methods: {
         async addmodule() {
             this.code = document.getElementById("modulecode").value;
@@ -50,22 +56,28 @@ export default {
             this.ay = document.getElementById("enteray").value;
             this.prof = document.getElementById("profname").value;
             this.sem = document.getElementById("semtaken").value;
-            alert("Saving data for module: " + this.code);
+            if (this.code == '' || this.grade == '' || this.ay == '' || this.sem == '') {
+                alert("Please fill in required fills");
+            } else {
+                alert("Saving data for module: " + this.code);
+                try{
+                    const docRef = await updateDoc(doc(db, "Tutor", this.fbuser), {
+                        ModulesAvailable: arrayUnion({
+                        ModuleCode: this.code, 
+                        GradeAttained: this.grade,
+                        AY: this.ay,
+                        ProfName: this.prof,
+                        SemTaken: this.sem })
 
-            try{
-                const docRef = await setDoc(doc(db, "Modules", this.code), {
-                    ModuleCode: this.code,
-                    GradeAttained: this.grade,
-                    AY: this.ay,
-                    ProfName: this.prof,
-                    SemTaken: this.sem
-                })
-                console.log(docRef)
-                document.getElementById("myform").reset();
-                this.$emit("added")
-            }
-            catch(error) {
-                console.error("Error adding document: ", error)
+                    })
+                    console.log(docRef)
+                    document.getElementById("myform").reset();
+                    this.$emit("added")
+                
+                }
+                catch(error) {
+                    console.error("Error adding document: ", error)
+                }
             }
         }
     }
@@ -83,7 +95,6 @@ export default {
 }
 
 form {
-    width: 40%;
     background-color: #ACB3BF ;
 }
 
@@ -92,7 +103,6 @@ h1 {
     font-family: "M PLUS Rounded 1c";
     font-weight: 900;
 }
-
 
 .asterisk_input:after {
 content:"*"; 
@@ -118,6 +128,7 @@ font-size: x-large;
 
 }
 
+
 .button {
     
     padding: 7px;
@@ -129,14 +140,19 @@ font-size: x-large;
 }
 
 #addbutton {
-    background-color: green;
+    background-color: greenyellow;
     margin-right: 40px;
 }
+
+
 
 #exitbutton {
     background-color: #d45b5b;
     margin-left: 40px;
 }
+
+
+
 
 .button:hover {
     background-color: rgb(214, 154, 211);
