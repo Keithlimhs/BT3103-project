@@ -1,7 +1,7 @@
 <template>
     <div class="topnav">
         <div id = "myTopnav">           
-            <router-link to ="/TuteeProfileDisplayPage">Tutee Profile Display</router-link> 
+            <router-link to ="/TutorProfile">Tutor Profile Display</router-link> 
             <router-link to ="/ChangePassword">Change Password</router-link> 
             <router-link to ="/UserGuidelines">User Guidelines</router-link>
         </div>
