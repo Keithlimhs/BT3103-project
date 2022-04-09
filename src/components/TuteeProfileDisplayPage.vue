@@ -57,7 +57,7 @@
 // import firebaseApp from '../firebase.js';
 // import { getFirestore } from "firebase/firestore"
 // import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
-// import { getAuth} from 'firebase/auth';
+import { getAuth} from 'firebase/auth';
 import firebaseApp from '../firebase.js';
 import { doc, getFirestore } from "firebase/firestore";
 import { getDoc } from "firebase/firestore";
@@ -84,9 +84,9 @@ export default {
     },
 
   mounted(){
-  // const auth = getAuth();   
-  this.fbuser = "e0564108@u.nus.edu"; 
-  // this.fbuser = firebase.auth().currentUser.email
+  const auth = getAuth();   
+  // this.fbuser = "e0564108@u.nus.edu"; 
+  this.fbuser = auth.currentUser.email;
   this.display(this.fbuser)},
   
 
