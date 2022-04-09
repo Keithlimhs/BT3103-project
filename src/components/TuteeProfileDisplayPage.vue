@@ -75,7 +75,7 @@ export default {
     
     data() {
         return {
-            fbuser: "e0564108@u.nus.edu",
+            fbuser: "",
             name: '',
             course: '',
             year: '',
