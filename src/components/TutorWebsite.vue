@@ -25,7 +25,7 @@ export default {
     
     mounted() {
         async function display() {
-            let z = await getDocs(collection(db,"TutorDetails"))
+            let z = await getDocs(collection(db,"Tutor"))
             let web = ''
             z.forEach((docs) =>{
                 let yy = docs.data()
@@ -45,6 +45,11 @@ export default {
     background-color: #D4D4D4;
     border: 1px solid #000000;
     box-sizing: border-box;
+    padding: 30px;
+    margin: 10px;
+    margin-left: 170px;
+    margin-right: 170px; 
+	flex-direction: row;
 }
 
 #subheading3 {

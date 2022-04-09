@@ -39,6 +39,7 @@ import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore";
 import ProfilePic from "../components/ProfilePicture.vue"
+//import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const db = getFirestore(firebaseApp)
 
@@ -57,6 +58,10 @@ export default {
             about: "",
         }
     },
+    mounted() {
+        this.fbuser = "brian@gmail.com";
+        // this.fbuser = firebase.auth().currentUser.email;
+    },
     methods: {
         async handleSubmit() {
             this.name = document.getElementById("tuteename").value;
@@ -65,11 +70,13 @@ export default {
             this.about = document.getElementById("tuteeabout").value;
             alert("Saving data for Tutee: " + this.name);
             try{
-                const docRef = await setDoc(doc(db, "TuteeDetails", this.name), {
+                const docRef = await setDoc(doc(db, "Tutee", this.fbuser), {
+                    Email: this.fbuser,
                     Name: this.name,
                     Course: this.course,
                     Year: this.year,
-                    AboutMe: this.about,
+                    Description: this.about,
+                    TutorIds: []
                 })
                 console.log(docRef)
                 document.getElementById("setupForm").reset();

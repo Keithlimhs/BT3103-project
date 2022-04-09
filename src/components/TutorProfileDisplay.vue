@@ -1,7 +1,12 @@
+/* eslint-disable vue/no-dupe-keys */
 <template>
   <div class="tutor-profile">
       <div class="left-container">
+
         <img class="tutor-img" src="@/assets/profilepicture.jpeg" alt=""> <!-- retreive photo from firestore database by auth().user.PhotoURL -->
+
+
+
       </div>
       <div class="middle-container">
           <div class="tutor-info">
@@ -9,19 +14,23 @@
                   {{user}}
               </div>
               <div id="year-course">
+
                   {{year}}, {{course}}
+
               </div>
           </div>
       </div>
       <div class="right-container">
           <div class="top-right">
             <button class="chat">
-                <Chat class="icon"/>
+                <Chat class="icon" fillColor = 'white'/>
                 <span class="text">Chat</span> <!-- link to chat interface -->
             </button>
-            <button class="view-profile">
-                View Profile <!-- link to full profile -->               
-            </button>
+            <!-- <router-link v-bind:to="'/tutors/' + this.user"> -->
+                <button class="view-profile">
+                    View Profile <!-- link to full profile -->               
+                </button>
+            <!-- </router-link> -->
           </div>
           <div class="bottom-right">
             <div class="reviews" style="display:inline-block;">
@@ -46,6 +55,16 @@ export default {
             rating: 3,
         }
     },
+    props: {
+        // eslint-disable-next-line vue/no-dupe-keys
+        user: String,
+        // eslint-disable-next-line vue/no-dupe-keys
+        year: Number,
+        // eslint-disable-next-line vue/no-dupe-keys
+        course: String,
+        // count: Number,
+        // rating: Number,
+    },
     components: {
         Chat,
         StarRating,
@@ -55,13 +74,15 @@ export default {
 
 <style scoped>
 .tutor-profile {
-	background-color: #8D8D8D;
+	background-color: #D4D4D4;
 	padding: 30px;
-    margin: 100px;
+    margin: 70px;
+    margin-left: 170px;
+    margin-right: 170px; 
 	display: flex;
 	flex-direction: row;
 	border: 2px solid black;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-radius: 10px;
 }
 .left-container {
 	width: 25%;

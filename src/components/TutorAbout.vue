@@ -11,6 +11,7 @@
 import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
+//import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const db = getFirestore(firebaseApp);
 
@@ -24,11 +25,15 @@ export default {
     },
 
     mounted() {
+        this.fbuser = "shashank@gmail.com";
+        // this.fbuser = firebase.auth().currentUser.email;
+
         async function display() {
-            let z = await getDocs(collection(db,"TutorDetails"))
+            let z = await getDocs(collection(db,"Tutor"))
             let description = ''
             z.forEach((docs) =>{
                 let yy = docs.data()
+                console.log(yy)
                 description = (yy.About)
             })
             return description
@@ -46,6 +51,11 @@ export default {
     border: 1px solid #000000;
     box-sizing: border-box;
     height: 100px;
+    padding: 30px;
+    margin: 10px;
+    margin-left: 170px;
+    margin-right: 170px; 
+	flex-direction: row;
 }
 
 #subheading1 {

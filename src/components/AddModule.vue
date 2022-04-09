@@ -31,7 +31,7 @@
 import "@fontsource/m-plus-rounded-1c";
 import firebaseApp from "@/firebase.js"
 import { getFirestore } from "firebase/firestore"
-import { doc, setDoc } from "firebase/firestore"
+import { doc, updateDoc, arrayUnion } from "firebase/firestore"
 // import { getAuth, onAuthStateChanged } from "firebase/auth"
 const db = getFirestore(firebaseApp)
 export default {
@@ -41,6 +41,10 @@ export default {
         }
     },
     props: ['TogglePopup'],
+    mounted() {
+        this.fbuser = "shashank@gmail.com";
+        // this.fbuser = firebase.auth().currentUser.email;
+    },
     methods: {
         async addmodule() {
             this.code = document.getElementById("modulecode").value;
@@ -50,12 +54,13 @@ export default {
             this.sem = document.getElementById("semtaken").value;
             alert("Saving data for module: " + this.code);
             try{
-                const docRef = await setDoc(doc(db, "Modules", this.code), {
-                    ModuleCode: this.code,
+                const docRef = await updateDoc(doc(db, "Tutor", this.fbuser), {
+                    ModulesAvailable: arrayUnion({
+                    ModuleCode: this.code, 
                     GradeAttained: this.grade,
                     AY: this.ay,
                     ProfName: this.prof,
-                    SemTaken: this.sem
+                    SemTaken: this.sem })
                 })
                 console.log(docRef)
                 document.getElementById("myform").reset();

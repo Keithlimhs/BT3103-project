@@ -16,11 +16,12 @@
 <script>
 import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore";
+import 'firebase/storage';
 
 const db = getFirestore(firebaseApp)
 
 export default {
-name: "ProfilePic",
+name: "ProfilePicture",
 
 data () {
     return {
