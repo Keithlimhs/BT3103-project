@@ -1,6 +1,6 @@
 <template>
     <div id = "header">
-            <img id = "logo" src = "@/assets/logo_bg_removed.png" alt = "error">        
+            <img id = "logo" v-bind:src = "require('@/assets/logo_bg_removed.png')" alt = "error">        
     </div>
 </template>
 

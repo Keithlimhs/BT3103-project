@@ -5,9 +5,10 @@
   <!-- <TutorHome/> -->
   <!-- <AddModulePopup/> -->
   <!-- <TuteeHome/> -->
-  <router-link to="/"></router-link>
-  <router-view/>
-
+  <!-- <router-link to="/"></router-link>
+  <router-view/> -->
+  <TopHeaderForSignIn/>
+<!-- <TutorProfilePage/> -->
 </template>
 
 
@@ -34,11 +35,12 @@ import "@fontsource/m-plus-rounded-1c";
 
 // import AddModulePopup from './views/AddModulePopup.vue'
 // import TuteeHome from './views/TuteeHome.vue'
-// import TopHeaderForSignIn from './components/TopHeaderForSignIn.vue'
+import TopHeaderForSignIn from './components/TopHeaderForSignIn.vue'
+// import TopHeader from './components/TopHeader.vue'
 // import TuteeProfileInfo from './components/TuteeProfileInfo.vue'
 // import TutorModules from './components/TutorModules.vue'
 // import TutorProfileDisplay from './components/TutorProfileDisplay'
-// import DropDownMenu from './components/DropDownMenu.vue'
+
 
 export default {
   name: 'App',
@@ -46,7 +48,7 @@ export default {
     // TutorProfileDisplay
     // TuteeProfileInfo
     // TutorModules
-    // TopHeaderForSignIn
+    TopHeaderForSignIn
     // TuteeProfileDisplayPage
     // TutorProfilePage
     // DropDownMenu

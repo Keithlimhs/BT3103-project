@@ -1,7 +1,7 @@
 <template>
     <div id = "header">
-        <a href = "history.back()" class = "previous"><img id = "back" src="@/assets/backbutton.png" alt="error"></a>
-        <img id = "profilePic" src = "@/assets/logo.png" alt = "error">
+        <a href = "history.back()" class = "previous"><img id = "back" v-bind:src="require('@/assets/backbutton.png')" alt="error"></a>
+        <img id = "profilePic" v-bind:src = "require('@/assets/logo.png')" alt = "error">
         <h2 id = "title">{{ pageName }}</h2>
     </div>
 </template>
