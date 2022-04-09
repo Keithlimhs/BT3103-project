@@ -34,7 +34,7 @@ import moduleButton from '../components/moduleButton.vue'
 import firebaseApp from "@/firebase.js"
 import { getFirestore } from "firebase/firestore"
 import { collection, getDocs, } from "firebase/firestore"
-// import { getAuth, onAuthStateChanged } from "firebase/auth"
+import { getAuth, onAuthStateChanged } from "firebase/auth"
 
 const db = getFirestore(firebaseApp)
 
@@ -44,7 +44,7 @@ export default {
     name: "TuteeHome",
     data() {
         return {
-            user: "User",
+            user: "",
             modules: [],
             avail: [],
             search: "",
@@ -64,6 +64,15 @@ export default {
         
     },
     mounted() {
+        const auth = getAuth()
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                this.user = user.Name;
+                console.log("Signed in")
+            } else {
+                console.log("Sign out")
+            }
+        })
         axios
         .get('https://api.nusmods.com/v2/2021-2022/moduleInfo.json', {headers:{"accept": "application/json"}})
         .then(response => this.modules = response.data)
