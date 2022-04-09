@@ -9,6 +9,7 @@
         //<TutorWebsite/>
 
         <TopHeader pageName="PROFILE PAGE"/> <br>
+        <NavBarTutor/>
         <TutorProfileMain :tutor="this.tutor"/>
         <div class="about">
             <TutorAbout/> 
@@ -26,14 +27,16 @@
 
 <script>
 import TopHeader from '@/components/TopHeader.vue'
+import NavBarTutor from '@/components/NavBarTutor.vue';
 import TutorProfileMain from '@/components/TutorProfileMain.vue'
 import TutorAbout from '@/components/TutorAbout.vue'
 import TutorModules from '@/components/TutorModules.vue'
 import TutorWebsite from '@/components/TutorWebsite.vue'
 
-import firebaseApp from "@/firebase.js"
+import firebaseApp from "@/firebase.js"                                                 
 import { getFirestore } from "firebase/firestore"
 import { getDoc, doc } from "firebase/firestore"
+
 // import { getAuth, onAuthStateChanged } from "firebase/auth"
 
 const db = getFirestore(firebaseApp)
@@ -49,6 +52,7 @@ export default {
     },
     components: {
         TopHeader,
+        NavBarTutor,
         TutorProfileMain,
         TutorAbout,
         TutorModules,
