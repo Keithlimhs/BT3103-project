@@ -47,7 +47,7 @@ export default {
   display: block;
   color: black;
   text-align: center;
-  padding: 1vw 12vw;
+  padding: 1vw 12.3vw;
   text-decoration: none;
   font-size: 1vw;
 }
