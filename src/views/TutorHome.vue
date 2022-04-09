@@ -1,7 +1,7 @@
 <template>
   <div class="tutor-home">
     <div class="header">
-      <HomeHeader/>
+      <HomeHeader pageName= "HOME"/>
     </div>
     <div class="top-container">
       Hello {{user}}, here are your offers for today

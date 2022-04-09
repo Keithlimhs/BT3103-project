@@ -1,16 +1,17 @@
 <template>
     <div id = "header">
-        <img id = "profilePic" src = "@/assets/logo.png" alt = "error">
-        <h2 id = "title">HOME</h2>
+            <img id = "logo" v-bind:src = "require('@/assets/logo_bg_removed.png')" alt = "error">
+            <img id = "profilePic" v-bind:src = "require('@/assets/logo.png')" alt = "error">
+            <h1 id = "title">{{ pageName }}</h1> 
     </div>
 </template>
 
 <script>
 export default {
-    data(){
-        return{
-        }
-    },
+    props: {
+        pageName: String
+    }
+
     
 }
 </script>
@@ -18,29 +19,27 @@ export default {
 <style scoped>
 div {
     background-color: #316879;
-    height: 50px;
+    top: 0px;
+    height: 75px;
 }
 
-a {
-    padding-top: 10px;
-    margin-left: 10px;
-    float: left;
-    height: 0px;
-}
-
-h2 {
+h1 {
+    margin-top: 0px;
     padding-top: 10px;
     color: white;
     text-align: center;
 }
 
-img {
+#logo {
+    width: 75px;
+    float: left;
+    height: auto;
+}
+
+#profilePic {
     width: 50px;
     float: right;
     height: auto;
 }
 
-#back {
-    width: 30px;
-}
 </style>

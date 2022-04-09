@@ -26,7 +26,7 @@ export default {
 }
 div {
     background-color: #316879;
-    height: 50px;
+    height: 75px;
 }
 
 a {

@@ -1,21 +1,17 @@
 <template>
 <div id="backgroundColor">
-<link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
-
-  <div class= "topArt">
-    <img src="@\assets\TopLogo.png" alt="logo" width = 60>
-  </div>
+  <TopHeaderForSignIn/>
   
   <h1>Log in to modsmatch@nus</h1>
   
   <div class ="form">
       <form id="loginForm">
         <div class = "formli">
-          <label for="email"> <strong> Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> </label>
-          <input type= "text" id= "email" required = "" placeholder= "Enter your email here" size = "30"> <br><br>
+          <label for="email"> <strong> Email: </strong> </label>
+          <input type= "text" id= "email" required = "" placeholder= "Enter your email here" size = "25"> <br><br>
 
           <label for = "password"> <strong> Password: </strong> </label>
-          <input type = "text" id = "password" required = "" placeholder = "Enter password here" size = "30"><br><br>
+          <input type = "text" id = "password" required = "" placeholder = "Enter password here" size = "25"><br><br>
         </div>
         <button class = "loginButton" type = "button" v-on:click ="Login()"> LOG IN </button>
       </form>
@@ -24,7 +20,7 @@
   <div class = "form2">
     <h4> <strong> Don't have an account? &nbsp; &nbsp;</strong> </h4>
     <div id=wrapper2>
-      <router-link to ="/TutorSignUpPage"><a>Sign Up! </a></router-link>
+      <router-link to ="/TutorSignUpPage"><a>Sign Up </a></router-link>
     </div>
   </div>
 
@@ -37,10 +33,14 @@
 <script>
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebaseApp from '../firebase.js';
+import TopHeaderForSignIn from '../components/TopHeaderForSignIn.vue'
+
 
 export default {
     name: 'TutorLoginPage',
-
+    components: {
+      TopHeaderForSignIn
+    },
     data() {
       return {
         FormData: {
@@ -59,7 +59,7 @@ export default {
         signInWithEmailAndPassword(auth, email, password)
         .then(() => {
           console.log("Log in successful");
-          alert("Login succesful, you will be directed to the home page");
+          // alert("Login succesful, you will be directed to the home page");
           this.$router.push('/TutorHome');
         })
         .catch(error => {
@@ -69,7 +69,12 @@ export default {
           console.log(errorCode);
           console.log(errorMessage);
 
-          window.alert("Message : " + errorMessage);
+          if (errorCode == 'auth/invalid-email') {
+            window.alert("Invalid email")
+          }
+          else if (errorCode == 'auth/wrong-password') {
+            window.alert("Wrong password")
+          }
         })
       },
 
@@ -108,10 +113,11 @@ export default {
   text-align: center;
 }
 h1{
-  color: darkblue ;
+  color: #1D427C  ;
   font-family: 'M PLUS Rounded 1c';
   text-align: center;
   font-weight: bolder;
+  padding: 10px;
 }
 h4{
   font-family: 'M PLUS Rounded 1c';
@@ -137,8 +143,8 @@ h4{
 .loginButton {
   color:white;
   background-color: #308C05;
-  padding: 6px 6px;
-  font-size: 20px;
+  padding: 5px 10px;
+  font-size: 100%;
   cursor: pointer;
   display: inline-block;
   font-family: 'M PLUS Rounded 1c';
@@ -161,6 +167,25 @@ a {
   font-family: 'M PLUS Rounded 1c';
   font-weight: bold;
   font-size: 16px;
+}
+
+label {
+  display: inline-block;
+  float: left;
+  clear: left;
+  width: 20vw;
+  text-align: right;
+  padding-right: 20px;
+}
+
+input {
+  display: inline-block;
+  float: left;
+
+}
+
+.form2 {
+  padding: 10px;
 }
 
 </style>
