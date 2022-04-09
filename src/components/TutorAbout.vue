@@ -9,8 +9,8 @@
 
 <script>
 import firebaseApp from '../firebase.js';
-import { getFirestore } from "firebase/firestore";
-import { collection, getDocs } from "firebase/firestore";
+import { doc, getFirestore } from "firebase/firestore";
+import { getDoc } from "firebase/firestore";
 //import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const db = getFirestore(firebaseApp);
@@ -25,11 +25,19 @@ export default {
     },
 
     mounted() {
-        this.fbuser = "shashank@gmail.com";
+        this.tutor = "shashank@gmail.com"
+        //this.fbuser = "shashank@gmail.com";
         // this.fbuser = firebase.auth().currentUser.email;
+        
+        async function gettutor(tutor) {
+            let t = await getDoc(doc(db, "Tutor", String(tutor)))
+            return t.data()
+        }
+        gettutor(this.tutor).then(data => this.description = data.About)
 
+        /*
         async function display() {
-            let z = await getDocs(collection(db,"Tutor"))
+            let z = await getDoc(doc(db,"Tutor", "shashank@gmail.com"))
             let description = ''
             z.forEach((docs) =>{
                 let yy = docs.data()
@@ -39,10 +47,10 @@ export default {
             return description
         }
         display().then(data => this.description = data);
+        */
     }
-
-
 }
+
 </script>
 
 <style scoped>

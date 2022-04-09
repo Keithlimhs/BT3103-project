@@ -1,13 +1,7 @@
 <template>
     <div id="backgroundColor">
         <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
-
-        //<TopHeader/>
-        //<TutorProfileDisplay/>
-        //<TutorAbout/> 
-        //<TutorModules/> 
-        //<TutorWebsite/>
-
+        
         <TopHeader pageName="PROFILE PAGE"/> <br>
         <TutorProfileMain :tutor="this.tutor"/>
         <div class="about">
