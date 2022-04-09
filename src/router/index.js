@@ -23,7 +23,7 @@ import TutorHome from '@/views/TutorHome.vue'
 const routes = [
 
     {
-        path: "/",
+        path: "/TuteeProfileDisplayPage",
         name: "TuteeProfileDisplayPage",
         component: TuteeProfileDisplayPage,
     },
@@ -51,13 +51,13 @@ const routes = [
     },
     {
 
-        path: '/MainPage',
+        path: '/',
         name: 'MainPage',
         component: MainPage
     },
     {
 
-        path: '/',
+        path: '/TuteeHome',
         name: 'TuteeHome',
         component: TuteeHome
     },
