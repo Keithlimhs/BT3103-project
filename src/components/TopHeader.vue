@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import DropdownMenu from '../components/DropdownMenu.vue'
+import DropdownMenu from '@/components/DropdownMenu.vue'
 
 export default {
 
@@ -32,7 +32,7 @@ export default {
 
     components: {
         DropdownMenu,
-    }
+    },
 
 
     methods: {
