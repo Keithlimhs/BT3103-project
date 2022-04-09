@@ -9,7 +9,7 @@
         <div class="tutors">
             <div id="loading" v-if="!loading">Loading tutors...</div>
             <div id="tutor-found" v-for="tutor in filteredTutors" :key="tutor">
-                    <TutorProfileDisplay :tutor="tutor"/>
+                    <TutorProfileDisplay :tutor="tutor.tutorRef"/>
             </div>
             <div id="tutor-not-found" v-if="!filteredTutors.length && loading">Sorry, the tutor cannot be found</div>
         </div>

@@ -32,7 +32,7 @@
                     <AddModulePopup/>
             </div>
             <div class="list" v-for="module in modules" :key="module">
-                        <button>{{module}}</button>
+              <button>{{module}}</button>
             </div>
 
         </div>
@@ -112,7 +112,15 @@ export default {
                     About: this.about,
                     ModulesAvailable: []
                 })
+                let documentRefString = await getDoc(doc(db, "Tutor", this.fbuser))
+                console.log(documentRefString)
+                let tutorRef = documentRefString.path
+                console.log(tutorRef)
+                const docRef2 = await setDoc(doc(db, "Modules", this.course), {
+                  TutorIds: [tutorRef]
+                })
                 console.log(docRef)
+                console.log(docRef2)
                 document.getElementById("setupForm").reset();
                 this.$emit("added")
                 // this.$router.push('/TutorHome')
