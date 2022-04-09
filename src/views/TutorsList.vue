@@ -7,16 +7,11 @@
             <TutorSearchBar :searchInput="this.search" @update:searchInput="newValue => this.search = newValue"/>
         </div>
         <div class="tutors">
-            <!-- <div id="tutor-not-found" v-if="!filteredTutors.length">Sorry, the tutor cannot be found</div>
-            <div class = "list" v-for="tutor in filteredTutors" :key="tutor">
-                <TutorProfileDisplay :user="tutor.Name" :year="tutor.year" :course="tutor.major"/>
-            </div> -->
-            <div class = "list" v-for="tutor in tutors" :key="tutor">
-                <div id="tutor-found" v-if="filteredTutors.includes(tutor)">
-                    <TutorProfileDisplay :user="tutor.Name" :year="tutor.year" :course="tutor.major"/>
-                </div>
-                <div id="tutor-not-found" v-else-if="!filteredTutors.length">Sorry, the tutor cannot be found</div>
+            <div id="loading" v-if="!loading">Loading tutors...</div>
+            <div id="tutor-found" v-for="tutor in filteredTutors" :key="tutor">
+                    <TutorProfileDisplay :tutor="tutor"/>
             </div>
+            <div id="tutor-not-found" v-if="!filteredTutors.length && loading">Sorry, the tutor cannot be found</div>
         </div>
     </div>
 </template>
@@ -44,9 +39,7 @@ export default {
             tutors: [],
             search: "",
             code: this.$route.params.moduleCode,
-            name: "",
-            year: "",
-            course: "",
+            loading: false,
         }
     },
     mounted() {
@@ -57,11 +50,14 @@ export default {
             
             for (let key in tutorids) {
                 let t2 = await getDoc(doc(db, "Tutor", tutorids[key].id))
-                tutorsArray.push(t2.data())
+                let tutorinfo = t2.data()
+                tutorinfo.id = tutorids[key].id
+                tutorsArray.push(tutorinfo)
             }
             return tutorsArray
         }
-        getdata(this.code).then(data => this.tutors = data);
+        getdata(this.code).then(data => {this.tutors = data
+        this.loading = true});
     },
     computed: {
         filteredTutors() {
@@ -75,7 +71,7 @@ export default {
 </script>
 
 <style scoped>
-#tutor-not-found {
+#tutor-not-found, #loading {
     text-justify: center;
     padding-top: 250px;
     font-size: 40px;

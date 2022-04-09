@@ -1,12 +1,19 @@
 <template>
     <div id = "header">
 
-        <a href = "history.back()" class = "previous"><img id = "back" v-bind:src="require('@/assets/backbutton.png')" alt="error"></a>
+
+
+        <img id = "back" v-bind:src="require('@/assets/backbutton.png')" alt="error" v-on:click = "back()">
         <img id = "profilePic" v-bind:src = "require('@/assets/logo.png')" alt = "error">
+
         <DropdownMenu/>
 
 
-        <h2 id = "title">{{ pageName }}</h2>
+
+        <h1 id = "title">{{ pageName }}</h1>
+
+
+
     </div>
 </template>
 
@@ -16,34 +23,44 @@ import DropdownMenu from '../components/DropdownMenu.vue'
 export default {
 
 
+
+
     props: {
             pageName: String
 
     },
+
     components: {
         DropdownMenu,
     }
+
+
+    methods: {
+        back() {
+            history.back()
+    },
+
+    }
+
+
+
     
 }
 </script>
 
 <style scoped>
+
 #logo {
     width: 60px
 }
 div {
+    margin-top: 0px;
     background-color: #316879;
-    height: 75px;
+    height: 70px;
 }
 
-a {
-    padding-top: 10px;
-    margin-left: 10px;
-    float: left;
-    height: 0px;
-}
+h1 {
 
-h2 {
     padding-top: 10px;
     color: white;
     text-align: center;
@@ -55,8 +72,13 @@ img {
     height: auto;
 }
 
+
 #back {
-    width: 30px;
+    width: 40px;
+    padding-top: 10px;
+    margin-left: 10px;
+    float: left;
 }
 
 </style>
+

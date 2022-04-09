@@ -1,13 +1,5 @@
 <template>
 
-<!-- <router-view/> -->
-<!-- <TopHeaderForSignIn/> -->
-<!-- <TutorHome/> -->
-<!-- <TuteeProfileDisplayPage/> -->
-<!-- <TuteeProfileInfo/> -->
-<!-- <TutorModules/> -->
-<!-- <TutorProfileDisplay/> -->
-<!-- <EmailVerification/> -->
 
 
   <!-- <LoginPage/> -->
@@ -30,7 +22,6 @@
 
 
 <script>
-import "@fontsource/m-plus-rounded-1c";
 
 // import EmailVerification from './views/PasswordReset.vue'
 // import TutorProfilePage from './views/TutorSetUpPage.vue'
@@ -67,9 +58,11 @@ import "@fontsource/m-plus-rounded-1c";
 
 
 
+
 export default {
   name: 'App',
   components: {
+
 
     // EmailVerification,
 
@@ -92,6 +85,7 @@ export default {
     // TutorHome,
     // LoginPage,
     // AddModulePopup
+
 
 
   }

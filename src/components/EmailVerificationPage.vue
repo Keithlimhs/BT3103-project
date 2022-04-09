@@ -1,6 +1,7 @@
 <template>
 <div class = 'emailVerification'>
-    <TopHeaderForSignIn/>
+    
+    <TopHeader/>
     <div>
         <h1>Check your email for the verification link</h1>
     </div>
@@ -12,12 +13,12 @@
 </template>
 
 <script>
-import TopHeaderForSignIn from '@/components/TopHeaderForSignIn.vue'
+import TopHeader from '@/components/TopHeader.vue'
 //import { getAuth, sendSignInLinkToEmail } from "firebase/auth";
 
 export default {
     components: {
-        TopHeaderForSignIn
+        TopHeader
     },
 
     // methods: {

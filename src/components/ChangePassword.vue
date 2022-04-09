@@ -1,6 +1,7 @@
 <template>
 <div class = 'emailVerification'>
     <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
+    <TopHeader/>
     <NavBarTutee/>
     <div>
     </div>
@@ -33,6 +34,7 @@
 
 // import TopHeaderForSignIn from '@/components/TopHeaderForSignIn.vue'
 import NavBarTutee from '@/components/NavBarTutee.vue';
+import TopHeader from '@/components/TopHeader.vue'
 //import { getAuth, sendSignInLinkToEmail } from "firebase/auth";
 
 
@@ -40,6 +42,7 @@ export default {
 
 
     components: {
+      TopHeader,
         NavBarTutee
     },
     name: "ChangePassword",

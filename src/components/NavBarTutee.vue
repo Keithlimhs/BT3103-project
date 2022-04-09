@@ -34,11 +34,9 @@ export default {
 <style scoped>
 
 .topnav {
-    background-color: #316879;
-    height: 50px;
-    width: 100%;
+    background-color: grey;
+    height: 3.5vw;
     float: center;
-   margin: 0;
      font-family: "M PLUS Rounded 1c";
 }
 
@@ -47,17 +45,16 @@ export default {
   float: left;
   font-family: "M PLUS Rounded 1c";
   display: block;
-  color: #f2f2f2;
+  color: black;
   text-align: center;
-  padding: 13px 170px;
+  padding: 1vw 12.3vw;
   text-decoration: none;
-  font-size: 16px;
-  width: 100%,
+  font-size: 1vw;
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: lightblue;
+  background-color: lightgrey;
   color: black;
 }
 
@@ -73,7 +70,7 @@ export default {
 }
 
 .topnav a.router-link-exact-active {
-    background-color: rgb(156, 172, 178);
+    background-color: rgba(192, 192, 192, 0.851);
     color: black;
 }
 
