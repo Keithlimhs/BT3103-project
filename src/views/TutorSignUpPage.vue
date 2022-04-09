@@ -1,10 +1,6 @@
 <template>
 <div id="backgroundColor">
-<link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
-
-  <div class= "topArt">
-    <img src="@/images/TopLogo.png" alt="logo" width = 60>
-  </div>
+  <TopHeaderForSignIn/>
   
   <h1>Sign up for modsmatch@nus</h1>
   
@@ -12,13 +8,13 @@
       <form id="signUpForm">
         <div class = "formli">
           <label for="email"> <strong> Email: </strong> </label>
-          <input type= "text" id= "email" required = "" placeholder= "Enter your email here" size = "30"> <br><br>
+          <input type= "text" id= "email" required = "" placeholder= "Enter your email here" size = "25"> <br><br>
 
           <label for = "password"> <strong> Password: </strong> </label>
-          <input type = "text" id = "password" required = "" placeholder = "Enter password here" size = "30"><br><br>
+          <input type = "text" id = "password" required = "" placeholder = "Enter password here" size = "25"><br><br>
 
           <label for = "password2"> <strong> Confirm Password: </strong> </label>
-          <input type = "text" id = "password2" required = "" placeholder = "Enter password again here" size = "30"><br><br>
+          <input type = "text" id = "password2" required = "" placeholder = "Enter password again here" size = "25"><br><br>
         </div>
         <button class = "createAccountButton" type = "button" v-on:click ="CreateAccount()"> CREATE ACCOUNT </button>
       </form>
@@ -28,7 +24,7 @@
     <h4> <strong> Already have an account? &nbsp; &nbsp;</strong> </h4>
 
     <div id = "wrapper2">
-        <router-link to ="/TutorLoginPage"><a> Log in! </a></router-link>
+        <router-link to ="/TutorLoginPage"><a> Log in </a></router-link>
     </div>
   </div>
 
@@ -38,10 +34,14 @@
 
 <script>
 import { getAuth, createUserWithEmailAndPassword} from "firebase/auth";
+import TopHeaderForSignIn from '../components/TopHeaderForSignIn.vue'
 
 import firebaseApp from '../firebase.js';
 export default {
     name: 'TutorSignUpPage',
+    components: {
+      TopHeaderForSignIn
+    },
 
     data() {
       return {
@@ -66,8 +66,8 @@ export default {
           createUserWithEmailAndPassword(auth, email, password)
           .then(() => {
             console.log("Sign up successful");
-            alert("Sign up succesful, you will be directed to the login page");
-            this.$router.push('/TutorLoginPage');
+            // alert("Sign up succesful, you will be directed to the login page");
+            this.$router.push('/TutorSetUpPage');
           })
           .catch(error => {
             var errorCode = error.code;
@@ -76,10 +76,16 @@ export default {
             console.log(errorCode);
             console.log(errorMessage);
 
-            window.alert("Message : " + errorMessage);
+            if (errorCode == 'auth/email-already-in-use') {
+              window.alert("This email has been registered already.")
+            } else if (password == '' & password2 == '') {
+              alert('Please key in a password')
+            } 
+
+            // window.alert("Message : " + errorMessage);
           })
-        } else {
-          alert("Second Password does not match please try again.")
+        } else{
+              alert("Passwords does not match. Please try again.")
         }
       },
     },
@@ -109,13 +115,14 @@ export default {
 }
 .formli {
   text-align: right;
-  margin-right: 15vw;
+  margin-right: 18vw;
+  padding: 10px;
 }
 .form {
   text-align: center;
 }
 h1{
-  color: darkblue ;
+  color: #1D427C ;
   font-family: 'M PLUS Rounded 1c';
   text-align: center;
   font-weight: bolder;
@@ -144,8 +151,8 @@ h4{
 .createAccountButton {
   color:white;
   background-color: #308C05;
-  padding: 6px 6px;
-  font-size: 20px;
+  padding: 6px 20px;
+  font-size: 18px;
   cursor: pointer;
   display: inline-block;
   font-family: 'M PLUS Rounded 1c';
@@ -168,6 +175,10 @@ a {
   font-family: 'M PLUS Rounded 1c';
   font-weight: bold;
   font-size: 16px;
+}
+
+input {
+  height: 20px;
 }
 </style>
 

@@ -20,7 +20,7 @@
   <div class = "form2">
     <h4> <strong> Don't have an account? &nbsp; &nbsp;</strong> </h4>
     <div id=wrapper2>
-      <router-link to ="/TuteeSignUpPage"><a>Sign Up! </a></router-link>
+      <router-link to ="/TuteeSignUpPage"><a>Sign Up </a></router-link>
     </div>
   </div>
 
@@ -59,7 +59,7 @@ export default {
         signInWithEmailAndPassword(auth, email, password)
         .then(() => {
           console.log("Log in successful");
-          alert("Login succesful, you will be directed to the home page");
+          // alert("Login succesful, you will be directed to the home page");
           this.$router.push('/TuteeHome');
         })
         .catch(error => {
