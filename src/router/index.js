@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import EmailVerification from '@/views/EmailVerification.vue'
 import ChangePassword from "@/views/ChangePassword.vue"
 import TuteeProfileDisplayPage from "@/views/TuteeProfileDisplayPage.vue"
+import TutorProfileDisplayPage from "@/views/TutorProfileDisplayPage.vue"
 import UserGuidelines from '@/views/UserGuidelines.vue'
 import TuteeSetUpPage from '@/views/TuteeSetUpPage.vue'
 import TutorSetUpPage from '@/views/TutorSetUpPage.vue'
@@ -37,6 +38,12 @@ const routes = [
         path: "/UserGuidelinesTutor",
         name: "UserGuidelinesTutor",
         component: UserGuidelinesTutor,
+    },
+
+    {
+        path: "/TutorProfileDisplayPage",
+        name: "TuorProfileDisplayPage",
+        component: TutorProfileDisplayPage,
     },
 
     {
