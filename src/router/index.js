@@ -13,6 +13,7 @@ import MainPage from '@/views/MainPage.vue'
 
 import TuteeHome from '@/views/TuteeHome.vue'
 import TutorsList from '@/views/TutorsList.vue'
+import TutorProfilePage from '@/views/TutorProfilePage.vue'
 
 import TuteeSignUpPage from '@/views/TuteeSignUpPage.vue'
 import TutorSignUpPage from '@/views/TutorSignUpPage.vue'
@@ -43,20 +44,17 @@ const routes = [
         name: "EmailVerification",
         component: EmailVerification,
     },
-
     {
         path: "/ChangePassword",
         name: "ChangePassword",
         component: ChangePassword,
     },
     {
-
         path: '/',
         name: 'MainPage',
         component: MainPage
     },
     {
-
         path: '/TuteeHome',
         name: 'TuteeHome',
         component: TuteeHome
@@ -64,10 +62,15 @@ const routes = [
     {
         path: '/tutors/:moduleCode',
         name: 'TutorsList',
-        component: TutorsList
+        component: TutorsList,
     },
     {
-
+        path: '/tutors/:moduleCode/:id',
+        name: 'TutorProfilePage',
+        component: TutorProfilePage,
+        props: { tutor: true }
+    },
+    {
         path: '/TuteeSignUpPage',
         name: 'TuteeSignUpPage',
         component: TuteeSignUpPage
@@ -86,7 +89,6 @@ const routes = [
         path: '/TutorHome',
         name: 'TutorHome',
         component: TutorHome
-
     },
     {
         path: '/TuteeLoginPage',
@@ -97,14 +99,13 @@ const routes = [
         path: '/TutorLoginPage',
         name: 'TutorLoginPage',
         component: TutorLoginPage
-
     },
     {
         path: '/TutorSignUpPage',
         name: 'TutorSignUpPage',
         component: TutorSignUpPage
-
     },
+    
 
 
 ]

@@ -10,7 +10,9 @@
                   {{tutor.Name}}
               </div>
               <div id="year-course">
+
                   Year {{tutor.year}}, {{tutor.major}}
+
               </div>
           </div>
       </div>
@@ -20,11 +22,6 @@
                 <Chat class="icon"/>
                 <span class="text">Chat</span> <!-- link to chat interface -->
             </button>
-            <router-link v-bind:to="this.$route.path + '/' + tutor.id">
-                <button class="view-profile">
-                    View Profile <!-- link to full profile -->               
-                </button>
-            </router-link>
           </div>
           <div class="bottom-right">
             <div class="reviews" style="display:inline-block;">
@@ -67,8 +64,7 @@ export default {
     components: {
         Chat,
         StarRating,
-    },
-    
+    }
 }
 </script>
 
@@ -76,7 +72,7 @@ export default {
 .tutor-profile {
 	background-color: #8D8D8D;
 	padding: 30px;
-    margin: 100px;
+    margin: 20px;
     margin-left: 170px;
     margin-right: 170px; 
 	display: flex;
@@ -84,6 +80,8 @@ export default {
 	border: 2px solid black;
     border-radius: 10px;
 }
+
+
 
 .left-container {
 	width: 25%;

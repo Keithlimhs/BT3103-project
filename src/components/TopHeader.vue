@@ -1,14 +1,17 @@
 <template>
     <div id = "header">
 
+
         <img id = "back" v-bind:src="require('@/assets/backbutton.png')" alt="error" v-on:click = "back()">
         <img id = "profilePic" v-bind:src = "require('@/assets/logo.png')" alt = "error">
         <h1 id = "title">{{ pageName }}</h1>
+
     </div>
 </template>
 
 <script>
 export default {
+
 
 
     props: {
@@ -20,6 +23,7 @@ export default {
         back() {
             history.back()
     },
+
     }
 
     

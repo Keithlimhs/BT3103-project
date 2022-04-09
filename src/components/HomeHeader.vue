@@ -1,16 +1,20 @@
 <template>
     <div id = "header">
+
             <img id = "logo" v-bind:src = "require('@/assets/logo_bg_removed.png')" alt = "error">
             <img id = "profilePic" v-bind:src = "require('@/assets/logo.png')" alt = "error">
             <h1 id = "title">{{ pageName }}</h1> 
+
     </div>
 </template>
 
 <script>
 export default {
+
     props: {
         pageName: String
     }
+
 
     
 }
