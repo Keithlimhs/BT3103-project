@@ -2,7 +2,7 @@
     <div id="backgroundColor">
         <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
 
-        <TopHeaderTutor pageName="PROFILE PAGE"/> <br>
+        <TopHeader pageName="PROFILE PAGE"/> <br>
 
         <div class="main">
 
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import TopHeaderTutor from '@/components/TopHeaderTutor.vue'
+import TopHeader from '@/components/TopHeaderTutor.vue'
 import TutorProfileMain from '@/components/TutorProfileMain.vue'
 import TutorAbout from '@/components/TutorAbout.vue'
 import TutorModules from '@/components/TutorModules.vue'
@@ -47,7 +47,7 @@ export default {
         }
     },
     components: {
-        TopHeaderTutor,
+        TopHeader,
         TutorProfileMain,
         TutorAbout,
         TutorModules,
