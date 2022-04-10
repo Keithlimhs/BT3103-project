@@ -43,7 +43,7 @@ const routes = [
 
     {
         path: "/TutorProfileDisplayPage",
-        name: "TuorProfileDisplayPage",
+        name: "TutorProfileDisplayPage",
         component: TutorProfileDisplayPage,
     },
 

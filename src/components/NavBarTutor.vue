@@ -1,9 +1,9 @@
 <template>
     <div class="topnav">
         <div id = "myTopnav">           
-            <router-link to ="/TutorProfile">Tutor Profile Display</router-link> 
-            <router-link to ="/ChangePassword">Change Password</router-link> 
-            <router-link to ="/UserGuidelines">User Guidelines</router-link>
+            <router-link to ="/TutorProfileDisplayPage">Tutor Profile Display</router-link> 
+            <router-link to ="/ChangePasswordTutor">Change Password</router-link> 
+            <router-link to ="/UserGuidelinesTutor">User Guidelines</router-link>
         </div>
     </div>
 </template>
