@@ -128,7 +128,8 @@ export default {
 }
 .wrapper {
   text-align: center;
-  margin-right: 25vw;
+  margin-right: 23vw;
+  padding-top: 0px;
 }
 .forgotPasswordButton {
   border: none;
@@ -142,6 +143,7 @@ export default {
 .form2 {
   text-align: center;
   font-family: 'M PLUS Rounded 1c';
+
 }
 .formli {
   text-align: center;
