@@ -26,12 +26,6 @@
 export default {
     data() {
         return {
-
-            // module: "",
-            // grade: "",
-            // yearTaken: "",
-            // semTaken: "",
-            // prof: "",
             popup:false,
         }
     },

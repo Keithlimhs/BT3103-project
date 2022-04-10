@@ -90,7 +90,7 @@ const routes = [
         path: '/tutors/:moduleCode/:id',
         name: 'TutorProfilePage',
         component: TutorProfilePage,
-        props: { tutor: true }
+        props: { tutor: true },
     },
     {
         path: '/TuteeSignUpPage',
