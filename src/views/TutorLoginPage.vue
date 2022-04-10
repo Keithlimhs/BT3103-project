@@ -113,6 +113,9 @@ export default {
           else if (errorCode == 'auth/wrong-password') {
             window.alert("Wrong password")
           }
+          else if (errorCode == 'auth/user-not-found') {
+            alert("User not found")
+          }
         })
       },
 
