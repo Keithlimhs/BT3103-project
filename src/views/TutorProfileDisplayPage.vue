@@ -95,7 +95,7 @@ export default {
             year: '',
             website: '',
             about: '',
-            modules:'',
+            modules: ''            // modules:'',
         }
     },
   mounted(){
@@ -128,13 +128,22 @@ export default {
       var about = (userProfile.About)
       var website = (userProfile.Website)
       var modules = (userProfile.ModulesAvailable)
-      console.log(modules[0].ModuleCode)
+      console.log(modules.length)
+      console.log(modules)
+      modules.forEach(modules => {
+          // console.log(this.modules)
+          // console.log(modules.ModuleCode)
+          this.modules += modules.ModuleCode +  ","
+          console.log(this.modules)
+      })
+
+      this.modules = this.modules.slice(0, -1)
       document.getElementById('tutorName').value = name;
       document.getElementById('tutorCourse').value = course;
       document.getElementById('tutorYear').value = year;
       document.getElementById('tutorWebsite').value = website;
       document.getElementById('tutorAbout').value = about;
-      this.modules = modules[0].ModuleCode
+      // this.modules = modules[0].ModuleCode
       document.getElementById('tutorModules').value = modules;
       
     }
