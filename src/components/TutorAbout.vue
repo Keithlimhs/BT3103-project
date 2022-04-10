@@ -8,10 +8,17 @@
 </template>
 
 <script>
+
+import firebaseApp from '../firebase.js';
+import { doc, getFirestore } from "firebase/firestore";
+import { getDoc } from "firebase/firestore";
+//import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 // import firebaseApp from '../firebase.js';
 // import { getFirestore } from "firebase/firestore";
 // import { collection, getDocs } from "firebase/firestore";
 // //import { getAuth, onAuthStateChanged } from "firebase/auth";
+
 
 // const db = getFirestore(firebaseApp);
 
@@ -23,29 +30,45 @@ export default {
             description: '',
         }
     },
-    props: {
-        tutor: Object,
+
+    //props: {
+    //    tutor: Object
+    //},
+
+    mounted() {
+        this.tutor = "shashank@gmail.com"
+        
+        async function gettutor(tutor) {
+            let t = await getDoc(doc(db, "Tutor", String(tutor)))
+            return t.data()
+        }
+        gettutor(this.tutor).then(data => this.description = data.About)
+
+        /*
+        async function gettutor() {
+            let t = await getDoc(doc(db, "Tutor", this.tutor.Email))
+            return t.data()
+        }
+        gettutor(this.tutor).then(data => this.description = data.About)
+        */
+
+        /*
+        async function display() {
+            let z = await getDoc(doc(db,"Tutor", "shashank@gmail.com"))
+            let description = ''
+            z.forEach((docs) =>{
+                let yy = docs.data()
+                console.log(yy)
+                description = (yy.About)
+            })
+            return description
+        }
+        display().then(data => this.description = data);
+        */
     }
 
-    // mounted() {
-    //     this.fbuser = "shashank@gmail.com";
-    //     // this.fbuser = firebase.auth().currentUser.email;
-
-    //     async function display() {
-    //         let z = await getDocs(collection(db,"Tutor"))
-    //         let description = ''
-    //         z.forEach((docs) =>{
-    //             let yy = docs.data()
-    //             console.log(yy)
-    //             description = (yy.About)
-    //         })
-    //         return description
-    //     }
-    //     display().then(data => this.description = data);
-    // }
-
-
 }
+
 </script>
 
 <style scoped>
@@ -63,6 +86,7 @@ export default {
 
 #subheading1 {
 /* font-family: 'Rounded Mplus 1c Bold'; */
+
 font-weight: 700;
 font-size: 20px;
 text-align: left;
@@ -72,7 +96,7 @@ color: #8D8D8D;
 #about {
 /* font-family: 'Rounded Mplus 1c Bold'; */
 font-weight: 700;
-font-size: 18px;
+font-size: 20px;
 text-align: left;
 color: #000000;
 }

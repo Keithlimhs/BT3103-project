@@ -2,18 +2,22 @@
     <div class="thirdcontainer">
         <div id="subheading3">
             Website
+
         </div>
         <div id="link-btn">
-            <!-- <a v-bind:href="web">{{web}}</a> -->
+
             <button v-on:click='btnClick'>{{tutor.Website}}</button>
+
         </div>  
     </div>
 </template>
 
 <script>
-// import firebaseApp from '../firebase.js';
-// import { getFirestore } from "firebase/firestore";
-// import { collection, getDocs } from "firebase/firestore";
+
+import firebaseApp from '../firebase.js';
+import { getFirestore } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
+
 
 // const db = getFirestore(firebaseApp);
 
@@ -22,26 +26,48 @@ export default {
     props: {
         tutor: Object
     },
-    // mounted() {
-    //     async function display() {
-    //         let z = await getDocs(collection(db,"Tutor"))
-    //         let web = ''
-    //         z.forEach((docs) =>{
-    //             let yy = docs.data()
-    //             web = (yy.Website)
-    //         })
-    //         return web
-    //     }
 
-    //     display().then(data => this.web = data);
 
-    // },
+    //props: {
+    //    tutor: Object
+    //},
+    
+    mounted() {
+        this.tutor = "shashank@gmail.com"
+        async function gettutor(tutor) {
+            let t = await getDoc(doc(db, "Tutor", String(tutor)))
+            return t.data()
+        }
+        gettutor(this.tutor).then(data => this.web = data.Website)
+
+        /*
+        async function gettutor() {
+            let t = await getDoc(doc(db, "Tutor", this.tutor.Email))
+            return t.data()
+        }
+        gettutor().then(data => this.web = data.Website)
+        */
+
+        /*
+        async function display() {
+            let z = await getDocs(collection(db,"Tutor"))
+            let web = ''
+            z.forEach((docs) =>{
+                let yy = docs.data()
+                web = (yy.Website)
+            })
+            return web
+        }
+        display().then(data => this.web = data);
+        */
+
     methods: {
         btnClick() {
             window.open("https://" + this.tutor.Website);
         }
 
     }
+    
     
 }
 </script>
@@ -51,7 +77,9 @@ export default {
     background-color: #D4D4D4;
     border: 1px solid #000000;
     box-sizing: border-box;
-    padding: 20px;
+
+    padding: 30px;
+
     margin: 10px;
     margin-left: 170px;
     margin-right: 170px; 
@@ -60,22 +88,14 @@ export default {
     align-items: center;
     display: flex;
 
+
 }
 
 #subheading3 {
-/* font-family: 'Rounded Mplus 1c Bold'; */
+font-family: 'Rounded Mplus 1c Bold';
 font-weight: 700;
 font-size: 20px;
 text-align: left;
 color: #8D8D8D;
-}
-
-button {
-    border-radius: 10px;
-    font-size: 16px;
-    padding: 5px;
-    padding-left: 45px;
-    padding-right: 45px;
-    margin-left: 20px;
 }
 </style>

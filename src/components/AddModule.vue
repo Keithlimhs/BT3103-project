@@ -68,13 +68,17 @@ export default {
                         GradeAttained: this.grade,
                         AY: this.ay,
                         ProfName: this.prof,
-                        SemTaken: this.sem,
-                        visible: false })
+
+                        SemTaken: this.sem, 
+                        isVisible: false})
+
+
                     })
                     const tutorRef = doc(db, 'Tutor', this.fbuser);
                     console.log(tutorRef)
                     const docRef2 = await setDoc(doc(db, "Modules", this.code), {
                         TutorIds: arrayUnion(tutorRef)
+
                     })
                     console.log(docRef)
                     console.log(docRef2)
