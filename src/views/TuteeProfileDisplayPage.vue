@@ -6,10 +6,12 @@
             <img v-bind:src="require('../assets/Noprofilepicture.jpeg')" >
         </div>
 
+      <br>
       
          <div class = wrapper>
             <ProfilePic/>
         </div>
+        
 
         <div class ="form">
             <form id="editProfile">
@@ -118,8 +120,10 @@ export default {
   
     
 </script>
+
 <style scoped>
 
+<style scoped>
 #backgroundColor {
   background-color: #E5E5E5 ;
 }
@@ -127,11 +131,11 @@ export default {
   background-color: #316879;
   min-height: 10vh;
 }
-#logo {
+/* #logo {
 height: 5%;
 width: 5%;
 float: left;
-}
+} */
 h1{
   color: white ;
   font-family: 'Rounded Mplus 1c Bold';
@@ -141,19 +145,34 @@ h1{
   align-items: center;
   line-height: 74px;
 }
-
-
-.formli {
-
-    background-color: #E5E5E5 ;
-}
-
-
-#form {
+.wrapper {
   text-align: center;
-    background-color: #E5E5E5 ;
+  margin-top: 200px;
+}
+.formli {
+  text-align: right;
+  display: inline-block;
+  padding: 1rem 1rem;
+  vertical-align: top;
+  background-color:#E5E5E5;
+}
+.form {
+  text-align: center;
+  
+}
+#setupForm{
+  display: inline-block;
+  background-color: #E5E5E5;
+  text-align: center;
+  padding: 1rem 1rem;
+  vertical-align: top;
+  font-family: 'M PLUS Rounded 1c';
 }
 
+#editProfile {
+  background-color: #E5E5E5;
+
+}
 .saveBtn {
   border: 1px solid #000000;
   background-color: #FFA500;
@@ -168,97 +187,49 @@ h1{
   height: 25px;
   font-size: 12px;
 }
-.asterisk_input::after {
+.asterisk_input:after {
 content:"*"; 
 color: red;
 font-size: large; 
+position: absolute;
 }
-::-webkit-input-placeholder { 
-  white-space:pre-line;  
-  position: center;
-  top:-7px;
 
-}
 img {
-  padding: 10px;
+  padding-top: 50px;
+  padding-left: 350px;
   width: 10em;
-
+  float: center;
 }
- h1 {
-  color: darkblue;
-  font-family: "M PLUS Rounded 1c";
+
+.profilePicture {
+  float: center;
   text-align: center;
-  font-weight: bolder;
-}
-
-
-.form {
-  background-color: #E5E5E5
-}
-
-.formli {
-  background-color: #E5E5E5;
-}
-
-.modules {
-  display: inline-block;
-  padding: 1rem 1rem;
-  margin: 1rem;
-  vertical-align: top;
-}
-#backgroundColor {
-  background-color: #E5E5E5 ;
-} 
-
-.top{
-  background-color: #316879;
-  min-height: 10vh;
-}
-#logo{
-    float: left;
-}
-h1{
-  color: white ;
-  font-family: 'Rounded Mplus 1c Bold';
-  text-align: center;
-  font-weight: 700;
-  font-style: normal;
-  align-items: center;
-  line-height: 74px;
-}
-.wrapper {
-  text-align: center;
+  margin: auto;
+  width: 800px;
 }
 
 label {
-  font-family: "M PLUS Rounded 1c";
-  font-size: 14px;
-  text-align: center;
-  width: 200px;
-  display: inline-block;
+  padding-right: 10px;
 }
-.updateProfilePictureBtn {
-  border: none;
-  background-color: inherit;
-  cursor: pointer;
-  color: red;
-  font-size: 10px;
-  font-family: 'M PLUS Rounded 1c';
-  text-decoration: underline;
+
+#button {
+  padding-top: 0px;
 }
+
 .edit {
+  justify-content: center;
+  align-items: left;
   border: 1px solid #000000;
   background-color: #FFA500;
   cursor: pointer;
   color: black;
-  display: flex;
   box-sizing: border-box;
   border-radius: 30px;
   font-family: 'M PLUS Rounded 1c';
-  display: inline-block;
   width: 120px;
   height: 25px;
   font-size: 12px;
 } 
+
 
 </style>
