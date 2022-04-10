@@ -24,7 +24,6 @@ export default {
 
 
 
-
     props: {
             pageName: String
 
@@ -38,7 +37,8 @@ export default {
     methods: {
         back() {
             history.back()
-    },
+        },  
+
 
     }
 
@@ -67,7 +67,7 @@ h1 {
 }
 
 img {
-    width: 50px;
+    width: 60px;
     float: right;
     height: auto;
 }
