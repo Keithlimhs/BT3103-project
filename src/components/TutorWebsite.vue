@@ -23,6 +23,10 @@ export default {
         }
     },
     
+    //props: {
+    //    tutor: Object
+    //},
+    
     mounted() {
         this.tutor = "shashank@gmail.com"
         async function gettutor(tutor) {
@@ -30,6 +34,14 @@ export default {
             return t.data()
         }
         gettutor(this.tutor).then(data => this.web = data.Website)
+
+        /*
+        async function gettutor() {
+            let t = await getDoc(doc(db, "Tutor", this.tutor.Email))
+            return t.data()
+        }
+        gettutor().then(data => this.web = data.Website)
+        */
 
         /*
         async function display() {

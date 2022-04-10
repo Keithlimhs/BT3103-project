@@ -1,14 +1,14 @@
 <template>
     <div class="secondcontainer">
         <div id="subheading2">Module Available</div>
-        <div class="modules">
-            <button v-for="mod in availablemods" :key="mod" @click="popup=true" color="primary" type="border">{{module}}</button>
+        <div class="modules" v-for="mod in availablemods" :key="mod">
+            <button @click="popup=true" color="primary" type="border">{{mod.ModuleCode}}</button>
             <popup v-show="popup">
                 <p>
-                    Grade Attained: {{grade}} <br>
-                    Year Taken: {{yearTaken}} <br>
-                    Sem Taken: {{semTaken}} <br>
-                    Professor: {{prof}}
+                    Grade Attained: {{mod.GradeAttained}} <br>
+                    Year Taken: {{mod.AY}} <br>
+                    Sem Taken: {{mod.SemTaken}} <br>
+                    Professor: {{mod.ProfName}}
                     <button @click="popup=false" color="primary" type="border">Close</button>
                 </p>
             </popup>
@@ -41,15 +41,29 @@ export default {
 
         async function gettutor(tutor) {
             let t = await getDoc(doc(db, "Tutor", String(tutor)))
-            return t.data()
+            let availablemods = t.data().ModulesAvailable
+            let module = ''
+            let grade = ''
+            let yearTaken = ''
+            let semTaken = ''
+            let prof = ''
+            availablemods.forEach((doc) => {
+            console.log(doc)
+            module = doc.ModuleCode
+            grade = doc.GradeAttained
+            yearTaken = doc.AY
+            semTaken = doc.SemTaken
+            prof = doc.ProfName 
+        })
+        return module, grade, yearTaken, semTaken, prof, availablemods
         }
-        gettutor(this.tutor).then(data => this.availablemods = data.ModulesAvailable)
-        gettutor(this.tutor).then(data => this.module = data.ModulesAvailable[0].ModuleCode)
-        gettutor(this.tutor).then(data => this.grade = data.ModulesAvailable[0].GradeAttained)
-        gettutor(this.tutor).then(data => this.yearTaken = data.ModulesAvailable[0].AY)
-        gettutor(this.tutor).then(data => this.semTaken = data.ModulesAvailable[0].SemTaken)
-        gettutor(this.tutor).then(data => this.prof = data.ModulesAvailable[0].ProfName)
-
+        gettutor(this.tutor).then(data => this.availablemods = data)
+        gettutor(this.tutor).then(data => this.module = data)
+        gettutor(this.tutor).then(data => this.grade = data)
+        gettutor(this.tutor).then(data => this.yearTaken = data)
+        gettutor(this.tutor).then(data => this.semTaken = data)
+        gettutor(this.tutor).then(data => this.prof = data)
+        
             
 
         /*
@@ -108,7 +122,7 @@ button {
     border-radius: 30px;
 }
 p {
-    text-align: center;
+    text-align: left;
 }
 
 </style>

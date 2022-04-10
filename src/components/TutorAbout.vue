@@ -23,17 +23,26 @@ export default {
             description: '',
         }
     },
+    //props: {
+    //    tutor: Object
+    //},
 
     mounted() {
         this.tutor = "shashank@gmail.com"
-        //this.fbuser = "shashank@gmail.com";
-        // this.fbuser = firebase.auth().currentUser.email;
         
         async function gettutor(tutor) {
             let t = await getDoc(doc(db, "Tutor", String(tutor)))
             return t.data()
         }
         gettutor(this.tutor).then(data => this.description = data.About)
+
+        /*
+        async function gettutor() {
+            let t = await getDoc(doc(db, "Tutor", this.tutor.Email))
+            return t.data()
+        }
+        gettutor(this.tutor).then(data => this.description = data.About)
+        */
 
         /*
         async function display() {
