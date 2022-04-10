@@ -110,6 +110,10 @@ export default {
                     Year: this.year,
                     Website: this.website,
                     About: this.about,
+
+                    // ModulesAvailable: this.fbuser.ModulesAvailable
+                    
+
                 })
                 console.log(docRef)
         

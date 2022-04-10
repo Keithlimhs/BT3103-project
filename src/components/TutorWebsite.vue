@@ -11,6 +11,7 @@
 
 <script>
 
+
 export default {
     name: "TutorWebsite",
     props: {
@@ -21,6 +22,7 @@ export default {
             window.open(this.tutor.Website);
         }
     }
+
     
     
 }

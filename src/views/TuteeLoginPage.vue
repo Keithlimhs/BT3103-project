@@ -102,7 +102,7 @@ export default {
           var errorMessage = error.message;
           console.log(errorCode);
           console.log(errorMessage);
-          if (errorCode == 'auth/invalid-email') {
+          if (errorCode == 'auth/user-not-found') {
             window.alert("Invalid email")
           }
           else if (errorCode == 'auth/wrong-password') {
