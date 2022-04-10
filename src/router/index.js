@@ -87,7 +87,7 @@ const routes = [
         component: TutorsList,
     },
     {
-        path: '/tutors/:moduleCode/:id',
+        path: '/tutors/:moduleCode/:Email',
         name: 'TutorProfilePage',
         component: TutorProfilePage,
         props: { tutor: true },

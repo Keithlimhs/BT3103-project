@@ -2,14 +2,14 @@
     <div class="secondcontainer">
         <div id="subheading2">Modules Available</div>
         <div class="modules" v-for="module in tutor.ModulesAvailable" :key="module">
-            <button @click="popup=true" color="primary" type="border">{{module.ModuleCode}}</button>
-            <popup v-show="popup">
+            <button @click="module.visible=true" color="primary" type="border">{{module.ModuleCode}}</button>
+            <popup v-show="module.visible">
                 <p>
                     Grade Attained: {{module.GradeAttained}} <br>
                     AY: {{module.AY}} <br>
                     Semester Taken: {{module.SemTaken}} <br>
                     Prof Name: {{module.ProfName}}
-                    <button @click="popup=false" color="primary" type="border">Close</button>
+                    <button @click="module.visible=false" color="primary" type="border">Close</button>
                 </p>
             </popup>
         </div>
@@ -24,11 +24,11 @@
 // const db = getFirestore(firebaseApp);
 
 export default {
-    data() {
-        return {
-            popup:false,
-        }
-    },
+    // data() {
+    //     return {
+    //         popup:false,
+    //     }
+    // },
     props: {
         tutor: Object
     },
@@ -69,10 +69,11 @@ export default {
     border: 1px solid #000000;
     box-sizing: border-box;
 
-    padding: 30px;
+    padding: 20px;
     margin: 10px;
     margin-left: 170px;
-    margin-right: 170px; 
+    margin-right: 170px;
+    display: flex;
 	flex-direction: row;
 
 }
@@ -92,6 +93,7 @@ button {
     box-sizing: border-box;
     border-radius: 30px;
     margin-left: 20px;
+    margin-top: 5px;
     font-size: 18px;
 }
 p {

@@ -45,7 +45,7 @@ export default {
     name: 'TutorProfilePage',
     data() {
         return {
-            tutorid: this.$route.params.id,
+            tutorid: this.$route.params.Email,
             tutor: ""
         }
     },
@@ -73,8 +73,8 @@ export default {
 }
 
 .about, .modules, .website, .main {
-    margin-left: 120px;
-    margin-right: 120px;
+    margin-left: 100px;
+    margin-right: 100px;
     margin-top: 10px;
     margin-bottom: 10px;
 }

@@ -54,7 +54,7 @@ export default {
     border: 1px solid #000000;
     box-sizing: border-box;
     height: 100px;
-    padding: 30px;
+    padding: 20px;
     margin: 10px;
     margin-left: 170px;
     margin-right: 170px; 

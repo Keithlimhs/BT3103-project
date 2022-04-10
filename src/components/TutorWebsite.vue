@@ -51,13 +51,11 @@ export default {
     background-color: #D4D4D4;
     border: 1px solid #000000;
     box-sizing: border-box;
-
-    padding: 30px;
+    padding: 20px;
     margin: 10px;
     margin-left: 170px;
     margin-right: 170px; 
 	flex-direction: row;
-
     height: 50px;
     align-items: center;
     display: flex;
