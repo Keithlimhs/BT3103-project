@@ -128,6 +128,7 @@ export default {
 }
 .wrapper {
   text-align: center;
+  margin-right: 25vw;
 }
 .forgotPasswordButton {
   border: none;
