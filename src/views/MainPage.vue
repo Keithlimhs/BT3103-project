@@ -79,13 +79,13 @@ export default {
   min-height: 25vh;
   margin-bottom: -21px; /*Removes space between margin*/
   /* text-align: left; */
-  display: flex
+  display: flex;
 }
 .wrapper{
   color: white;
   font-family: 'M PLUS Rounded 1c';
   padding-top: 40px;
-  padding-left: 480px;
+  padding-left: 23vw;
 }
 .topArt2{
   background-color:aqua;
