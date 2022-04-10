@@ -42,7 +42,7 @@ export default {
   display: block;
   color: black;
   text-align: center;
-  padding: 1vw 12.3vw;
+  padding: 1vw 7.5vw;
   text-decoration: none;
   font-size: 1vw;
 }

@@ -1,6 +1,7 @@
 <template>
       <TopHeader/>
       <NavBarTutee/>
+      <br>
         <div class="profilePicture">
             <img v-bind:src="require('../assets/Noprofilepicture.jpeg')" >
         </div>
@@ -118,6 +119,7 @@ export default {
     
 </script>
 <style scoped>
+
 #backgroundColor {
   background-color: #E5E5E5 ;
 }
@@ -139,25 +141,17 @@ h1{
   align-items: center;
   line-height: 74px;
 }
-.wrapper {
-  text-align: center;
-}
+
+
 .formli {
-  text-align: right;
-  display: inline-block;
-  padding: 1rem 1rem;
-  vertical-align: top;
+
+    background-color: #E5E5E5 ;
 }
-.form {
+
+
+#form {
   text-align: center;
-}
-#setupForm{
-  display: inline-block;
-  background-color: #E5E5E5;
-  text-align: center;
-  padding: 1rem 1rem;
-  vertical-align: top;
-  font-family: 'M PLUS Rounded 1c';
+    background-color: #E5E5E5 ;
 }
 
 .saveBtn {
@@ -174,40 +168,48 @@ h1{
   height: 25px;
   font-size: 12px;
 }
-.asterisk_input:after {
+.asterisk_input::after {
 content:"*"; 
 color: red;
 font-size: large; 
-position: absolute;
 }
+::-webkit-input-placeholder { 
+  white-space:pre-line;  
+  position: center;
+  top:-7px;
 
+}
 img {
   padding: 10px;
   width: 10em;
 
 }
-
-label {
-  padding-right: 10px;
-}
-
-/* h1 {
+ h1 {
   color: darkblue;
   font-family: "M PLUS Rounded 1c";
   text-align: center;
   font-weight: bolder;
 }
 
+
 .form {
   background-color: #E5E5E5
 }
 
 .formli {
-  background-color: #E5E5E5
+  background-color: #E5E5E5;
+}
+
+.modules {
+  display: inline-block;
+  padding: 1rem 1rem;
+  margin: 1rem;
+  vertical-align: top;
 }
 #backgroundColor {
   background-color: #E5E5E5 ;
-}
+} 
+
 .top{
   background-color: #316879;
   min-height: 10vh;
@@ -227,9 +229,7 @@ h1{
 .wrapper {
   text-align: center;
 }
-.form {
-  text-align: center;
-}
+
 label {
   font-family: "M PLUS Rounded 1c";
   font-size: 14px;
@@ -259,5 +259,6 @@ label {
   width: 120px;
   height: 25px;
   font-size: 12px;
-} */
+} 
+
 </style>

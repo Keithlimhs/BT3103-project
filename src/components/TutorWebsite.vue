@@ -14,31 +14,32 @@
 
 <script>
 
-import firebaseApp from '../firebase.js';
-import { getFirestore } from "firebase/firestore";
-import { doc, getDoc } from "firebase/firestore";
+// import firebaseApp from '../firebase.js';
+// import { getFirestore } from "firebase/firestore";
+// import { doc, getDoc } from "firebase/firestore";
 
 
 // const db = getFirestore(firebaseApp);
 
-export default {
-    name: "TutorWebsite",
-    props: {
-        tutor: Object
-    },
+// export default {
+//     name: "TutorWebsite",
+//     props: {
+//         tutor: Object
+//     },
 
 
     //props: {
     //    tutor: Object
     //},
     
-    mounted() {
-        this.tutor = "shashank@gmail.com"
-        async function gettutor(tutor) {
-            let t = await getDoc(doc(db, "Tutor", String(tutor)))
-            return t.data()
-        }
-        gettutor(this.tutor).then(data => this.web = data.Website)
+    // mounted() {
+    //     this.tutor = "shashank@gmail.com"
+    //     async function gettutor(tutor) {
+    //         let t = await getDoc(doc(db, "Tutor", String(tutor)))
+    //         return t.data()
+    //     }
+    //     gettutor(this.tutor).then(data => this.web = data.Website)
+    // },
 
         /*
         async function gettutor() {
@@ -61,15 +62,15 @@ export default {
         display().then(data => this.web = data);
         */
 
-    methods: {
-        btnClick() {
-            window.open("https://" + this.tutor.Website);
-        }
+//     methods: {
+//         btnClick() {
+//             window.open("https://" + this.tutor.Website);
+//         }
 
-    }
+//     }
     
     
-}
+// }
 </script>
 
 <style scoped>
