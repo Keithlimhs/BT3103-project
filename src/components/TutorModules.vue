@@ -5,10 +5,10 @@
             <button @click="popup=true" color="primary" type="border">{{module.ModuleCode}}</button>
             <popup v-show="popup">
                 <p>
-                    {{module.GradeAttained}} <br>
-                    {{module.AY}} <br>
-                    {{module.SemTaken}} <br>
-                    {{module.ProfName}}
+                    Grade Attained: {{module.GradeAttained}} <br>
+                    AY: {{module.AY}} <br>
+                    Semester Taken: {{module.SemTaken}} <br>
+                    Prof Name: {{module.ProfName}}
                     <button @click="popup=false" color="primary" type="border">Close</button>
                 </p>
             </popup>
