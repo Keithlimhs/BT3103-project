@@ -1,5 +1,5 @@
 <template>
-<TopHeader/>
+<TopHeaderTutor/>
       <NavBarTutor/>
      <div id="backgroundColor">
        
@@ -28,14 +28,14 @@
 <script>
 
 import NavBarTutor from '@/components/NavBarTutor.vue';
-import TopHeader from '@/components/TopHeader.vue'
+import TopHeaderTutor from '@/components/TopHeaderTutor.vue'
 
 export default {
 
     name: "UserGuidelinesTutor",
 
     components: {
-      TopHeader,
+      TopHeaderTutor,
         NavBarTutor,
     },
 }

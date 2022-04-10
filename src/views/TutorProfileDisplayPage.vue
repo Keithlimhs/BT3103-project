@@ -1,5 +1,5 @@
 <template>
-    <TopHeader/>
+    <TopHeaderTutor/>
       <NavBarTutor/>
       <br>
 
@@ -79,12 +79,12 @@ import firebaseApp from '../firebase.js';
 import { doc, getFirestore } from "firebase/firestore";
 import { getDoc } from "firebase/firestore";
 import NavBarTutor from '@/components/NavBarTutor.vue'
-import TopHeader from '@/components/TopHeader.vue'
+import TopHeaderTutor from '@/components/TopHeaderTutor.vue'
 const db = getFirestore(firebaseApp);
 export default {
     name: "TutorProfileInfo",
     components: {
-      TopHeader,
+      TopHeaderTutor,
       NavBarTutor,
     },
     
