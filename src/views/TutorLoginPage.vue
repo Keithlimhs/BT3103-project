@@ -34,7 +34,11 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebaseApp from '../firebase.js';
 import TopHeaderForSignIn from '../components/TopHeaderForSignIn.vue'
+import { getFirestore } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 
+
+const db = getFirestore(firebaseApp)
 
 export default {
     name: 'TutorLoginPage',
@@ -46,10 +50,23 @@ export default {
         FormData: {
           email: '',
           password: '',
-        }
+        },
+        exist: true
       }
     },
 
+    // mounted() {
+    //   async function check() {
+    //     const docSnap = await getDoc(doc(db, 'Tutor', this.email))
+    //     return docSnap
+    //   }
+    //   let docSnap = check()
+    //   if (docSnap.exists()) {
+    //     this.exist = true
+    //   } else {
+    //     this.exist = false
+    //   }
+    // },
     methods: {
       Login() {
         const auth = getAuth(firebaseApp)
@@ -59,8 +76,24 @@ export default {
         signInWithEmailAndPassword(auth, email, password)
         .then(() => {
           console.log("Log in successful");
-          // alert("Login succesful, you will be directed to the home page");
+          getDoc(doc(db, 'Tutor', email)).then(docSnap => {
+            if (docSnap.exists()) {
+              console.log(docSnap.exists())
+              this.exists = true
+            } else {
+              this.exists = false
+            }
+          })
+          if (this.exists) {
           this.$router.push('/TutorHome');
+          } else {
+            alert('Bringing you to setup your profile')
+            this.$router.push('/TutorSetUpPage')
+          }
+
+          // alert("Login succesful, you will be directed to the home page");
+
+
         })
         .catch(error => {
           var errorCode = error.code;

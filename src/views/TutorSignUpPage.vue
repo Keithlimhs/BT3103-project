@@ -84,7 +84,9 @@ export default {
               window.alert("This email has been registered already.")
             } else if (password == '' & password2 == '') {
               alert('Please key in a password')
-            } 
+            } else if (errorCode == 'auth/weak-password'){
+              alert("Password should be at least 6 characters")
+            }
 
             // window.alert("Message : " + errorMessage);
           })
