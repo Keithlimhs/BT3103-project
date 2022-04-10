@@ -17,7 +17,7 @@
                         <div id="wrapper"><button id="profile">Profile Information</button> <button id="privacy">Privacy</button> <button id="user_guidelines">User Guidelines</button></div>
                     <a href="#">
                         <img id = "switch_account_icon" v-bind:src = "require('@/assets/switch_account_icon.png')" alt = "error" width = 20>
-                        Switch Accounts</a>
+                        <button id="switchAccount" @click="SwitchAccount()"> Switch Account </button></a>
                     <a href="#">
                         <img id = "logout_icon" v-bind:src = "require('@/assets/logout_icon.png')" alt = "error" width = 20>
                         <button id="logout" @click="LogOut()"> Log Out </button></a>
@@ -49,6 +49,10 @@ export default {
 
         GoToHomePage(){
             this.$router.push('/TuteeHome');
+        },
+
+        SwitchAccount(){
+            this.$router.push('/TutorHome');
         }
     }
 }
@@ -125,7 +129,7 @@ export default {
   display: block;
 }
 
-#logout, #goToHomePage{
+#logout, #goToHomePage, #switchAccount{
     border: none;
     background-color: inherit;
     padding: 14px 20px;
