@@ -45,7 +45,7 @@
 <script>
 import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, updateDoc, getDoc } from "firebase/firestore";
 import AddModulePopup from "@/views/AddModulePopup.vue";
 import ProfilePicture from "../components/ProfilePicture.vue"
 import TopHeaderForSignIn from "../components/TopHeaderForSignIn"
@@ -103,21 +103,19 @@ export default {
             } else {
               alert("Saving data for Tutor: " + this.name);
               try{
-                const docRef = await setDoc(doc(db, "Tutor", this.fbuser), {
+                const docRef = await updateDoc(doc(db, "Tutor", this.fbuser), {
                     Email: this.fbuser,
                     Name: this.name,
                     Course: this.course,
                     Year: this.year,
                     Website: this.website,
                     About: this.about,
-                    ModulesAvailable: this.fbuser.ModulesAvailable
-                    
                 })
                 console.log(docRef)
         
                 document.getElementById("setupForm").reset();
                 this.$emit("added")
-                // this.$router.push('/TutorHome')
+                this.$router.push('/TutorHome')
             }
             catch(error) {
                 console.error("Error adding document: ", error)

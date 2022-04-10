@@ -21,11 +21,10 @@
       <div class="right-container">
           <div class="top-right">
             <button class="chat">
-                <Chat class="icon" fillColor = 'white'/>
+                <Chat class="icon"/>
                 <span class="text">Chat</span> <!-- link to chat interface -->
             </button>
-
-            <router-link v-bind:to="this.$route.path + '/' + tutor.Email">
+            <router-link v-bind:to="this.$route.path + '/' + this.tutor.Email">
                 <button class="view-profile">
                     View Profile <!-- link to full profile -->               
                 </button>

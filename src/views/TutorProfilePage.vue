@@ -6,8 +6,6 @@
 
         <div class="main">
 
-        <NavBarTutor/>
-
         <TutorProfileMain :tutor="this.tutor"/>
         </div>
         <div class="about">
@@ -26,7 +24,6 @@
 
 <script>
 import TopHeader from '@/components/TopHeader.vue'
-import NavBarTutor from '@/components/NavBarTutor.vue';
 import TutorProfileMain from '@/components/TutorProfileMain.vue'
 import TutorAbout from '@/components/TutorAbout.vue'
 import TutorModules from '@/components/TutorModules.vue'
@@ -46,23 +43,24 @@ export default {
     data() {
         return {
             tutorid: this.$route.params.Email,
-            tutor: ""
+            tutor: {}
         }
     },
     components: {
         TopHeader,
-        NavBarTutor,
         TutorProfileMain,
         TutorAbout,
         TutorModules,
         TutorWebsite,
     },
     mounted() {
+        
         async function getdata(tutorid) {
             let t = await getDoc(doc(db, "Tutor", tutorid))
             return t.data()
         }
         getdata(this.tutorid).then(data => this.tutor = data);
+        
     },
 }
 </script>
