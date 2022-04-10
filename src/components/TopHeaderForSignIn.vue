@@ -23,7 +23,7 @@ export default {
 div {
     background-color: #316879;
     top: 0px;
-    height: 75px;
+    height: 70px;
 }
 
 h1 {

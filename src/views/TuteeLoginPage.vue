@@ -11,7 +11,7 @@
           <input type= "text" id= "email" required = "" placeholder= "Enter your email here" size = "25"> <br><br>
 
           <label for = "password"> <strong> Password: </strong> </label>
-          <input type = "text" id = "password" required = "" placeholder = "Enter password here" size = "25"><br><br>
+          <input type = "password" id = "password" required = "" placeholder = "Enter password here" size = "25"><br><br>
         </div>
         <button class = "loginButton" type = "button" v-on:click ="Login()"> LOG IN </button>
       </form>
@@ -102,11 +102,14 @@ export default {
           var errorMessage = error.message;
           console.log(errorCode);
           console.log(errorMessage);
-          if (errorCode == 'auth/user-not-found') {
+          if (errorCode == 'auth/invalid-email') {
             window.alert("Invalid email")
           }
           else if (errorCode == 'auth/wrong-password') {
             window.alert("Wrong password")
+          }
+          else if (errorCode == 'auth/user-not-found') {
+            alert("User not found")
           }
         })
       },

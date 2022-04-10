@@ -51,7 +51,7 @@ export default {
 <style scoped>
 
 #logo {
-    width: 60px
+    width: 70px
 }
 div {
     margin-top: 0px;

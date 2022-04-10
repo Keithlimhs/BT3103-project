@@ -11,10 +11,10 @@
           <input type= "text" id= "email" required = "" placeholder= "Enter your email here" size = "25"> <br><br>
 
           <label for = "password"> <strong> Password: </strong> </label>
-          <input type = "text" id = "password" required = "" placeholder = "Enter password here" size = "25"><br><br>
+          <input type = "password" id = "password" required = "" placeholder = "Enter password here" size = "25"><br><br>
 
           <label for = "password2"> <strong> Confirm Password: </strong> </label>
-          <input type = "text" id = "password2" required = "" placeholder = "Enter password again here" size = "25"><br><br>
+          <input type = "password" id = "password2" required = "" placeholder = "Enter password again here" size = "25"><br><br>
         </div>
         <button class = "createAccountButton" type = "button" v-on:click ="CreateAccount()"> CREATE ACCOUNT </button>
       </form>

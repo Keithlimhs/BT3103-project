@@ -100,6 +100,7 @@ export default {
   overflow: hidden;
   display:inline;
   height: 100%;
+  margin-right: 0px;
 }
 
 .dropdown .dropbtn {
@@ -126,7 +127,7 @@ export default {
   font-family: 'M PLUS Rounded 1c';
   outline: solid;
   outline-color: black;
-  margin-right:1vw;
+  margin-right:3vw;
 }
 
 .dropdown-content a {
@@ -141,7 +142,7 @@ export default {
 
 .dropdown-content a:hover {
   background-color: #ddd;
-}
+} 
 
 .dropdown:hover .dropdown-content {
   display: block;
