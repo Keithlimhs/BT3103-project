@@ -14,7 +14,7 @@
                     <a href="#">
                         <img id = "settings_icon" v-bind:src = "require('@/assets/settings_icon.png')" alt = "error" width = 20>
                         Settings</a> 
-                        <div id="wrapper"><button id="profile">Profile Information</button> <button id="privacy">Privacy</button> <button id="user_guidelines">User Guidelines</button></div>
+                        <div id="wrapper"><button id="profile" @click="GoToProfile()">Profile Information</button> <button id="privacy">Privacy</button> <button id="user_guidelines">User Guidelines</button></div>
                     <a href="#">
                         <img id = "switch_account_icon" v-bind:src = "require('@/assets/switch_account_icon.png')" alt = "error" width = 20>
                         <button id="switchAccount" @click="SwitchAccount()"> Switch Account </button></a>
@@ -28,6 +28,8 @@
 <script>
 import { getAuth, signOut } from "firebase/auth";
 import firebaseApp from '../firebase.js';
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+const db  = getFirestore(firebaseApp)
 export default {
     name: "DropdownMenu",
     methods:{
@@ -52,8 +54,22 @@ export default {
         },
 
         SwitchAccount(){
-            this.$router.push('/TutorHome');
-        }
+            const auth = getAuth(firebaseApp)
+            const email = auth.currentUser.email
+            getDoc(doc(db, "Tutor", email)).then(docSnap => {
+                console.log('checking for docsnap now')
+                if (docSnap.exists()) {
+                    console.log(docSnap.exists())
+                    this.$router.push('/TutorHome')
+                } else {
+                    alert('You do not have a tutor account set up')
+                }
+            })
+        },
+
+        GoToProfile(){
+            this.$router.push('TuteeProfileDisplayPage');
+        },
     }
 }
 </script>
