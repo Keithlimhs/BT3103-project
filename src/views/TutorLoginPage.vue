@@ -133,7 +133,6 @@ export default {
 }
 .wrapper {
   text-align: center;
-  margin-right: 23vw;
   padding-top: 0px;
 
 }
