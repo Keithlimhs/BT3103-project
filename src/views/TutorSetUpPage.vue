@@ -110,14 +110,16 @@ export default {
                     Year: this.year,
                     Website: this.website,
                     About: this.about,
+
                     // ModulesAvailable: this.fbuser.ModulesAvailable
                     
+
                 })
                 console.log(docRef)
         
                 document.getElementById("setupForm").reset();
                 this.$emit("added")
-                // this.$router.push('/TutorHome')
+                this.$router.push('/TutorHome')
             }
             catch(error) {
                 console.error("Error adding document: ", error)

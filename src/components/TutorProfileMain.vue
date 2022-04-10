@@ -51,11 +51,11 @@ export default {
 
     props: {
         // eslint-disable-next-line vue/no-dupe-keys
-        user: String,
-        // eslint-disable-next-line vue/no-dupe-keys
-        year: Number,
-        // eslint-disable-next-line vue/no-dupe-keys
-        course: String,
+        // user: String,
+        // // eslint-disable-next-line vue/no-dupe-keys
+        // year: Number,
+        // // eslint-disable-next-line vue/no-dupe-keys
+        // course: String,
         // count: Number,
         // rating: Number,
         tutor: Object,

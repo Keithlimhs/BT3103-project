@@ -49,7 +49,8 @@ export default {
             let tutorids = t.data().TutorIds
             
             for (let key in tutorids) {
-                let t2 = await getDoc(doc(db, tutorids[key].tutorRef))
+                console.log(tutorids[key].id)
+                let t2 = await getDoc(doc(db, "Tutor", tutorids[key].id))
                 let tutorinfo = t2.data()
                 tutorsArray.push(tutorinfo)
             }
