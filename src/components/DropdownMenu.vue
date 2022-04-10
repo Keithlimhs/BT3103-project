@@ -99,6 +99,7 @@ export default {
   float: right;
   overflow: hidden;
   display:inline;
+  height: 100%;
 }
 
 .dropdown .dropbtn {
@@ -113,6 +114,7 @@ export default {
   margin-right: 5vw;
   margin-top: 5vw;
 }
+
 .dropdown-content {
   display: none;
   position: absolute;

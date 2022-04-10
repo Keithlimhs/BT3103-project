@@ -78,12 +78,14 @@ export default {
   background-color: #316879;
   min-height: 25vh;
   margin-bottom: -21px; /*Removes space between margin*/
-  text-align: left;
+  /* text-align: left; */
+  display: flex
 }
 .wrapper{
   color: white;
   font-family: 'M PLUS Rounded 1c';
-  text-align: center;
+  padding-top: 40px;
+  padding-left: 480px;
 }
 .topArt2{
   background-color:aqua;

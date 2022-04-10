@@ -31,7 +31,7 @@
 import "@fontsource/m-plus-rounded-1c";
 import firebaseApp from "@/firebase.js"
 import {  getFirestore } from "firebase/firestore"
-import { doc, setDoc, arrayUnion } from "firebase/firestore"
+import { doc, setDoc, updateDoc, arrayUnion } from "firebase/firestore"
 import { getAuth, } from "firebase/auth"
 const db = getFirestore(firebaseApp)
 
@@ -61,27 +61,47 @@ export default {
             } else {
                 alert("Saving data for module: " + this.code);
                 try{
-                    const docRef = await setDoc(doc(db, "Tutor", this.fbuser), {
-                        Email: this.fbuser,
-                        ModulesAvailable: arrayUnion({
-                        ModuleCode: this.code, 
-                        GradeAttained: this.grade,
-                        AY: this.ay,
-                        ProfName: this.prof,
-
-                        SemTaken: this.sem, 
-                        isVisible: false})
-
-
-                    })
+                    if (doc(db, "Tutor", this.fbuser) == null) {
+                        const docRef = await setDoc(doc(db, "Tutor", this.fbuser), {
+                            Email: this.fbuser,
+                            ModulesAvailable: arrayUnion({
+                            ModuleCode: this.code, 
+                            GradeAttained: this.grade,
+                            AY: this.ay,
+                            ProfName: this.prof,
+                            SemTaken: this.sem, 
+                            isVisible: false})
+                        })
+                        console.log(docRef)
+                    } else {
+                        const docRef2 = await updateDoc(doc(db, "Tutor", this.fbuser), {
+                            Email: this.fbuser,
+                            ModulesAvailable: arrayUnion({
+                            ModuleCode: this.code, 
+                            GradeAttained: this.grade,
+                            AY: this.ay,
+                            ProfName: this.prof,
+                            SemTaken: this.sem, 
+                            isVisible: false})
+                        })
+                        console.log(docRef2)
+                    }
                     const tutorRef = doc(db, 'Tutor', this.fbuser);
                     console.log(tutorRef)
-                    const docRef2 = await setDoc(doc(db, "Modules", this.code), {
-                        TutorIds: arrayUnion(tutorRef)
-
-                    })
-                    console.log(docRef)
-                    console.log(docRef2)
+                    if (doc(db, "Modules", this.code) == null) {
+                        const docRef3 = await setDoc(doc(db, "Modules", this.code), {
+                            TutorIds: arrayUnion(tutorRef)
+                        })
+                        console.log(docRef3)
+                    } else {
+                        const docRef4 = await updateDoc(doc(db, "Modules", this.code), {
+                            TutorIds: arrayUnion(tutorRef)
+                        })
+                        console.log(docRef4)
+                    }
+                    
+                    
+                    
                     document.getElementById("myform").reset();
                     this.$emit("added")
                 }
