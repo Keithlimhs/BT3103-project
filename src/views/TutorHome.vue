@@ -1,7 +1,7 @@
 <template>
   <div class="tutor-home">
     <div class="header">
-      <HomeHeader pageName= "HOME"/>
+      <HomeHeaderTutor pageName= "HOME"/>
     </div>
     <div class="top-container">
       Hello {{user}}, here are your offers for today
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import HomeHeader from '../components/HomeHeader.vue'
+import HomeHeaderTutor from '../components/HomeHeaderTutor.vue'
 // import TuteeProfileDisplay from '../components/TuteeProfileDisplay.vue'
 import firebaseApp from "@/firebase.js"
 import { getFirestore } from "firebase/firestore"
@@ -43,7 +43,7 @@ const db = getFirestore(firebaseApp)
 export default {
   name: 'TutorHome',
   components: {
-    HomeHeader,
+    HomeHeaderTutor,
     // TuteeProfileDisplay,
   },
   data(){

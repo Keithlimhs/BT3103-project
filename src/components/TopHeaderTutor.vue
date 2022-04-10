@@ -6,7 +6,7 @@
         <img id = "back" v-bind:src="require('@/assets/backbutton.png')" alt="error" v-on:click = "back()">
         <img id = "profilePic" v-bind:src = "require('@/assets/logo.png')" alt = "error">
 
-        <DropdownMenu/>
+        <DropdownMenuTutor/>
 
 
 
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import DropdownMenu from '@/components/DropdownMenu.vue'
+import DropdownMenuTutor from '@/components/DropdownMenuTutor.vue'
 
 export default {
 
@@ -31,7 +31,7 @@ export default {
     },
 
     components: {
-        DropdownMenu,
+        DropdownMenuTutor,
     },
 
 
