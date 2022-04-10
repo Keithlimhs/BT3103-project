@@ -77,6 +77,7 @@ export default {
 
 #subheading1 {
 /* font-family: 'Rounded Mplus 1c Bold'; */
+
 font-weight: 700;
 font-size: 20px;
 text-align: left;
@@ -86,7 +87,7 @@ color: #8D8D8D;
 #about {
 /* font-family: 'Rounded Mplus 1c Bold'; */
 font-weight: 700;
-font-size: 18px;
+font-size: 20px;
 text-align: left;
 color: #000000;
 }

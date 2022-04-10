@@ -22,7 +22,7 @@ export default {
             web: ""
         }
     },
-    
+
     //props: {
     //    tutor: Object
     //},
@@ -76,7 +76,7 @@ export default {
 #subheading3 {
 font-family: 'Rounded Mplus 1c Bold';
 font-weight: 700;
-font-size: 15px;
+font-size: 20px;
 text-align: left;
 color: #8D8D8D;
 }

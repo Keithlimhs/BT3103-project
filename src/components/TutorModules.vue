@@ -35,6 +35,9 @@ export default {
             popup:false,
         }
     },
+    //props: {
+    //    tutor: Object
+    //},
 
     mounted() {
         this.tutor = "shashank@gmail.com"
@@ -48,7 +51,6 @@ export default {
             let semTaken = ''
             let prof = ''
             availablemods.forEach((doc) => {
-            console.log(doc)
             module = doc.ModuleCode
             grade = doc.GradeAttained
             yearTaken = doc.AY
@@ -63,7 +65,32 @@ export default {
         gettutor(this.tutor).then(data => this.yearTaken = data)
         gettutor(this.tutor).then(data => this.semTaken = data)
         gettutor(this.tutor).then(data => this.prof = data)
-        
+
+        /*
+        async function gettutor() {
+            let t = await getDoc(doc(db, "Tutor", this.tutor.Email))
+            let availablemods = t.data().ModulesAvailable
+            let module = ''
+            let grade = ''
+            let yearTaken = ''
+            let semTaken = ''
+            let prof = ''
+            availablemods.forEach((doc) => {
+            module = doc.ModuleCode
+            grade = doc.GradeAttained
+            yearTaken = doc.AY
+            semTaken = doc.SemTaken
+            prof = doc.ProfName 
+        })
+        return module, grade, yearTaken, semTaken, prof, availablemods
+        }
+        gettutor().then(data => this.availablemods = data)
+        gettutor().then(data => this.module = data)
+        gettutor().then(data => this.grade = data)
+        gettutor().then(data => this.yearTaken = data)
+        gettutor().then(data => this.semTaken = data)
+        gettutor().then(data => this.prof = data)
+        */
             
 
         /*
@@ -109,7 +136,7 @@ export default {
 #subheading2 {
 font-family: 'Rounded Mplus 1c Bold';
 font-weight: 700;
-font-size: 15px;
+font-size: 20px;
 text-align: left;
 color: #8D8D8D;
 }
