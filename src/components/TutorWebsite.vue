@@ -5,46 +5,42 @@
         </div>
         <div id="link-btn">
             <!-- <a v-bind:href="web">{{web}}</a> -->
-            <button v-on:click='btnClick'>{{web}}</button>
+            <button v-on:click='btnClick'>{{tutor.Website}}</button>
         </div>  
     </div>
 </template>
 
 <script>
-import firebaseApp from '../firebase.js';
-import { getFirestore } from "firebase/firestore";
-import { collection, getDocs } from "firebase/firestore";
+// import firebaseApp from '../firebase.js';
+// import { getFirestore } from "firebase/firestore";
+// import { collection, getDocs } from "firebase/firestore";
 
-const db = getFirestore(firebaseApp);
+// const db = getFirestore(firebaseApp);
 
 export default {
     name: "TutorWebsite",
-
-    data() {
-        return {
-            web: ""
-        }
+    props: {
+        tutor: Object
     },
     
-    mounted() {
-        async function display() {
-            let z = await getDocs(collection(db,"Tutor"))
-            let web = ''
-            z.forEach((docs) =>{
-                let yy = docs.data()
-                web = (yy.Website)
-            })
-            return web
-        }
+    // mounted() {
+    //     async function display() {
+    //         let z = await getDocs(collection(db,"Tutor"))
+    //         let web = ''
+    //         z.forEach((docs) =>{
+    //             let yy = docs.data()
+    //             web = (yy.Website)
+    //         })
+    //         return web
+    //     }
 
-        display().then(data => this.web = data);
+    //     display().then(data => this.web = data);
 
-    },
+    // },
     methods: {
         btnClick() {
-            window.open(this.web);
+            window.open(this.tutor.Website);
         }
-
     }
     
 }

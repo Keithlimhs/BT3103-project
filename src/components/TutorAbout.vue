@@ -2,18 +2,18 @@
     <div class="firstcontainer">
         <div id="subheading1">About myself</div>
         <div id="about">
-            {{description}}
+            {{tutor.About}}
         </div>
     </div>
 </template>
 
 <script>
-import firebaseApp from '../firebase.js';
-import { getFirestore } from "firebase/firestore";
-import { collection, getDocs } from "firebase/firestore";
-//import { getAuth, onAuthStateChanged } from "firebase/auth";
+// import firebaseApp from '../firebase.js';
+// import { getFirestore } from "firebase/firestore";
+// import { collection, getDocs } from "firebase/firestore";
+// //import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const db = getFirestore(firebaseApp);
+// const db = getFirestore(firebaseApp);
 
 export default {
     name: "TutorAbout",
@@ -23,23 +23,26 @@ export default {
             description: '',
         }
     },
-
-    mounted() {
-        this.fbuser = "shashank@gmail.com";
-        // this.fbuser = firebase.auth().currentUser.email;
-
-        async function display() {
-            let z = await getDocs(collection(db,"Tutor"))
-            let description = ''
-            z.forEach((docs) =>{
-                let yy = docs.data()
-                console.log(yy)
-                description = (yy.About)
-            })
-            return description
-        }
-        display().then(data => this.description = data);
+    props: {
+        tutor: Object,
     }
+
+    // mounted() {
+    //     this.fbuser = "shashank@gmail.com";
+    //     // this.fbuser = firebase.auth().currentUser.email;
+
+    //     async function display() {
+    //         let z = await getDocs(collection(db,"Tutor"))
+    //         let description = ''
+    //         z.forEach((docs) =>{
+    //             let yy = docs.data()
+    //             console.log(yy)
+    //             description = (yy.About)
+    //         })
+    //         return description
+    //     }
+    //     display().then(data => this.description = data);
+    // }
 
 
 }

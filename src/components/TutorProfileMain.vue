@@ -11,7 +11,7 @@
               </div>
               <div id="year-course">
 
-                  Year {{tutor.year}}, {{tutor.major}}
+                  Year {{tutor.Year}}, {{tutor.Course}}
 
               </div>
           </div>

@@ -1,14 +1,14 @@
 <template>
     <div class="secondcontainer">
         <div id="subheading2">Modules Available</div>
-        <div class="modules">
-            <button @click="popup=true" color="primary" type="border">{{module}}</button>
+        <div class="modules" v-for="module in tutor.ModulesAvailable" :key="module">
+            <button @click="popup=true" color="primary" type="border">{{module.ModuleCode}}</button>
             <popup v-show="popup">
                 <p>
-                    {{grade}} <br>
-                    {{yearTaken}} <br>
-                    {{semTaken}} <br>
-                    {{prof}}
+                    {{module.GradeAttained}} <br>
+                    {{module.AY}} <br>
+                    {{module.SemTaken}} <br>
+                    {{module.ProfName}}
                     <button @click="popup=false" color="primary" type="border">Close</button>
                 </p>
             </popup>
@@ -17,51 +17,53 @@
 </template>
 
 <script>
-import firebaseApp from '../firebase.js';
-import { getFirestore } from "firebase/firestore";
-import { collection, getDocs } from "firebase/firestore";
+// import firebaseApp from '../firebase.js';
+// import { getFirestore } from "firebase/firestore";
+// import { collection, getDocs } from "firebase/firestore";
 
-const db = getFirestore(firebaseApp);
+// const db = getFirestore(firebaseApp);
 
 export default {
     data() {
         return {
 
-            module: "",
-            grade: "",
-            yearTaken: "",
-            semTaken: "",
-            prof: "",
+            // module: "",
+            // grade: "",
+            // yearTaken: "",
+            // semTaken: "",
+            // prof: "",
             popup:false,
         }
     },
-
+    props: {
+        tutor: Object
+    },
     mounted() {
-        async function display() {
-            let z = await getDocs(collection(db,"Tutor","shashank@gmail.com"))
-            let details = []
-            let module = ''
-            let grade = ''
-            let yearTaken = ''
-            let semTaken = ''
-            let prof = ''
-            z.forEach((docs) =>{
-                let yy = docs.data()
-                details.push(yy.ModulesAvailable)
-                module = details.ModuleCode
-                grade = (yy.GradeAttained)
-                yearTaken = (yy.AY)
-                semTaken = (yy.SemTaken)
-                prof = (yy.ProfName)
+        // async function display() {
+        //     let z = await getDocs(collection(db,"Tutor", this.tutor.Email))
+        //     let details = []
+        //     let module = ''
+        //     let grade = ''
+        //     let yearTaken = ''
+        //     let semTaken = ''
+        //     let prof = ''
+        //     z.forEach((docs) =>{
+        //         let yy = docs.data()
+        //         details.push(yy.ModulesAvailable)
+        //         module = details.ModuleCode
+        //         grade = (yy.GradeAttained)
+        //         yearTaken = (yy.AY)
+        //         semTaken = (yy.SemTaken)
+        //         prof = (yy.ProfName)
 
-            })
-            return module, grade, yearTaken, semTaken, prof
-        }
-        display().then(data => this.module = data);
-        display().then(data => this.grade = data); 
-        display().then(data => this.yearTaken = data); 
-        display().then(data => this.semTaken = data); 
-        display().then(data => this.prof = data); 
+        //     })
+        //     return module, grade, yearTaken, semTaken, prof
+        // }
+        // display().then(data => this.module = data);
+        // display().then(data => this.grade = data); 
+        // display().then(data => this.yearTaken = data); 
+        // display().then(data => this.semTaken = data); 
+        // display().then(data => this.prof = data); 
     }
 
 }
