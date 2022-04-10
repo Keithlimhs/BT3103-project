@@ -117,10 +117,81 @@ export default {
   
     
 </script>
-
-
 <style scoped>
-h1 {
+#backgroundColor {
+  background-color: #E5E5E5 ;
+}
+.top{
+  background-color: #316879;
+  min-height: 10vh;
+}
+#logo {
+height: 5%;
+width: 5%;
+float: left;
+}
+h1{
+  color: white ;
+  font-family: 'Rounded Mplus 1c Bold';
+  text-align: center;
+  font-weight: 700;
+  font-style: normal;
+  align-items: center;
+  line-height: 74px;
+}
+.wrapper {
+  text-align: center;
+}
+.formli {
+  text-align: right;
+  display: inline-block;
+  padding: 1rem 1rem;
+  vertical-align: top;
+}
+.form {
+  text-align: center;
+}
+#setupForm{
+  display: inline-block;
+  background-color: #E5E5E5;
+  text-align: center;
+  padding: 1rem 1rem;
+  vertical-align: top;
+  font-family: 'M PLUS Rounded 1c';
+}
+
+.saveBtn {
+  border: 1px solid #000000;
+  background-color: #FFA500;
+  cursor: pointer;
+  color: black;
+  display: flex;
+  box-sizing: border-box;
+  border-radius: 30px;
+  font-family: 'M PLUS Rounded 1c';
+  display: inline-block;
+  width: 120px;
+  height: 25px;
+  font-size: 12px;
+}
+.asterisk_input:after {
+content:"*"; 
+color: red;
+font-size: large; 
+position: absolute;
+}
+
+img {
+  padding: 10px;
+  width: 10em;
+
+}
+
+label {
+  padding-right: 10px;
+}
+
+/* h1 {
   color: darkblue;
   font-family: "M PLUS Rounded 1c";
   text-align: center;
@@ -188,5 +259,5 @@ label {
   width: 120px;
   height: 25px;
   font-size: 12px;
-}
+} */
 </style>
