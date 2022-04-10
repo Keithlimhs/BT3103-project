@@ -34,6 +34,11 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebaseApp from '../firebase.js';
 import TopHeaderForSignIn from '../components/TopHeaderForSignIn.vue'
+import { getFirestore } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
+
+
+const db = getFirestore(firebaseApp)
 
 export default {
     name: 'TuteeLoginPage',
@@ -46,9 +51,22 @@ export default {
         FormData: {
           email: '',
           password: '',
-        }
+        },
+        exist: true
       }
     },
+    // mounted() {
+    //   async function check() {
+    //     const docSnap = await getDoc(doc(db, 'Tutor', this.email))
+    //     return docSnap
+    //   }
+    //   let docSnap = check()
+    //   if (docSnap.exists()) {
+    //     this.exist = true
+    //   } else {
+    //     this.exist = false
+    //   }
+    // },
 
     methods: {
       Login() {
@@ -59,8 +77,21 @@ export default {
         signInWithEmailAndPassword(auth, email, password)
         .then(() => {
           console.log("Log in successful");
-          // alert("Login succesful, you will be directed to the home page");
+          getDoc(doc(db, 'Tutor', email)).then(docSnap => {
+            if (docSnap.exists()) {
+              console.log(docSnap.exists())
+              this.exists = true
+            } else {
+              this.exists = false
+            }
+          })
+          if (this.exists) {
           this.$router.push('/TuteeHome');
+          } else {
+            alert('Bringing you to setup your profile')
+            this.$router.push('/TuteeSetUpPage')
+          }
+
         })
         .catch(error => {
           var errorCode = error.code;
@@ -133,14 +164,13 @@ h4{
   font-family: 'M PLUS Rounded 1c';
   width: 50vw;
   margin-left: 25vs;
-  background-color:inherit;
 }
 
-.topArt{
+/* .topArt{
   background-color: #316879;
   min-height: 10vh;
   text-align: left;
-}
+} */
 .loginButton {
   color:white;
   background-color: #308C05;
