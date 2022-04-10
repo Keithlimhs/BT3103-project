@@ -1,6 +1,6 @@
 <template>
      <div id="backgroundColor">
-      <NavBarTutee/>
+      <NavBarTutor/>
      </div>
     
     <h3>This is an UserGuidelines Page</h3>
@@ -25,14 +25,14 @@
 
 <script>
 
-import NavBarTutee from '@/components/NavBarTutee.vue';
+import NavBarTutor from '@/components/NavBarTutor.vue';
 
 export default {
 
-    name: "UserGuidelines",
+    name: "UserGuidelinesTutor",
 
     components: {
-        NavBarTutee,
+        NavBarTutor,
     },
 }
 </script>

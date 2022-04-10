@@ -5,13 +5,21 @@
 
         <img id = "back" v-bind:src="require('@/assets/backbutton.png')" alt="error" v-on:click = "back()">
         <img id = "profilePic" v-bind:src = "require('@/assets/logo.png')" alt = "error">
+
+        <DropdownMenu/>
+
+
+
         <h1 id = "title">{{ pageName }}</h1>
+
 
 
     </div>
 </template>
 
 <script>
+import DropdownMenu from '../components/DropdownMenu.vue'
+
 export default {
 
 
@@ -22,12 +30,18 @@ export default {
 
     },
 
+    components: {
+        DropdownMenu,
+    },
+
+
     methods: {
         back() {
             history.back()
     },
 
     }
+
 
 
     
@@ -65,5 +79,6 @@ img {
     margin-left: 10px;
     float: left;
 }
+
 </style>
 

@@ -1,8 +1,10 @@
+
+   
 <template>
     <div id="backgroundColor">
-      <NavBarTutee/>
+      <TopHeader/>
+      <NavBarTutor/>
         <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
-
         <div class="profilePicture">
             <img src="../assets/Noprofilepicture.jpeg">
         </div>
@@ -14,14 +16,16 @@
         <div class ="form">
             <form id="editProfile">
                 <div class = "formli">
-                    <label for="tuteename">Name:</label>
-                    <input type= "text" id= "tuteeName" required = "" placeholder= "Enter your name here" size = "30"> <br><br>
-                    <label for="tuteecourse">Course:</label>
-                    <input type= "text" id= "tuteeCourse" required = "" placeholder= "Enter your course here" size = "30"> <br><br>
-                    <label for="tuteeyear">Year of Study:</label>
-                    <input type= "text" id= "tuteeYear" required = "" placeholder= "Enter your year of study here" size = "30"> <br><br>
-                    <label for="tuteeabout">About Myself:</label>
-                    <input type= "text" style="height: 60px" id= "tuteeAbout" required = "" placeholder= "Enter description" size = "30"> <br><br> 
+                    <label for="tutorname">Name:</label>
+                    <input type= "text" id= "tutorName" required = "" placeholder= "Enter your name here" size = "30"> <br><br>
+                    <label for="tutorcourse">Course:</label>
+                    <input type= "text" id= "tutorCourse" required = "" placeholder= "Enter your course here" size = "30"> <br><br>
+                    <label for="tutoryear">Year of Study:</label>
+                    <input type= "text" id= "tutorYear" required = "" placeholder= "Enter your year of study here" size = "30"> <br><br>
+                    <label for="tutorwebsite">About Myself:</label>
+                    <input type= "text" style="height: 60px" id= "tutorWebsite" required = "" placeholder= "Enter description" size = "30"> <br><br> 
+                    <label for="tutorabout">About Myself:</label>
+                    <input type= "text" style="height: 60px" id= "tutorAbout" required = "" placeholder= "Enter description" size = "30"> <br><br> 
                 </div>
             </form>
         </div>
@@ -30,14 +34,12 @@
         <div > 
         <img src="@/assets/logo.png" style="width:75px;height:75px;border-radius:50%;border:4px solid #333" /> 
         </div>
-
         <div>
                 <p> Name: <strong>{{user.displayName}}</strong><br/>
                 Email: <strong>{{user.email}}</strong><br>
                 Uid: <strong>{{user.uid}}</strong><br>
                 Provider: <strong>{{user.providerData[0].providerId}}</strong></p>
             </div>
-
       </div>  -->
         <div class = wrapper>
             <button class="edit" v-on:click="editProfile()" >Edit Profile</button>
@@ -53,102 +55,89 @@
 // import firebaseApp from '../firebase.js';
 // import { getFirestore } from "firebase/firestore"
 // // import { doc } from "firebase/firestore";
-
 // import firebaseApp from '../firebase.js';
 // import { getFirestore } from "firebase/firestore"
 // import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
-// import { getAuth} from 'firebase/auth';
+import { getAuth} from 'firebase/auth';
 import firebaseApp from '../firebase.js';
 import { doc, getFirestore } from "firebase/firestore";
 import { getDoc } from "firebase/firestore";
-import NavBarTutee from '@/components/NavBarTutee.vue';
-
+import NavBarTutor from '@/components/NavBarTutor.vue'
+import TopHeader from '@/components/TopHeader.vue'
 const db = getFirestore(firebaseApp);
-
 export default {
-
-    name: "TuteeProfileInfo",
+    name: "TutorProfileInfo",
     components: {
-        NavBarTutee,
+      TopHeader,
+      NavBarTutor,
     },
+    
     data() {
         return {
-            fbuser: "hslim03@hotmail.com",
+            fbuser: "",
             name: '',
             course: '',
             year: '',
+            website: '',
             about: '',
         }
     },
-
   mounted(){
-  // const auth = getAuth();   
-  this.fbuser = "hslim03@hotmail.com"; 
-  // this.fbuser = firebase.auth().currentUser.email
+  const auth = getAuth();   
+  // this.fbuser = "e0564108@u.nus.edu"; 
+  this.fbuser = auth.currentUser.email;
   this.display(this.fbuser)},
   
-
     methods: {
     
     async display(user) {
       console.log(user)
       // const docRef = await getDocs(doc(db, "TuteeDetails", this.name))
-      const docRef = doc(db, String(user), "tuteeprofile")
+      const docRef = doc(db, "Tutor", String(user))
       const userProfileDoc = await getDoc(docRef)
       const userProfile = userProfileDoc.data()
       console.log(userProfile)
       
       // const docRef = await getDocs(collection(db, "hslim03@hotmail.com"))
-
 //       if (userProfile.exists()) {
 //   console.log("Document data:", userProfile.data());
 // } else {
 //   // doc.data() will be undefined in this case
 //   console.log("No such document!");
 // }
-      var name = (userProfile.name)
-      var course = (userProfile.course)
-      var year = (userProfile.year)
+      var name = (userProfile.Name)
+      var course = (userProfile.Course)
+      var year = (userProfile.Year)
       var about = (userProfile.About)
-      document.getElementById('tuteeName').value = name;
-      document.getElementById('tuteeCourse').value = course;
-      document.getElementById('tuteeYear').value = year;
-      document.getElementById('tuteeAbout').value = about;
+      var website = (userProfile.Website)
+      document.getElementById('tutorName').value = name;
+      document.getElementById('tutorCourse').value = course;
+      document.getElementById('tutorYear').value = year;
+      document.getElementById('tutorWebsite').value = website;
+      document.getElementById('tutorAbout').value = about;
       
     }
     }
-
     
 }
   
-
     
-
     // mounted(){
     //     const auth = getAuth(firebaseApp);
     //     this.fbuser = 'hslim03@hotmail.com';
     //     this.display(this.fbuser);
-
-
     //   const db = getFirestore(firebaseApp);
-
     //   db.collection('Tutor Profile').doc(auth.currentUser.uid).
     //           onSnapshot(function(doc){
-
     //                 console.log('current data:', doc.data())
-
     //                 var newData = doc.data()
-
     //                 this.profileData = newData;
-
     //               })
     //         }
-
 </script>
 
 
 <style scoped>
-
 h1 {
   color: darkblue;
   font-family: "M PLUS Rounded 1c";
@@ -177,13 +166,9 @@ h1{
 .wrapper {
   text-align: center;
 }
-
 .form {
   text-align: center;
 }
-
-
-
 label {
   font-family: "M PLUS Rounded 1c";
   font-size: 14px;
@@ -191,7 +176,6 @@ label {
   width: 200px;
   display: inline-block;
 }
-
 .updateProfilePictureBtn {
   border: none;
   background-color: inherit;
@@ -215,5 +199,4 @@ label {
   height: 25px;
   font-size: 12px;
 }
-
 </style>
