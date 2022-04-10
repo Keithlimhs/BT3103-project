@@ -24,7 +24,7 @@ import { getFirestore } from "firebase/firestore";
 import { doc, getDoc } from "firebase/firestore";
 
 
-// const db = getFirestore(firebaseApp);
+const db = getFirestore(firebaseApp);
 
 export default {
 
