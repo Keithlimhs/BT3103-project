@@ -51,7 +51,7 @@ export default {
           email: '',
           password: '',
         },
-        exist: true
+        // exist: true
       }
     },
 
@@ -77,24 +77,29 @@ export default {
         .then(() => {
           console.log("Log in successful");
           getDoc(doc(db, 'Tutor', email)).then(docSnap => {
+            console.log('exist')
             if (docSnap.exists()) {
               console.log(docSnap.exists())
               this.exists = true
+              this.$router.push('/TutorHome');
             } else {
               this.exists = false
+              alert('Bringing you to setup your profile')
+              this.$router.push('/TutorSetUpPage')
             }
-          })
-          if (this.exists) {
-          this.$router.push('/TutorHome');
-          } else {
-            alert('Bringing you to setup your profile')
-            this.$router.push('/TutorSetUpPage')
+            })
+          // if (docSnap.exists()) {
+          //     this.$router.push('/TutorHome');
+          //   } else {
+          //     alert('Bringing you to setup your profile')
+          //     this.$router.push('/TutorSetUpPage')
+          //   }
           }
 
           // alert("Login succesful, you will be directed to the home page");
 
 
-        })
+        )
         .catch(error => {
           var errorCode = error.code;
           var errorMessage = error.message;

@@ -52,7 +52,7 @@ export default {
           email: '',
           password: '',
         },
-        exist: true
+        // exist: true
       }
     },
     // mounted() {
@@ -77,20 +77,24 @@ export default {
         signInWithEmailAndPassword(auth, email, password)
         .then(() => {
           console.log("Log in successful");
-          getDoc(doc(db, 'Tutor', email)).then(docSnap => {
+          getDoc(doc(db, 'Tutee', email)).then(docSnap => {
+            console.log('exist')
             if (docSnap.exists()) {
               console.log(docSnap.exists())
-              this.exists = true
+              // this.exists = true
+              this.$router.push('/TuteeHome');
             } else {
-              this.exists = false
+              // this.exists = false
+              alert('Bringing you to setup your profile')
+              this.$router.push('/TuteeSetUpPage')
             }
-          })
-          if (this.exists) {
-          this.$router.push('/TuteeHome');
-          } else {
-            alert('Bringing you to setup your profile')
-            this.$router.push('/TuteeSetUpPage')
-          }
+            })
+          // if (this.exists) {
+          // this.$router.push('/TuteeHome');
+          // } else {
+          //   alert('Bringing you to setup your profile')
+          //   this.$router.push('/TuteeSetUpPage')
+          // }
 
         })
         .catch(error => {
@@ -164,6 +168,7 @@ h4{
   font-family: 'M PLUS Rounded 1c';
   width: 50vw;
   margin-left: 25vs;
+  background-color: inherit;
 }
 
 /* .topArt{
