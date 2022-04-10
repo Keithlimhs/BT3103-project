@@ -154,6 +154,7 @@ h4{
   font-family: 'M PLUS Rounded 1c';
   width: 50vw;
   margin-left: 25vs;
+  background-color: inherit;
 }
 
 .topArt{
