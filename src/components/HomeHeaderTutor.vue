@@ -3,7 +3,7 @@
 
             <img id = "logo" v-bind:src = "require('@/assets/logo_bg_removed.png')" alt = "error">
             <img id = "profilePic" v-bind:src = "require('@/assets/logo.png')" alt = "error">
-            <DropdownMenu/>
+            <DropdownMenuTutor/>
         
             
             
@@ -13,14 +13,14 @@
 </template>
 
 <script>
-import DropdownMenu from '../components/DropdownMenu.vue'
+import DropdownMenuTutor from '../components/DropdownMenuTutor.vue'
 export default {
 
     props: {
         pageName: String
     },
     components: {
-        DropdownMenu,
+        DropdownMenuTutor,
     }
 
 }

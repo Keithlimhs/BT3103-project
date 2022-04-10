@@ -34,7 +34,11 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebaseApp from '../firebase.js';
 import TopHeaderForSignIn from '../components/TopHeaderForSignIn.vue'
+import { getFirestore } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 
+
+const db = getFirestore(firebaseApp)
 
 export default {
     name: 'TutorLoginPage',
@@ -46,10 +50,23 @@ export default {
         FormData: {
           email: '',
           password: '',
-        }
+        },
+        // exist: true
       }
     },
 
+    // mounted() {
+    //   async function check() {
+    //     const docSnap = await getDoc(doc(db, 'Tutor', this.email))
+    //     return docSnap
+    //   }
+    //   let docSnap = check()
+    //   if (docSnap.exists()) {
+    //     this.exist = true
+    //   } else {
+    //     this.exist = false
+    //   }
+    // },
     methods: {
       Login() {
         const auth = getAuth(firebaseApp)
@@ -59,9 +76,30 @@ export default {
         signInWithEmailAndPassword(auth, email, password)
         .then(() => {
           console.log("Log in successful");
+          getDoc(doc(db, 'Tutor', email)).then(docSnap => {
+            console.log('exist')
+            if (docSnap.exists()) {
+              console.log(docSnap.exists())
+              this.exists = true
+              this.$router.push('/TutorHome');
+            } else {
+              this.exists = false
+              alert('Bringing you to setup your profile')
+              this.$router.push('/TutorSetUpPage')
+            }
+            })
+          // if (docSnap.exists()) {
+          //     this.$router.push('/TutorHome');
+          //   } else {
+          //     alert('Bringing you to setup your profile')
+          //     this.$router.push('/TutorSetUpPage')
+          //   }
+          }
+
           // alert("Login succesful, you will be directed to the home page");
-          this.$router.push('/TutorHome');
-        })
+
+
+        )
         .catch(error => {
           var errorCode = error.code;
           var errorMessage = error.message;

@@ -68,7 +68,7 @@ export default {
             if (user) {
                 this.fbuser = user.email;
                 getuser(this.fbuser).then(data => this.user = data.Name)
-                console.log(this.user)
+                console.log(this.fbuser)
                 // console.log(this.fbuser)
                 console.log("Signed in")
             } else {
@@ -80,7 +80,6 @@ export default {
 
             return t.data()
         }
-        // getuser(this.fbuser).then(data => this.user = data);
 
         
         axios

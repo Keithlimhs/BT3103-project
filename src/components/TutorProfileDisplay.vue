@@ -13,7 +13,7 @@
               </div>
               <div id="year-course">
 
-                  Year {{tutor.year}}, {{tutor.major}}
+                  Year {{tutor.Year}}, {{tutor.Course}}
 
               </div>
           </div>
@@ -25,7 +25,7 @@
                 <span class="text">Chat</span> <!-- link to chat interface -->
             </button>
 
-            <router-link v-bind:to="this.$route.path + '/' + tutor.id">
+            <router-link v-bind:to="this.$route.path + '/' + tutor.Email">
                 <button class="view-profile">
                     View Profile <!-- link to full profile -->               
                 </button>
@@ -49,9 +49,6 @@ import StarRating from 'vue-star-rating';
 export default {
     data(){
         return{
-            // user: "Shashank Shekhar Tripathi",
-            // year: "Year 4",
-            // course: "Business Analytics",
             image: require('@/assets/profilepicture.jpeg'),
             count: 5,
             rating: 3,
@@ -60,14 +57,8 @@ export default {
 
     props: {
         // eslint-disable-next-line vue/no-dupe-keys
-        user: String,
         // eslint-disable-next-line vue/no-dupe-keys
-        year: Number,
         // eslint-disable-next-line vue/no-dupe-keys
-        course: String,
-        // count: Number,
-        // rating: Number,
-
         tutor: Object,
     },
 
@@ -84,9 +75,7 @@ export default {
 .tutor-profile {
 	background-color: #D4D4D4;
 	padding: 30px;
-
     margin: 100px;
-
     margin-left: 170px;
     margin-right: 170px; 
 	display: flex;

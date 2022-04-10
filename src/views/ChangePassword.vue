@@ -1,6 +1,7 @@
 <template>
 <div class = 'emailVerification'>
     <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
+    <TopHeader/>
     <NavBarTutee/>
     <div>
     </div>
@@ -15,9 +16,10 @@
           <input class = "inputnewPassword" type = "password" id = "newPassword" placeholder= " " size = "30"> <br><br>
           <label for="passwordConfirm"> <strong> Confirm Password: </strong> </label>
           <input class = "inputconfirmPassword" type = "password" id = "confirmPassword" placeholder= " " size = "30"> <br><br>
+          <button id = "resetPassword" type="button" v-on:click="resetPassword()"> CHANGE </button>
         </div>
 
-        <button id = "resetPassword" type="button" v-on:click="resetPassword()"> CHANGE </button>
+        
       </form>
   </div>
 
@@ -33,6 +35,7 @@
 
 // import TopHeaderForSignIn from '@/components/TopHeaderForSignIn.vue'
 import NavBarTutee from '@/components/NavBarTutee.vue';
+import TopHeader from '@/components/TopHeader.vue'
 //import { getAuth, sendSignInLinkToEmail } from "firebase/auth";
 
 
@@ -40,6 +43,7 @@ export default {
 
 
     components: {
+      TopHeader,
         NavBarTutee
     },
     name: "ChangePassword",
@@ -73,6 +77,11 @@ export default {
 
 .formli {
   text-align: left;
+  background-color: #E5E5E5
+}
+
+.form {
+  background-color: #E5E5E5
 }
 
 h2 {

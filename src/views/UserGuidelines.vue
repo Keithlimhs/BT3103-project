@@ -1,44 +1,30 @@
 <template>
-     <div id="backgroundColor">
+<TopHeader/>
       <NavBarTutee/>
+     <div id="backgroundColor">
+        
      </div>
     
     <h3>This is an UserGuidelines Page</h3>
         <h2>Welcome to ModsMatch</h2>
         <h3>Modsmatch is a platform for students to enrich their learning experience<br>
         This is just a demo version and is made for learning purposes. Please use accordingly. <br></h3>
-        <!-- <div v-if="user">
-        <div > 
-        <img src="@/assets/logo.png" style="width:75px;height:75px;border-radius:50%;border:4px solid #333" /> 
-        </div>
-
-        <div>
-                <p> Name: <strong>{{user.displayName}}</strong><br/>
-                Email: <strong>{{user.email}}</strong><br>
-                Uid: <strong>{{user.uid}}</strong><br>
-                Provider: <strong>{{user.providerData[0].providerId}}</strong></p>
-            </div>
-
-      </div>  -->
         
 </template>
 
 <script>
-
 import NavBarTutee from '@/components/NavBarTutee.vue';
-
+import TopHeader from '@/components/TopHeader.vue'
 export default {
-
     name: "UserGuidelines",
-
     components: {
+        TopHeader,
         NavBarTutee,
     },
 }
 </script>
 
 <style scoped>
-
 h1 {
   color: darkblue;
   font-family: "M PLUS Rounded 1c";
@@ -67,13 +53,9 @@ h1{
 .wrapper {
   text-align: center;
 }
-
 .form {
   text-align: center;
 }
-
-
-
 label {
   font-family: "M PLUS Rounded 1c";
   font-size: 14px;
@@ -81,7 +63,6 @@ label {
   width: 200px;
   display: inline-block;
 }
-
 .updateProfilePictureBtn {
   border: none;
   background-color: inherit;
@@ -105,5 +86,4 @@ label {
   height: 25px;
   font-size: 12px;
 }
-
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="tutor-home">
     <div class="header">
-      <HomeHeader pageName= "HOME"/>
+      <HomeHeaderTutor pageName= "HOME"/>
     </div>
     <div class="top-container">
       Hello {{user}}, here are your offers for today
@@ -31,28 +31,44 @@
 </template>
 
 <script>
-import HomeHeader from '../components/HomeHeader.vue'
+import HomeHeaderTutor from '../components/HomeHeaderTutor.vue'
 // import TuteeProfileDisplay from '../components/TuteeProfileDisplay.vue'
 import firebaseApp from "@/firebase.js"
 import { getFirestore } from "firebase/firestore"
-import { collection, getDocs, } from "firebase/firestore"
-// import { getAuth, onAuthStateChanged } from "firebase/auth"
+import { collection, getDocs, getDoc, doc } from "firebase/firestore"
+import { getAuth, onAuthStateChanged } from "firebase/auth"
 
 const db = getFirestore(firebaseApp)
 
 export default {
   name: 'TutorHome',
   components: {
-    HomeHeader,
+    HomeHeaderTutor,
     // TuteeProfileDisplay,
   },
   data(){
     return{
-      user: "Shashank Shekhar Tripathi",
+      user: "",
       tutees: [],
     }
   },
   mounted() {
+    const auth = getAuth()
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                this.fbuser = user.email;
+                getuser(this.fbuser).then(data => this.user = data.Name)
+                console.log(this.user)
+                // console.log(this.fbuser)
+                console.log("Signed in")
+            } else {
+                console.log("Sign out")
+            }
+        })
+        async function getuser(user) {
+            let t = await getDoc(doc(db, "Tutor", String(user)))
+            return t.data()
+        }
     async function getdata() {
             let t = await getDocs(collection(db, "Tutee"))
             let tuteesArray = []

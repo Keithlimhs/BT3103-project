@@ -32,7 +32,7 @@
                     <AddModulePopup/>
             </div>
             <div class="list" v-for="module in modules" :key="module">
-                        <button>{{module}}</button>
+              <button>{{module}}</button>
             </div>
 
         </div>
@@ -83,7 +83,7 @@ export default {
             if (user) {
                 this.fbuser = user.email;
                 getmodules(this.fbuser).then(data => this.modules = data)
-                console.log(this.user)
+                console.log(this.fbuser)
                 // console.log(this.fbuser)
                 console.log("Signed in")
             } else {
@@ -110,9 +110,11 @@ export default {
                     Year: this.year,
                     Website: this.website,
                     About: this.about,
-                    ModulesAvailable: []
+                    ModulesAvailable: this.fbuser.ModulesAvailable
+                    
                 })
                 console.log(docRef)
+        
                 document.getElementById("setupForm").reset();
                 this.$emit("added")
                 // this.$router.push('/TutorHome')

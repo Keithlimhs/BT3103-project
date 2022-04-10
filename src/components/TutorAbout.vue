@@ -2,18 +2,25 @@
     <div class="firstcontainer">
         <div id="subheading1">About myself</div>
         <div id="about">
-            {{description}}
+            {{tutor.About}}
         </div>
     </div>
 </template>
 
 <script>
+
 import firebaseApp from '../firebase.js';
 import { doc, getFirestore } from "firebase/firestore";
 import { getDoc } from "firebase/firestore";
 //import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const db = getFirestore(firebaseApp);
+// import firebaseApp from '../firebase.js';
+// import { getFirestore } from "firebase/firestore";
+// import { collection, getDocs } from "firebase/firestore";
+// //import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+
+// const db = getFirestore(firebaseApp);
 
 export default {
     name: "TutorAbout",
@@ -23,6 +30,7 @@ export default {
             description: '',
         }
     },
+
     //props: {
     //    tutor: Object
     //},
@@ -58,6 +66,7 @@ export default {
         display().then(data => this.description = data);
         */
     }
+
 }
 
 </script>
@@ -68,7 +77,7 @@ export default {
     border: 1px solid #000000;
     box-sizing: border-box;
     height: 100px;
-    padding: 30px;
+    padding: 20px;
     margin: 10px;
     margin-left: 170px;
     margin-right: 170px; 

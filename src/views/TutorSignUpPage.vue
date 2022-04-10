@@ -34,9 +34,13 @@
 
 <script>
 import { getAuth, createUserWithEmailAndPassword} from "firebase/auth";
+import { doc, setDoc, } from "firebase/firestore";
+import firebaseApp from '../firebase.js';
+import { getFirestore } from "firebase/firestore";
 import TopHeaderForSignIn from '../components/TopHeaderForSignIn.vue'
 
-import firebaseApp from '../firebase.js';
+const db = getFirestore(firebaseApp)
+
 export default {
     name: 'TutorSignUpPage',
     components: {
@@ -55,7 +59,7 @@ export default {
 
     methods: {
       
-      CreateAccount() {
+      async CreateAccount() {
         const auth = getAuth(firebaseApp)
         const email = document.getElementById("email").value
         const password = document.getElementById("password").value
@@ -80,12 +84,23 @@ export default {
               window.alert("This email has been registered already.")
             } else if (password == '' & password2 == '') {
               alert('Please key in a password')
-            } 
+            } else if (errorCode == 'auth/weak-password'){
+              alert("Password should be at least 6 characters")
+            }
 
             // window.alert("Message : " + errorMessage);
           })
         } else{
               alert("Passwords does not match. Please try again.")
+        }
+        try{
+          const docRef = await setDoc(doc(db, "Tutor", email), {
+            Email: email,
+          })
+          console.log(docRef)
+        }
+        catch(error) {
+                console.error("Error adding document: ", error)
         }
       },
     },
@@ -141,6 +156,7 @@ h4{
   font-family: 'M PLUS Rounded 1c';
   width: 50vw;
   margin-left: 25vs;
+  background-color: inherit;
 }
 
 .topArt{

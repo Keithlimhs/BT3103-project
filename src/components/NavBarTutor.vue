@@ -1,30 +1,30 @@
 <template>
     <div class="topnav">
         <div id = "myTopnav">           
-            <router-link to ="/TuteeProfileDisplayPage">Tutee Profile Display</router-link> 
-            <router-link to ="/ChangePassword">Change Password</router-link> 
-            <router-link to ="/UserGuidelines">User Guidelines</router-link>
+            <router-link to ="/TutorProfileDisplayPage">Tutor Profile Display</router-link> 
+            <router-link to ="/ChangePasswordTutor">Change Password</router-link> 
+            <router-link to ="/UserGuidelinesTutor">User Guidelines</router-link>
         </div>
     </div>
 </template>
 
 <script> 
-// import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 export default {
     name: 'NavBar',
-    // data() {
-    //     return {
-    //         user: false,
-    //     }
-    // },
-    // mounted() {
-    //     const auth = getAuth();
-    //     onAuthStateChanged(auth, (user) => {
-    //         if (user) {
-    //             this.user = user;
-    //         }
-    //     })
-    // }
+    data() {
+        return {
+            user: false,
+        }
+    },
+    mounted() {
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                this.user = user;
+            }
+        })
+    }
 }
 </script>
 
