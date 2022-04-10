@@ -68,7 +68,8 @@ export default {
                         GradeAttained: this.grade,
                         AY: this.ay,
                         ProfName: this.prof,
-                        SemTaken: this.sem })
+                        SemTaken: this.sem,
+                        visible: false })
                     })
                     const tutorRef = doc(db, 'Tutor', this.fbuser);
                     console.log(tutorRef)

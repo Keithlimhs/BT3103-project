@@ -25,7 +25,7 @@
                 <span class="text">Chat</span> <!-- link to chat interface -->
             </button>
 
-            <router-link v-bind:to="this.$route.path + '/' + tutor.id">
+            <router-link v-bind:to="this.$route.path + '/' + tutor.Email">
                 <button class="view-profile">
                     View Profile <!-- link to full profile -->               
                 </button>
