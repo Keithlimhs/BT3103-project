@@ -88,20 +88,10 @@ export default {
                     }
                     const tutorRef = doc(db, 'Tutor', this.fbuser);
                     console.log(tutorRef)
-                    if (doc(db, "Modules", this.code) == null) {
-                        const docRef3 = await setDoc(doc(db, "Modules", this.code), {
-                            TutorIds: arrayUnion(tutorRef)
-                        })
-                        console.log(docRef3)
-                    } else {
-                        const docRef4 = await updateDoc(doc(db, "Modules", this.code), {
-                            TutorIds: arrayUnion(tutorRef)
-                        })
-                        console.log(docRef4)
-                    }
-                    
-                    
-                    
+                    const docRef3 = await setDoc(doc(db, "Modules", this.code), {
+                        TutorIds: arrayUnion(tutorRef)
+                    })
+                    console.log(docRef3)
                     document.getElementById("myform").reset();
                     this.$emit("added")
                 }
