@@ -10,9 +10,10 @@
         <div class = "form">
           <label for="email"> <strong> Email: </strong> </label>
           <input class = "inputemail" type = "text" id = "email" placeholder= "Enter your email here" size = "30"> <br><br>
+          <button id = "verifyEmail" type="button" v-on:click="verifyEmail()"> Email me a recovery link </button>
         </div>
 
-        <button id = "verifyEmail" type="button" v-on:click="verifyEmail()"> Email me a recovery link </button>
+        
       </form>
   </div>
 
@@ -118,6 +119,10 @@ h4{
 label, .inputemail{
   display: inline;
   flex-direction:column;
+}
+
+.form {
+    background-color: #E5E5E5 ;
 }
 
 label {
