@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import TopHeader from '@/components/TopHeaderTutor.vue'
+import TopHeader from '@/components/TopHeader.vue'
 import TutorProfileMain from '@/components/TutorProfileMain.vue'
 import TutorAbout from '@/components/TutorAbout.vue'
 import TutorModules from '@/components/TutorModules.vue'
