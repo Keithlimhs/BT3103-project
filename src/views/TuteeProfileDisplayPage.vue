@@ -1,16 +1,15 @@
 <template>
-    <div id="backgroundColor">
       <TopHeader/>
       <NavBarTutee/>
-        <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
         <div class="profilePicture">
-            <img src="../assets/Noprofilepicture.jpeg">
+            <img v-bind:src="require('../assets/Noprofilepicture.jpeg')" >
         </div>
 
-        <div class = wrapper>
-            <button class = "updateProfilePictureBtn">Update profile picture (optional)</button>
+      
+         <div class = wrapper>
+            <ProfilePic/>
         </div>
-        
+
         <div class ="form">
             <form id="editProfile">
                 <div class = "formli">
@@ -30,19 +29,16 @@
         <div > 
         <img src="@/assets/logo.png" style="width:75px;height:75px;border-radius:50%;border:4px solid #333" /> 
         </div>
-
         <div>
                 <p> Name: <strong>{{user.displayName}}</strong><br/>
                 Email: <strong>{{user.email}}</strong><br>
                 Uid: <strong>{{user.uid}}</strong><br>
                 Provider: <strong>{{user.providerData[0].providerId}}</strong></p>
             </div>
-
       </div>  -->
         <div class = wrapper>
             <button class="edit" v-on:click="editProfile()" >Edit Profile</button>
         </div>    
-    </div>
 </template>
 
 <script>
@@ -53,7 +49,6 @@
 // import firebaseApp from '../firebase.js';
 // import { getFirestore } from "firebase/firestore"
 // // import { doc } from "firebase/firestore";
-
 // import firebaseApp from '../firebase.js';
 // import { getFirestore } from "firebase/firestore"
 // import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
@@ -64,13 +59,13 @@ import { getDoc } from "firebase/firestore";
 import NavBarTutee from '@/components/NavBarTutee.vue'
 import TopHeader from '@/components/TopHeader.vue'
 const db = getFirestore(firebaseApp);
-
+import ProfilePic from "../components/ProfilePicture.vue"
 export default {
-
     name: "TuteeProfileInfo",
     components: {
       TopHeader,
       NavBarTutee,
+      ProfilePic
     },
     
     data() {
@@ -82,14 +77,13 @@ export default {
             about: '',
         }
     },
-
   mounted(){
+  // this.fbuser = "hslim03@hotmail.com"; 
   const auth = getAuth();   
-  // this.fbuser = "e0564108@u.nus.edu"; 
+  
   this.fbuser = auth.currentUser.email;
   this.display(this.fbuser)},
   
-
     methods: {
     
     async display(user) {
@@ -98,10 +92,9 @@ export default {
       const docRef = doc(db, "Tutee", String(user))
       const userProfileDoc = await getDoc(docRef)
       const userProfile = userProfileDoc.data()
-      console.log(userProfile)
+      console.log(userProfileDoc.data())
       
       // const docRef = await getDocs(collection(db, "hslim03@hotmail.com"))
-
 //       if (userProfile.exists()) {
 //   console.log("Document data:", userProfile.data());
 // } else {
@@ -111,7 +104,7 @@ export default {
       var name = (userProfile.Name)
       var course = (userProfile.Course)
       var year = (userProfile.Year)
-      var about = (userProfile.About)
+      var about = (userProfile.Description)
       document.getElementById('tuteeName').value = name;
       document.getElementById('tuteeCourse').value = course;
       document.getElementById('tuteeYear').value = year;
@@ -119,43 +112,27 @@ export default {
       
     }
     }
-
     
 }
   
-
     
-
-    // mounted(){
-    //     const auth = getAuth(firebaseApp);
-    //     this.fbuser = 'hslim03@hotmail.com';
-    //     this.display(this.fbuser);
-
-
-    //   const db = getFirestore(firebaseApp);
-
-    //   db.collection('Tutor Profile').doc(auth.currentUser.uid).
-    //           onSnapshot(function(doc){
-
-    //                 console.log('current data:', doc.data())
-
-    //                 var newData = doc.data()
-
-    //                 this.profileData = newData;
-
-    //               })
-    //         }
-
 </script>
 
 
 <style scoped>
-
 h1 {
   color: darkblue;
   font-family: "M PLUS Rounded 1c";
   text-align: center;
   font-weight: bolder;
+}
+
+.form {
+  background-color: #E5E5E5
+}
+
+.formli {
+  background-color: #E5E5E5
 }
 #backgroundColor {
   background-color: #E5E5E5 ;
@@ -179,13 +156,9 @@ h1{
 .wrapper {
   text-align: center;
 }
-
 .form {
   text-align: center;
 }
-
-
-
 label {
   font-family: "M PLUS Rounded 1c";
   font-size: 14px;
@@ -193,7 +166,6 @@ label {
   width: 200px;
   display: inline-block;
 }
-
 .updateProfilePictureBtn {
   border: none;
   background-color: inherit;
@@ -203,7 +175,7 @@ label {
   font-family: 'M PLUS Rounded 1c';
   text-decoration: underline;
 }
-.editProfile {
+.edit {
   border: 1px solid #000000;
   background-color: #FFA500;
   cursor: pointer;
@@ -217,5 +189,4 @@ label {
   height: 25px;
   font-size: 12px;
 }
-
 </style>

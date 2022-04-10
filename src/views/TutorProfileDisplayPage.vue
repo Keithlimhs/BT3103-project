@@ -1,14 +1,16 @@
-
-   
 <template>
-    <div id="backgroundColor">
-      <TopHeader/>
+    <TopHeader/>
       <NavBarTutor/>
-        <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
-        <div class="profilePicture">
-            <img src="../assets/Noprofilepicture.jpeg">
+
+      <div class="profilePicture">
+            <img v-bind:src="require('../assets/Noprofilepicture.jpeg')" >
         </div>
 
+      
+         <div class = wrapper>
+            <ProfilePic/>
+        </div>
+      
         <div class = wrapper>
             <button class = "updateProfilePictureBtn">Update profile picture (optional)</button>
         </div>
@@ -44,7 +46,6 @@
         <div class = wrapper>
             <button class="edit" v-on:click="editProfile()" >Edit Profile</button>
         </div>    
-    </div>
 </template>
 
 <script>
@@ -137,12 +138,21 @@ export default {
 </script>
 
 
+
 <style scoped>
 h1 {
   color: darkblue;
   font-family: "M PLUS Rounded 1c";
   text-align: center;
   font-weight: bolder;
+}
+
+.form {
+  background-color: #E5E5E5
+}
+
+.formli {
+  background-color: #E5E5E5
 }
 #backgroundColor {
   background-color: #E5E5E5 ;
@@ -185,7 +195,7 @@ label {
   font-family: 'M PLUS Rounded 1c';
   text-decoration: underline;
 }
-.editProfile {
+.edit {
   border: 1px solid #000000;
   background-color: #FFA500;
   cursor: pointer;

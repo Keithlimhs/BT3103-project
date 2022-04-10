@@ -1,9 +1,11 @@
 <template>
+<TopHeader/>
+    <NavBarTutor/>
+    <div id="backgroundColor">
+    </div>
 <div class = 'emailVerification'>
     <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
-    <NavBarTutor/>
-    <div>
-    </div>
+
     <br><br>
   
   <div class ="form">
@@ -33,6 +35,7 @@
 
 // import TopHeaderForSignIn from '@/components/TopHeaderForSignIn.vue'
 import NavBarTutor from '@/components/NavBarTutor.vue';
+import TopHeader from '@/components/TopHeader.vue'
 //import { getAuth, sendSignInLinkToEmail } from "firebase/auth";
 
 
@@ -40,6 +43,7 @@ export default {
 
 
     components: {
+        TopHeader,
         NavBarTutor
     },
     name: "ChangePasswordTutor",
@@ -73,7 +77,9 @@ export default {
 
 .formli {
   text-align: left;
+  background-color: #E5E5E5
 }
+
 
 h2 {
   color: darkblue;

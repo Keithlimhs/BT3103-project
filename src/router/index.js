@@ -42,7 +42,7 @@ const routes = [
     },
 
     {
-        path: "/TutorProfileDisplayPage",
+        path: "/TuorProfileDisplayPage",
         name: "TuorProfileDisplayPage",
         component: TutorProfileDisplayPage,
     },
@@ -72,7 +72,7 @@ const routes = [
         component: ChangePassword,
     },
     {
-        path: '/',
+        path: '/MainPage',
         name: 'MainPage',
         component: MainPage
     },

@@ -1,7 +1,8 @@
 <template>
-     <div id="backgroundColor">
-        <TopHeader/>
+<TopHeader/>
       <NavBarTutee/>
+     <div id="backgroundColor">
+        
      </div>
     
     <h3>This is an UserGuidelines Page</h3>
@@ -12,14 +13,10 @@
 </template>
 
 <script>
-
 import NavBarTutee from '@/components/NavBarTutee.vue';
 import TopHeader from '@/components/TopHeader.vue'
-
 export default {
-
     name: "UserGuidelines",
-
     components: {
         TopHeader,
         NavBarTutee,
@@ -28,7 +25,6 @@ export default {
 </script>
 
 <style scoped>
-
 h1 {
   color: darkblue;
   font-family: "M PLUS Rounded 1c";
@@ -57,13 +53,9 @@ h1{
 .wrapper {
   text-align: center;
 }
-
 .form {
   text-align: center;
 }
-
-
-
 label {
   font-family: "M PLUS Rounded 1c";
   font-size: 14px;
@@ -71,7 +63,6 @@ label {
   width: 200px;
   display: inline-block;
 }
-
 .updateProfilePictureBtn {
   border: none;
   background-color: inherit;
@@ -95,5 +86,4 @@ label {
   height: 25px;
   font-size: 12px;
 }
-
 </style>

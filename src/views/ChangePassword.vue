@@ -16,9 +16,10 @@
           <input class = "inputnewPassword" type = "password" id = "newPassword" placeholder= " " size = "30"> <br><br>
           <label for="passwordConfirm"> <strong> Confirm Password: </strong> </label>
           <input class = "inputconfirmPassword" type = "password" id = "confirmPassword" placeholder= " " size = "30"> <br><br>
+          <button id = "resetPassword" type="button" v-on:click="resetPassword()"> CHANGE </button>
         </div>
 
-        <button id = "resetPassword" type="button" v-on:click="resetPassword()"> CHANGE </button>
+        
       </form>
   </div>
 
@@ -76,6 +77,11 @@ export default {
 
 .formli {
   text-align: left;
+  background-color: #E5E5E5
+}
+
+.form {
+  background-color: #E5E5E5
 }
 
 h2 {
