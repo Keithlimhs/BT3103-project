@@ -9,7 +9,7 @@
         <div class="tutors">
             <div id="loading" v-if="!loading">Loading tutors...</div>
             <div id="tutor-found" v-for="tutor in filteredTutors" :key="tutor">
-                    <TutorProfileDisplay :tutor="tutor"/>
+                <TutorProfileDisplay :tutor="tutor"/>
             </div>
             <div id="tutor-not-found" v-if="!filteredTutors.length && loading">Sorry, the tutor cannot be found</div>
         </div>
@@ -49,9 +49,8 @@ export default {
             let tutorids = t.data().TutorIds
             
             for (let key in tutorids) {
-                let t2 = await getDoc(doc(db, "Tutor", tutorids[key].id))
+                let t2 = await getDoc(doc(db, tutorids[key].tutorRef))
                 let tutorinfo = t2.data()
-                tutorinfo.id = tutorids[key].id
                 tutorsArray.push(tutorinfo)
             }
             return tutorsArray
