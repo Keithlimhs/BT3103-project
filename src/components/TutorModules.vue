@@ -2,14 +2,14 @@
     <div class="secondcontainer">
         <div id="subheading2">Module Available</div>
         <div class="modules" v-for="mod in availablemods" :key="mod">
-            <button @click="popup=true" color="primary" type="border">{{mod.ModuleCode}}</button>
-            <popup v-show="popup">
+            <button @click="mod.isVisible=true" color="primary" type="border">{{mod.ModuleCode}}</button>
+            <popup v-show="mod.isVisible">
                 <p>
                     Grade Attained: {{mod.GradeAttained}} <br>
                     Year Taken: {{mod.AY}} <br>
                     Sem Taken: {{mod.SemTaken}} <br>
                     Professor: {{mod.ProfName}}
-                    <button @click="popup=false" color="primary" type="border">Close</button>
+                    <button @click="mod.isVisible=false" color="primary" type="border">Close</button>
                 </p>
             </popup>
         </div>
@@ -32,7 +32,6 @@ export default {
             yearTaken: "",
             semTaken: "",
             prof: "",
-            popup:false,
         }
     },
     //props: {

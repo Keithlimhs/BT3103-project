@@ -67,7 +67,8 @@ export default {
                         GradeAttained: this.grade,
                         AY: this.ay,
                         ProfName: this.prof,
-                        SemTaken: this.sem })
+                        SemTaken: this.sem, 
+                        isVisible: false})
 
                     })
                     console.log(docRef)
