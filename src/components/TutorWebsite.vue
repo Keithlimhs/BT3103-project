@@ -22,7 +22,6 @@ export default {
     props: {
         tutor: Object
     },
-    
     // mounted() {
     //     async function display() {
     //         let z = await getDocs(collection(db,"Tutor"))
@@ -39,8 +38,9 @@ export default {
     // },
     methods: {
         btnClick() {
-            window.open(this.tutor.Website);
+            window.open("https://" + this.tutor.Website);
         }
+
     }
     
 }

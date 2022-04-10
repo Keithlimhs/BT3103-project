@@ -80,7 +80,6 @@ export default {
 
             return t.data()
         }
-        // getuser(this.fbuser).then(data => this.user = data);
 
         
         axios

@@ -3,8 +3,13 @@
         <link href='https://fonts.googleapis.com/css?family=M PLUS Rounded 1c' rel='stylesheet'>
 
         <TopHeader pageName="PROFILE PAGE"/> <br>
+
+        <div class="main">
+
         <NavBarTutor/>
+
         <TutorProfileMain :tutor="this.tutor"/>
+        </div>
         <div class="about">
             <TutorAbout :tutor="this.tutor"/> 
         </div>
@@ -67,9 +72,9 @@ export default {
   background-color: #E5E5E5 ;
 }
 
-.about, .modules, .website {
-    margin-left: 170px;
-    margin-right: 170px;
+.about, .modules, .website, .main {
+    margin-left: 120px;
+    margin-right: 120px;
     margin-top: 10px;
     margin-bottom: 10px;
 }

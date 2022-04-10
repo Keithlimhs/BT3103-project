@@ -49,9 +49,6 @@ import StarRating from 'vue-star-rating';
 export default {
     data(){
         return{
-            // user: "Shashank Shekhar Tripathi",
-            // year: "Year 4",
-            // course: "Business Analytics",
             image: require('@/assets/profilepicture.jpeg'),
             count: 5,
             rating: 3,
@@ -78,9 +75,7 @@ export default {
 .tutor-profile {
 	background-color: #D4D4D4;
 	padding: 30px;
-
     margin: 100px;
-
     margin-left: 170px;
     margin-right: 170px; 
 	display: flex;
