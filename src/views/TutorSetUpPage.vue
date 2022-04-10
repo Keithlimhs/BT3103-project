@@ -36,7 +36,7 @@
             </div>
 
         </div>
-        <div class = wrapper>
+        <div id = "button">
             <button class="saveBtn" v-on:click="handleSubmit()" >SAVE</button>
         </div>        
     </div>
@@ -154,6 +154,7 @@ h1{
 }
 .wrapper {
   text-align: center;
+  margin-top: 200px;
 }
 .formli {
   text-align: right;
@@ -217,8 +218,20 @@ font-size: large;
 
 }
 img {
-  padding: 10px;
+  padding-top: 50px;
+  padding-left: 350px;
   width: 10em;
+  float: center;
+}
 
+.profilePicture {
+  float: center;
+  text-align: center;
+  margin: auto;
+  width: 800px;
+}
+
+#button {
+  padding-top: 0px;
 }
 </style>

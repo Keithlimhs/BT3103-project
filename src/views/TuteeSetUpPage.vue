@@ -32,7 +32,7 @@
                 </div>
             </form>
         </div>
-        <div class = wrapper>
+        <div id = 'button'>
             <button class="saveBtn" v-on:click="handleSubmit()" type = "button">Save</button>
         </div>    
     </div>
@@ -132,11 +132,11 @@ export default {
   background-color: #316879;
   min-height: 10vh;
 }
-#logo {
+/* #logo {
 height: 5%;
 width: 5%;
 float: left;
-}
+} */
 h1{
   color: white ;
   font-family: 'Rounded Mplus 1c Bold';
@@ -148,6 +148,7 @@ h1{
 }
 .wrapper {
   text-align: center;
+  margin-top: 200px;
 }
 .formli {
   text-align: right;
@@ -189,12 +190,25 @@ position: absolute;
 }
 
 img {
-  padding: 10px;
+  padding-top: 50px;
+  padding-left: 350px;
   width: 10em;
+  float: center;
+}
 
+.profilePicture {
+  float: center;
+  text-align: center;
+  margin: auto;
+  width: 800px;
 }
 
 label {
   padding-right: 10px;
 }
+
+#button {
+  padding-top: 0px;
+}
+
 </style>
